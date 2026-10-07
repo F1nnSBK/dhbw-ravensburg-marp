@@ -5,6 +5,7 @@
   "scripts": {
     "start": "marp -s . --config marp.config.mjs",
     "dev": "marp -s . --config marp.config.mjs",
+    "new": "node scripts/new-presentation.mjs",
     "preview": "marp -p slides.md --config marp.config.mjs",
     "build": "npm run build:html",
     "build:html": "mkdir -p dist && marp slides.md --config marp.config.mjs -o dist/index.html",

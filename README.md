@@ -83,16 +83,20 @@ npm run build:all
 Dieses Repository ist so strukturiert, dass der **`main`-Branch** als saubere Vorlage (Template) dient. Echte Präsentationen werden in separaten Branches gepflegt:
 
 ### Neuen Vortrag anlegen
-Erstelle ausgehend vom `main`-Branch einen neuen Branch für deine konkrete Arbeit:
+Mit dem integrierten Skript erstellst und wechselst du automatisch in einen neuen Präsentations-Branch:
 
 ```bash
-# Auf den Haupt-Branch wechseln und sicherstellen, dass alles aktuell ist
-git checkout main
+# Erstellt und wechselt in den Branch presentation/t2000-praxisarbeit
+npm run new t2000-praxisarbeit
 
-# Neuen Branch für deine Arbeit/Präsentation erstellen
+# oder für eine Bachelorarbeit:
+npm run new bachelor-thesis
+```
+
+Alternativ manuell:
+```bash
+git checkout main
 git checkout -b presentation/t2000-praxisarbeit
-# oder
-git checkout -b presentation/bachelor-thesis
 ```
 
 ### Arbeiten & Committen
