@@ -1,15 +1,28 @@
 {
   "name": "dhbw-ravensburg-marp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "DHBW Ravensburg Presentation Template with Marp",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "marp -s . --config marp.config.mjs",
+    "dev": "marp -s . --config marp.config.mjs",
+    "preview": "marp -p slides.md --config marp.config.mjs",
+    "build": "npm run build:html",
+    "build:html": "mkdir -p dist && marp slides.md --config marp.config.mjs -o dist/index.html",
+    "build:pdf": "mkdir -p dist && marp slides.md --config marp.config.mjs --pdf -o dist/slides.pdf",
+    "build:pptx": "mkdir -p dist && marp slides.md --config marp.config.mjs --pptx -o dist/slides.pptx",
+    "build:all": "npm run build:html && npm run build:pdf && npm run build:pptx"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "marp",
+    "marp-theme",
+    "dhbw",
+    "dhbw-ravensburg",
+    "presentation",
+    "slides",
+    "markdown"
+  ],
+  "author": "Finn Hertsch",
+  "license": "MIT",
   "devDependencies": {
     "@marp-team/marp-cli": "^4.5.1"
   }

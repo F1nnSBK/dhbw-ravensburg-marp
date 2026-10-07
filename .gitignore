@@ -1,11 +1,38 @@
+# Node modules
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build and export outputs
 dist/
 build/
-*.html
+out/
+export/
 *.pdf
 *.pptx
-!slides.html
+*.html
+!assets/**/*.svg
+!assets/**/*.png
+!assets/**/*.jpg
+!assets/**/*.jpeg
+!assets/reference/*.pptx
+
+# Operating system files
 .DS_Store
-.vscode/
+Thumbs.db
+
+# Environments
 .env
+.env.local
 .venv/
+
+# Editor files (ignore workspace state, keep recommendations & settings)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+*.swp
+*~

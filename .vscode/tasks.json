@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Marp Server starten",
+      "type": "npm",
+      "script": "start",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Build All (HTML, PDF, PPTX)",
+      "type": "npm",
+      "script": "build:all",
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ]
+}

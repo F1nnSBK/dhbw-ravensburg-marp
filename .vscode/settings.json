@@ -1,0 +1,7 @@
+{
+  "markdown.marp.themes": [
+    "./themes/dhbw.css"
+  ],
+  "markdown.marp.enableHtml": true,
+  "markdown.marp.outline.autoFold": false
+}
