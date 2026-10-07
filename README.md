@@ -118,7 +118,7 @@ git merge main
 Das Theme stellt maßgeschneiderte Klassen bereit, die über Markdown-Direktiven auf Folien angewendet werden können:
 
 ### 1. Titelfolie (`title` / `lead`)
-Großes DHBW Ravensburg Logo, Haupt- und Untertitel, Autoren-Metadaten und die offizielle 3-Farben-Abschlussleiste.
+Großes DHBW Ravensburg Logo, Haupt- und Untertitel, 2-spaltiges Metadaten-Grid und die offizielle 3-Farben-Abschlussleiste.
 ```markdown
 <!-- _class: title -->
 <!-- _paginate: false -->
@@ -128,77 +128,113 @@ Großes DHBW Ravensburg Logo, Haupt- und Untertitel, Autoren-Metadaten und die o
 # Titel der Präsentation
 ## Untertitel der Arbeit
 
-<div class="meta">
-**Referent:** Max Mustermann | **Kurs:** TINF23  
-**Unternehmen:** Partnerunternehmen GmbH  
+<div class="title-meta-grid">
+<div class="title-meta-col">
+**Referent:** Max Mustermann  
+**Studiengang:** Informatik | **Kurs:** TINF23
+</div>
+<div class="title-meta-col">
+**Unternehmen:** Partnerunternehmen SE  
+**Betreuer:** Prof. Dr. Max Mustermann  
 **Datum:** 7. Oktober 2026
 </div>
+</div>
 ```
 
-### 2. Standard-Inhaltsfolie
-Jede Standardfolie erhält automatisch das DHBW-Logo oben links, eine feine Trennlinie und eine Fußzeile mit Referent, Thema und Seitennummerierung (`Folie / Gesamt`).
+### 2. Agenda-Grid (`agenda-grid`)
+Elegantes zweispaltiges Grid mit nummerierten DHBW-Rot-Badges.
 ```markdown
-# 1. Motivation & Problemstellung
-* Wichtiger Punkt 1
-* Wichtiger Punkt 2
-
-> **Wichtiger Hinweis:** Hervorgehobene Information in der Callout-Box.
+<div class="agenda-grid">
+  <div class="agenda-item">
+    <div class="agenda-num">01</div>
+    <div class="agenda-text">
+      <strong>Motivation & Problemstellung</strong>
+      <span>Ausgangslage und Herausforderungen</span>
+    </div>
+  </div>
+  <!-- Weitere Agendapunkte... -->
+</div>
 ```
 
-### 3. Zweispaltiges Layout (`columns`)
+### 3. Vorgehensmodell / Phasen (`steps`)
+Horizontale Prozess-Schritte für wissenschaftliche Methodik.
 ```markdown
-# Vergleich zweier Ansätze
+<div class="steps">
+  <div class="step-item">
+    <div class="step-num">Phase 1</div>
+    <div class="step-title">Analyse</div>
+    <div class="step-desc">Erfassung der Ist-Metriken.</div>
+  </div>
+  <div class="step-item active">
+    <div class="step-num">Phase 2</div>
+    <div class="step-title">Konzeption</div>
+    <div class="step-desc">Architekturentwurf & Schnittstellen.</div>
+  </div>
+  <div class="step-item">
+    <div class="step-num">Phase 3</div>
+    <div class="step-title">Evaluation</div>
+    <div class="step-desc">Benchmarking des Prototyps.</div>
+  </div>
+</div>
+```
 
+### 4. Zweispaltiges Layout mit Cards (`columns` & `card`)
+```markdown
 <div class="columns">
 <div class="col">
+<div class="card slate">
 
-### Ansatz A
-* Punkt 1
-* Punkt 2
+### Traditioneller Ansatz
+* Monolithische Struktur
 
 </div>
+</div>
 <div class="col">
+<div class="card accent">
 
-### Ansatz B
-* Punkt 1
-* Punkt 2
+### Neuer Ansatz
+* Modulare Microservices
 
+</div>
 </div>
 </div>
 ```
 
-### 4. Kapitel- / Zwischentitel (`chapter`)
-Dunkler Schiefergrau-Hintergrund (`#5C6971`) mit rotem Akzentbalken links.
+### 5. Kapitel- / Zwischentitel (`chapter`)
+Dunkler Schiefergrau-Hintergrund (`#5C6971`) mit rotem Akzentbalken links und `chapter-num`.
 ```markdown
 <!-- _class: chapter -->
 <!-- _header: "" -->
 <!-- _footer: "" -->
 
+<div class="chapter-num">KAPITEL 04</div>
+
 # 4. Konzeption & Architektur
 ## Vom Entwurf zur technischen Realisierung
 ```
 
-### 5. KPI-Kennzahlenkarten (`kpi-grid`)
+### 6. KPI-Kennzahlenkarten (`kpi-grid`)
 ```markdown
-# Evaluationsergebnisse
-
 <div class="kpi-grid">
   <div class="kpi-card">
     <div class="number">-65%</div>
     <div class="label">Latenzreduktion</div>
-  </div>
-  <div class="kpi-card">
-    <div class="number">99.4%</div>
-    <div class="label">Genauigkeit</div>
+    <div class="sub">P99 von 185 ms auf 64 ms gesenkt</div>
   </div>
   <div class="kpi-card">
     <div class="number">3.2x</div>
-    <div class="label">Durchsatzsteigerung</div>
+    <div class="label">Durchsatz</div>
+    <div class="sub">5.000 req/sec im Stresstest</div>
+  </div>
+  <div class="kpi-card">
+    <div class="number">100%</div>
+    <div class="label">CI-Konformität</div>
+    <div class="sub">Validiert nach DHBW CD</div>
   </div>
 </div>
 ```
 
-### 6. Abschluss- / Q&A-Folie (`end`)
+### 7. Abschluss- / Q&A-Folie (`end`)
 ```markdown
 <!-- _class: end -->
 <!-- _paginate: false -->
@@ -208,10 +244,15 @@ Dunkler Schiefergrau-Hintergrund (`#5C6971`) mit rotem Akzentbalken links.
 # Vielen Dank für Ihre Aufmerksamkeit!
 ## Fragen & Diskussion
 
-<div class="meta">
-**Vorname Nachname**  
-Duale Hochschule Baden-Württemberg Ravensburg  
-E-Mail: vorname.nachname@student.dhbw-ravensburg.de
+<div class="end-grid">
+<div class="end-card">
+<strong>Duale Hochschule Baden-Württemberg Ravensburg</strong>  
+Campus Ravensburg & Friedrichshafen
+</div>
+<div class="end-card">
+<strong>Kontakt</strong>  
+vorname.nachname@student.dhbw-ravensburg.de
+</div>
 </div>
 ```
 

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="100%" height="auto">
+  <defs>
+    <style>
+      .axis { stroke: #5C6971; stroke-width: 1; fill: none; }
+      .tick-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #5C6971; }
+      .axis-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 500; fill: #22252A; }
+      .data-line-baseline { stroke: #9AA5AC; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+      .data-line-proposed { stroke: #E2001A; stroke-width: 2.2; fill: none; }
+      .data-dot-baseline { fill: #9AA5AC; }
+      .data-dot-proposed { fill: #E2001A; }
+      .legend-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #333333; }
+    </style>
+  </defs>
+
+  <!-- Y-Axis (Latenz in ms) -->
+  <line class="axis" x1="90" y1="30" x2="90" y2="250" />
+  <!-- X-Axis (Gleichzeitige Anfragen / Concurrency) -->
+  <line class="axis" x1="90" y1="250" x2="660" y2="250" />
+
+  <!-- Y Ticks -->
+  <line class="axis" x1="84" y1="250" x2="90" y2="250" />
+  <text class="tick-text" x="76" y="254" text-anchor="end">0</text>
+
+  <line class="axis" x1="84" y1="195" x2="90" y2="195" />
+  <text class="tick-text" x="76" y="199" text-anchor="end">50</text>
+
+  <line class="axis" x1="84" y1="140" x2="90" y2="140" />
+  <text class="tick-text" x="76" y="144" text-anchor="end">100</text>
+
+  <line class="axis" x1="84" y1="85" x2="90" y2="85" />
+  <text class="tick-text" x="76" y="89" text-anchor="end">150</text>
+
+  <line class="axis" x1="84" y1="30" x2="90" y2="30" />
+  <text class="tick-text" x="76" y="34" text-anchor="end">200</text>
+
+  <text class="axis-label" x="35" y="145" transform="rotate(-90, 35, 145)" text-anchor="middle">Latenz (ms)</text>
+
+  <!-- X Ticks -->
+  <line class="axis" x1="90" y1="250" x2="90" y2="256" />
+  <text class="tick-text" x="90" y="272" text-anchor="middle">100</text>
+
+  <line class="axis" x1="230" y1="250" x2="230" y2="256" />
+  <text class="tick-text" x="230" y="272" text-anchor="middle">500</text>
+
+  <line class="axis" x1="370" y1="250" x2="370" y2="256" />
+  <text class="tick-text" x="370" y="272" text-anchor="middle">1.000</text>
+
+  <line class="axis" x1="510" y1="250" x2="510" y2="256" />
+  <text class="tick-text" x="510" y="272" text-anchor="middle">2.500</text>
+
+  <line class="axis" x1="650" y1="250" x2="650" y2="256" />
+  <text class="tick-text" x="650" y="272" text-anchor="middle">5.000</text>
+
+  <text class="axis-label" x="370" y="302" text-anchor="middle">Parallele Anfragen (Concurrency)</text>
+
+  <!-- Baseline curve -->
+  <path class="data-line-baseline" d="M 90,225 L 230,195 L 370,145 L 510,80 L 650,45" />
+  <circle class="data-dot-baseline" cx="90" cy="225" r="3.5" />
+  <circle class="data-dot-baseline" cx="230" cy="195" r="3.5" />
+  <circle class="data-dot-baseline" cx="370" cy="145" r="3.5" />
+  <circle class="data-dot-baseline" cx="510" cy="80" r="3.5" />
+  <circle class="data-dot-baseline" cx="650" cy="45" r="3.5" />
+
+  <!-- Proposed approach curve -->
+  <path class="data-line-proposed" d="M 90,240 L 230,230 L 370,215 L 510,190 L 650,155" />
+  <circle class="data-dot-proposed" cx="90" cy="240" r="4.5" />
+  <circle class="data-dot-proposed" cx="230" cy="230" r="4.5" />
+  <circle class="data-dot-proposed" cx="370" cy="215" r="4.5" />
+  <circle class="data-dot-proposed" cx="510" cy="190" r="4.5" />
+  <circle class="data-dot-proposed" cx="650" cy="155" r="4.5" />
+
+  <!-- Legend in Tufte minimalist style -->
+  <g transform="translate(430, 20)">
+    <line class="data-line-proposed" x1="0" y1="10" x2="28" y2="10" />
+    <circle class="data-dot-proposed" cx="14" cy="10" r="4.5" />
+    <text class="legend-text" x="38" y="14">Optimierte Pipeline</text>
+
+    <line class="data-line-baseline" x1="0" y1="32" x2="28" y2="32" />
+    <circle class="data-dot-baseline" cx="14" cy="32" r="3.5" />
+    <text class="legend-text" x="38" y="36">Referenzsystem</text>
+  </g>
+</svg>

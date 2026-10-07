@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="100%" height="auto">
+  <defs>
+    <style>
+      .tufte-box { fill: #FAFAFB; stroke: #DDE1E3; stroke-width: 1.2; rx: 6px; }
+      .tufte-box-accent { fill: #FFFFFF; stroke: #E2001A; stroke-width: 1.5; rx: 6px; }
+      .tufte-header { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: 600; fill: #22252A; }
+      .tufte-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; fill: #5C6971; }
+      .tufte-line { stroke: #9AA5AC; stroke-width: 1.2; stroke-dasharray: 4,4; fill: none; }
+      .tufte-arrow { stroke: #E2001A; stroke-width: 1.5; fill: none; }
+      .tufte-badge { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #E2001A; letter-spacing: 0.05em; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#E2001A" />
+    </marker>
+  </defs>
+
+  <!-- Layer 1: Data Ingestion -->
+  <g transform="translate(30, 40)">
+    <rect class="tufte-box" x="0" y="0" width="260" height="290" />
+    <text class="tufte-badge" x="20" y="32">SCHICHT 1</text>
+    <text class="tufte-header" x="20" y="58">Datenquellen &amp; Ingestion</text>
+    <text class="tufte-sub" x="20" y="78">Erfassung &amp; Vorverarbeitung</text>
+    <line x1="20" y1="92" x2="240" y2="92" stroke="#E5E7EB" stroke-width="1" />
+
+    <rect x="20" y="110" width="220" height="46" rx="4" fill="#FFFFFF" stroke="#DDE1E3" stroke-width="1" />
+    <text class="tufte-header" x="35" y="132" font-size="13">Sensor- &amp; Telemetrie-APIs</text>
+    <text class="tufte-sub" x="35" y="147" font-size="11">gRPC / REST / MQTT</text>
+
+    <rect x="20" y="168" width="220" height="46" rx="4" fill="#FFFFFF" stroke="#DDE1E3" stroke-width="1" />
+    <text class="tufte-header" x="35" y="190" font-size="13">Enterprise SQL / NoSQL</text>
+    <text class="tufte-sub" x="35" y="205" font-size="11">Transaktionale Bestandsdaten</text>
+
+    <rect x="20" y="226" width="220" height="46" rx="4" fill="#FFFFFF" stroke="#DDE1E3" stroke-width="1" />
+    <text class="tufte-header" x="35" y="248" font-size="13">Event Streaming</text>
+    <text class="tufte-sub" x="35" y="263" font-size="11">Apache Kafka Broker</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <line class="tufte-arrow" x1="290" y1="185" x2="340" y2="185" marker-end="url(#arrow)" />
+
+  <!-- Layer 2: Core Processing Engine (Accented) -->
+  <g transform="translate(350, 25)">
+    <rect class="tufte-box-accent" x="0" y="0" width="260" height="320" />
+    <text class="tufte-badge" x="20" y="32">SCHICHT 2 (KERN)</text>
+    <text class="tufte-header" x="20" y="58">Verarbeitungs-Engine</text>
+    <text class="tufte-sub" x="20" y="78">Geschäftslogik &amp; Transformation</text>
+    <line x1="20" y1="92" x2="240" y2="92" stroke="#FAC0BC" stroke-width="1" />
+
+    <rect x="20" y="110" width="220" height="52" rx="4" fill="#FDF2F2" stroke="#FAC0BC" stroke-width="1" />
+    <text class="tufte-header" x="35" y="133" font-size="13" fill="#8E130A">Validierung &amp; Normalisierung</text>
+    <text class="tufte-sub" x="35" y="150" font-size="11">Schema Registry / Type Checks</text>
+
+    <rect x="20" y="174" width="220" height="52" rx="4" fill="#FDF2F2" stroke="#FAC0BC" stroke-width="1" />
+    <text class="tufte-header" x="35" y="197" font-size="13" fill="#8E130A">Aggregations-Pipeline</text>
+    <text class="tufte-sub" x="35" y="214" font-size="11">Streaming Window Functions</text>
+
+    <rect x="20" y="238" width="220" height="52" rx="4" fill="#FDF2F2" stroke="#FAC0BC" stroke-width="1" />
+    <text class="tufte-header" x="35" y="261" font-size="13" fill="#8E130A">Cache &amp; State Store</text>
+    <text class="tufte-sub" x="35" y="278" font-size="11">In-Memory Redis / RocksDB</text>
+  </g>
+
+  <!-- Arrow 2 to 3 -->
+  <line class="tufte-arrow" x1="610" y1="185" x2="660" y2="185" marker-end="url(#arrow)" />
+
+  <!-- Layer 3: Presentation & Analytics -->
+  <g transform="translate(670, 40)">
+    <rect class="tufte-box" x="0" y="0" width="260" height="290" />
+    <text class="tufte-badge" x="20" y="32">SCHICHT 3</text>
+    <text class="tufte-header" x="20" y="58">Bereitstellung &amp; Analyse</text>
+    <text class="tufte-sub" x="20" y="78">Nutzung &amp; Visualisierung</text>
+    <line x1="20" y1="92" x2="240" y2="92" stroke="#E5E7EB" stroke-width="1" />
+
+    <rect x="20" y="110" width="220" height="46" rx="4" fill="#FFFFFF" stroke="#DDE1E3" stroke-width="1" />
+    <text class="tufte-header" x="35" y="132" font-size="13">Executive Dashboards</text>
+    <text class="tufte-sub" x="35" y="147" font-size="11">React / Web Components</text>
+
+    <rect x="20" y="168" width="220" height="46" rx="4" fill="#FFFFFF" stroke="#DDE1E3" stroke-width="1" />
+    <text class="tufte-header" x="35" y="190" font-size="13">Export &amp; Reporting</text>
+    <text class="tufte-sub" x="35" y="205" font-size="11">Automatisierte Berichte</text>
+
+    <rect x="20" y="226" width="220" height="46" rx="4" fill="#FFFFFF" stroke="#DDE1E3" stroke-width="1" />
+    <text class="tufte-header" x="35" y="248" font-size="13">Downstream Consumers</text>
+    <text class="tufte-sub" x="35" y="263" font-size="11">Partner-Integrationspunkte</text>
+  </g>
+</svg>

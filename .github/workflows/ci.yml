@@ -1,0 +1,41 @@
+name: Build & Verify Presentation
+
+on:
+  push:
+    branches: [main, "presentation/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build HTML presentation
+        run: npm run build:html
+
+      - name: Build PDF & PPTX (with Chromium)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          export CHROME_PATH=$(which chromium-browser)
+          npm run build:pdf
+          npm run build:pptx
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dhbw-presentation-dist
+          path: dist/
+          retention-days: 14
