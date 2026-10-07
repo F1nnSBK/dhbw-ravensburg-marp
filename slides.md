@@ -110,16 +110,15 @@ footer: "Vorname Nachname | Titel der Präsentation | 2026"
 ### Ausgangslage
 * Zunehmende Datenvolumina und heterogene Systemlandschaften erfordern agile Workflows.
 * Manuelle Integrationsprozesse führen zu signifikanten Verzögerungen und Fehlerraten.
-* Bisherige Insellösungen verhindern eine einheitliche Qualitätssicherung.
 
 ### Kernherausforderungen
 * **Skalierbarkeit:** Ressourcenbedarf wächst überproportional zur Anfragefrequenz.
-* **Wartbarkeit:** Mangelnde Schnittstellenstandards erschweren die kontinuierliche Weiterentwicklung.
+* **Wartbarkeit:** Mangelnde Schnittstellenstandards erschweren die Weiterentwicklung.
 
 <blockquote>
 
 **Zentrales Problemstatement:**  
-Monolithische Altsysteme decken moderne Anforderungen an Durchsatz, Nachvollziehbarkeit und automatisierte CI/CD-Pipelines nicht mehr wirtschaftlich ab.
+Monolithische Altsysteme decken moderne Anforderungen an Durchsatz und automatisierte CI/CD-Pipelines nicht mehr wirtschaftlich ab.
 
 </blockquote>
 
@@ -138,7 +137,7 @@ Monolithische Altsysteme decken moderne Anforderungen an Durchsatz, Nachvollzieh
   <div class="step-item">
     <div class="step-num">Phase 1</div>
     <div class="step-title">Analyse &amp; Anforderung</div>
-    <div class="step-desc">Erfassung quantitativer Metriken im Ist-Zustand und Lastprofil-Definition.</div>
+    <div class="step-desc">Erfassung quantitativer Ist-Metriken und Definition des Lastprofils.</div>
   </div>
   <div class="step-item active">
     <div class="step-num">Phase 2</div>
@@ -156,32 +155,24 @@ Monolithische Altsysteme decken moderne Anforderungen an Durchsatz, Nachvollzieh
 
 # 3. Stand der Technik & Vergleich
 
-<div class="columns">
+<div class="columns" style="margin-bottom: 8px;">
 <div class="col">
-
-<div class="card slate">
+<div class="card slate" style="padding: 10px 14px; margin-bottom: 0;">
 
 ### Traditioneller Ansatz
-* Monolithische Architektur
-* Manuelle Bereitstellungsprozesse
+* Monolithische Architektur &amp; manuelle Deployments
 * Hohe Latenzen bei Lastspitzen
-* Schwierige Fehlereingrenzung
 
 </div>
-
 </div>
 <div class="col">
-
-<div class="card accent">
+<div class="card accent" style="padding: 10px 14px; margin-bottom: 0;">
 
 ### Vorgeschlagene Lösung
-* Modulare Schichtenarchitektur
-* Vollautomatisierte CI/CD-Pipeline
-* In-Memory State &amp; Caching
-* End-to-End Tracing &amp; Telemetrie
+* Modulare Schichtenarchitektur &amp; CI/CD-Pipeline
+* In-Memory State &amp; End-to-End Tracing
 
 </div>
-
 </div>
 </div>
 
@@ -212,7 +203,11 @@ Strukturierte Systemmodellierung nach Prinzipien von Separation of Concerns, Loo
 
 <span class="tag red">Systemübersicht</span>
 
-![width:1000px center](assets/architecture-diagram.svg)
+<div style="text-align: center; margin-top: 6px;">
+
+![width:860px center](assets/architecture-diagram.svg)
+
+</div>
 
 ---
 
@@ -256,28 +251,33 @@ export async function processEvent(
 
 # 6. Evaluation & Ergebnisse
 
-<div class="kpi-grid">
-  <div class="kpi-card">
-    <div class="number">-65%</div>
-    <div class="label">Latenzreduktion</div>
-    <div class="sub">P99 von 185 ms auf 64 ms gesenkt</div>
-  </div>
-  <div class="kpi-card">
-    <div class="number">3.2x</div>
-    <div class="label">Durchsatzsteigerung</div>
-    <div class="sub">Bis zu 5.000 req/sec im Stresstest</div>
-  </div>
-  <div class="kpi-card">
-    <div class="number">100%</div>
-    <div class="label">CI-Konformität</div>
-    <div class="sub">Vollständig im DHBW CD validiert</div>
-  </div>
+<div class="columns" style="align-items: center;">
+<div class="col" style="flex: 0.85;">
+
+<div class="kpi-card" style="margin-bottom: 10px;">
+  <div class="number">-65%</div>
+  <div class="label">Latenzreduktion</div>
+  <div class="sub">P99 von 185 ms auf 64 ms gesenkt</div>
 </div>
 
-<div style="text-align: center; margin-top: 10px;">
+<div class="kpi-card" style="margin-bottom: 10px;">
+  <div class="number">3.2x</div>
+  <div class="label">Durchsatzsteigerung</div>
+  <div class="sub">Bis zu 5.000 req/sec im Stresstest</div>
+</div>
 
-![width:820px center](assets/evaluation-plot.svg)
+<div class="kpi-card">
+  <div class="number">100%</div>
+  <div class="label">CI-Konformität</div>
+  <div class="sub">Vollständig im DHBW CD validiert</div>
+</div>
 
+</div>
+<div class="col" style="flex: 1.15; text-align: center;">
+
+![width:560px center](assets/evaluation-plot.svg)
+
+</div>
 </div>
 
 ---
