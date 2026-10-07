@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+*.html
+*.pdf
+*.pptx
+!slides.html
+.DS_Store
+.vscode/
+.env
+.venv/
