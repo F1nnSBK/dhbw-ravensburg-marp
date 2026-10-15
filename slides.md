@@ -2,107 +2,117 @@
 marp: true
 theme: dhbw
 paginate: true
-header: "DHBW Ravensburg"
-footer: "Citation Evaluation | Projektstand | 2026"
+header: "Capstone-Project · KI-Agent: Literatur Check"
+footer: "Citation Evaluation · Präsentation 1 · 20.10.2026"
 ---
 
 <style>
+/* Agenda: larger type, more breathing room */
+.agenda-grid { gap: 16px 24px; margin-top: 24px; }
+.agenda-item { padding: 16px 18px; }
+.agenda-num { width: 42px; height: 42px; font-size: 18px; }
+.agenda-text strong { font-size: 21px; }
+.agenda-text span { font-size: 16px; margin-top: 3px; }
+
+/* Steps: readable from the back row */
+.steps { gap: 16px; }
+.step-item { padding: 16px 18px; }
+.step-num { font-size: 13px; }
+.step-title { font-size: 20px; margin-bottom: 6px; }
+.step-desc { font-size: 16px; line-height: 1.4; color: #3F474C; }
+
+/* KPI cards */
+.kpi-card .label { font-size: 16px; }
+.kpi-card .sub { font-size: 14px; }
+.kpi-stack .kpi-card { margin-bottom: 12px; text-align: left; padding: 12px 18px; }
+.kpi-stack .kpi-card .number { font-size: 34px; }
+
+/* Kanban board */
 .board {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  margin-top: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 6px;
   align-items: start;
 }
 .board-col {
   background: #F8F9FA;
   border: 1px solid #E2E6E9;
   border-radius: 8px;
-  padding: 8px;
+  padding: 10px;
 }
 .board-head {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: #5C6971;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .board-card {
   background: #FFFFFF;
   border: 1px solid #E2E6E9;
-  border-left: 4px solid #5C6971;
+  border-left: 4px solid #9AA5AC;
   border-radius: 6px;
-  padding: 6px 8px;
-  font-size: 13px;
+  padding: 7px 10px;
+  font-size: 15px;
   line-height: 1.3;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
-.board-card b {
-  display: block;
-  font-size: 11px;
-  color: #5C6971;
-}
-.board-card small {
-  display: block;
-  font-size: 11px;
-  color: #5C6971;
-}
+.board-card b { display: block; font-size: 12px; color: #5C6971; letter-spacing: 0.03em; }
 .board-card.crit { border-left-color: #E2001A; }
-.board-card.crit small { color: #E2001A; font-weight: 700; }
 .board-card.high { border-left-color: #8E130A; }
-.board-card.high small { color: #8E130A; font-weight: 700; }
 .board-card.done { color: #5C6971; text-decoration: line-through; }
-.board-empty {
-  font-size: 12px;
-  color: #5C6971;
-  text-align: center;
-  padding: 10px 0;
-}
+.board-card .prio { color: #E2001A; font-weight: 700; font-size: 12px; text-transform: uppercase; }
+.board-card .who { color: #5C6971; font-size: 12px; float: right; }
+
+/* Placeholder for figures that are not ready yet */
 .placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 2px dashed #BBC3C8;
+  border: 1.5px dashed #BBC3C8;
   border-radius: 8px;
-  background: #F8F9FA;
   color: #5C6971;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.4;
-  padding: 12px;
+  padding: 16px;
   box-sizing: border-box;
 }
-.placeholder strong {
-  font-size: 17px;
-  color: #5C6971;
-}
+.placeholder strong { font-size: 18px; color: #3F474C; }
+
+/* Scope list: check and cross markers */
+ul.scope-in > li::before { content: "✓"; font-size: 0.9em; top: 0; }
+ul.scope-out > li::before { content: "✕"; font-size: 0.85em; top: 0.05em; color: #5C6971; }
+
+.figure { margin-top: 8px; }
+.caption { font-size: 15px; color: #5C6971; margin-top: 4px; }
+section table { font-size: 17px; }
 </style>
 
 <!-- _class: title -->
 <!-- _paginate: false -->
-<!-- _header: "" -->
-<!-- _footer: "" -->
 
 # Citation Evaluation
-## Projektstand, Kanban-Board und erste Ergebnisse
+## KI-Agenten prüfen Literaturangaben – Projektstand Sprint 1
 
 <div class="title-meta-grid">
 <div class="title-meta-col">
 
-**Team:** [Namen ergänzen]  
-**Studiengang:** [Studiengang ergänzen]  
-**Kurs:** [Kurs ergänzen]
+**Team:** Finn Hertsch, Tino Strasser, Maximilian Vogt, Florian Dittmann  
+**Studiengang:** Data Science und Künstliche Intelligenz  
+**Kurs:** WDS124 / WDS224 · Capstone-Project
 
 </div>
 <div class="title-meta-col">
 
-**Projekt:** Literaturangaben mit KI-Agenten prüfen  
-**Betreuer:** [Betreuer ergänzen]  
-**Datum:** [Datum ergänzen]
+**Product Owner:** Prof. Dr. Andreas Schilling  
+**Anlass:** Präsentation 1 (Sprint 1)  
+**Datum:** 20.10.2026
 
 </div>
 </div>
@@ -115,245 +125,289 @@ footer: "Citation Evaluation | Projektstand | 2026"
   <div class="agenda-item">
     <div class="agenda-num">01</div>
     <div class="agenda-text">
-      <strong>Projekt in Kürze</strong>
-      <span>Was geprüft wird und mit welchen Datensätzen</span>
+      <strong>Ausgangslage & Ziel</strong>
+      <span>Warum Literaturangaben automatisch prüfen?</span>
     </div>
   </div>
-
   <div class="agenda-item">
     <div class="agenda-num">02</div>
     <div class="agenda-text">
-      <strong>Kanban-Board</strong>
-      <span>Arbeitsstand, laufende Aufgaben und Backlog</span>
+      <strong>System & Methodik</strong>
+      <span>Datenfluss, CiteAudit-Benchmark, Bewertung</span>
     </div>
   </div>
-
   <div class="agenda-item">
     <div class="agenda-num">03</div>
     <div class="agenda-text">
-      <strong>Lauf mit dem großen Datensatz</strong>
-      <span>CiteAudit-Benchmark mit binärer Bewertung</span>
+      <strong>Projektstand</strong>
+      <span>Kanban-Board und laufende Arbeiten</span>
     </div>
   </div>
-
   <div class="agenda-item">
     <div class="agenda-num">04</div>
     <div class="agenda-text">
-      <strong>Vergleiche</strong>
-      <span>Modelle, Agenten, Kategoriendefinition und Laufzeit</span>
+      <strong>Ergebnisse</strong>
+      <span>Großer Lauf, Modelle, Agenten, Kategorien</span>
     </div>
   </div>
-
   <div class="agenda-item">
     <div class="agenda-num">05</div>
     <div class="agenda-text">
-      <strong>Verbesserte Ergebnis-UI</strong>
+      <strong>Ergebnis-UI</strong>
       <span>Lauf- und Statistikansicht</span>
     </div>
   </div>
-
   <div class="agenda-item">
     <div class="agenda-num">06</div>
     <div class="agenda-text">
-      <strong>Nächste Schritte</strong>
-      <span>Zugriff, Rechenleistung und Auswertung</span>
+      <strong>Risiken & nächste Schritte</strong>
+      <span>Was bis Sprint 2 passieren muss</span>
     </div>
   </div>
 </div>
 
 ---
 
-# 1. Projekt in Kürze
+# Ausgangslage & Ziel
 
 <div class="columns">
+<div class="col" style="flex: 1.15;">
+
+### Problem
+* Generative KI **erfindet Quellen** oder liefert falsche Titel, Autor:innen, Venues, Jahre und DOIs.
+* Diese Angaben von Hand zu prüfen kostet viel Zeit.
+
+### Ziel
+* Einen **lokal betriebenen, datenschutzkonformen** Prototyp aus einer Bachelorarbeit weiterentwickeln.
+* Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
+
+</div>
+<div class="col" style="flex: 0.85;">
+<div class="card accent">
+
+### Im Scope
+<ul class="scope-in">
+<li>Existiert die Quelle?</li>
+<li>Stimmen die bibliografischen Angaben?</li>
+</ul>
+
+</div>
+<div class="card slate">
+
+### Nicht im Scope
+<ul class="scope-out">
+<li>Belegt die Quelle die Aussage im Text?</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+---
+
+# System: Datenfluss
+
+<div class="figure">
+
+![w:1140](assets/citation-pipeline.svg)
+
+</div>
+
+<div class="columns" style="margin-top: 14px;">
 <div class="col">
 
-### Was das System macht
-* Prüft **Literaturangaben** automatisiert auf Existenz und Zitierfehler.
-* Vergleicht Modellantworten über drei Agenten: **Browser-use**, **Hermes** und **OpenCode**.
-* Bewertet jede Antwort gegen eine **Musterlösung**.
-
-### Fachlicher Status je Zitat
-* **1** korrekt · **2** nur Formfehler
-* **3** Inhaltsfehler · **4** nicht verifizierbar
+* **Lokale Inferenz** auf DHBW-Infrastruktur (RTX 6000, DGX Spark)
+* **Keine Datenleckage:** Die Ground Truth gelangt nie in Prompt oder Worker.
 
 </div>
 <div class="col">
+
+* **Drei Agenten im Vergleich:** Browser-use als Baseline, dazu Hermes und OpenCode.
+* Läufe lassen sich pausieren und fortsetzen, mit **600 s Hard-Timeout** je Zitat.
+
+</div>
+</div>
+
+---
+
+# Benchmark: CiteAudit
+
+<div class="columns" style="align-items: center;">
+<div class="col kpi-stack" style="flex: 0.6;">
+
+<div class="kpi-card">
+  <div class="number">9.442</div>
+  <div class="label">gelabelte Zitate</div>
+  <div class="sub">Shi et al., binäres Label Real / Fake</div>
+</div>
+
+<div class="kpi-card">
+  <div class="number">31,4 %</div>
+  <div class="label">Fake-Anteil gesamt</div>
+  <div class="sub">2.967 von 9.442 Zitaten</div>
+</div>
+
+<div class="kpi-card">
+  <div class="number">2 Gruppen</div>
+  <div class="label">realworld und generated</div>
+  <div class="sub">getrennt auswerten</div>
+</div>
+
+</div>
+<div class="col" style="flex: 1.4;">
+
+![w:700](assets/citeaudit-distribution.svg)
+
+> Der Fake-Anteil unterscheidet sich je Gruppe um fast das Dreifache. Eine einzige Gesamt-Accuracy würde Schwächen bei **realworld** verdecken.
+
+</div>
+</div>
+
+---
+
+# Bewertung: vier Status, zwei Klassen
+
+<div class="columns">
+<div class="col" style="flex: 1.2;">
+
+| Status | Bedeutung | Binär |
+| :--- | :--- | :--- |
+| **1** | bibliografisch korrekt | Real |
+| **2** | nur Formfehler | Real |
+| **3** | Inhaltsfehler, z. B. falsche Autor:innen | Fake |
+| **4** | nicht verifizierbar | Fake |
+
+* **Fake** ist die positive Klasse: Accuracy, Precision, Recall und F1 je `source_type`.
+* Status 4 heißt **„nicht gefunden“**, nicht „bewiesen falsch“. Timeouts zählen getrennt.
+
+</div>
+<div class="col" style="flex: 0.8;">
 
 ### Datensätze
 
-| Datensatz | Umfang | Zweck |
-| :--- | :--- | :--- |
-| **Techniktest** | 1 Zitat | Einrichtung prüfen |
-| **Test** | 10 Zitate | Entwicklung |
-| **Evaluation** | 50 Zitate | Abschließender Vergleich |
-| **Benchmark** | 9.442 Zitate | CiteAudit, binär bewertet |
+| Stufe | Zitate | Zweck |
+| :--- | ---: | :--- |
+| Techniktest | 1 | Setup |
+| Test | 10 | Entwicklung |
+| Evaluation | 50 | Vergleich |
+| CiteAudit | 9.442 | Benchmark |
 
 </div>
 </div>
 
 ---
 
-<!-- _class: chapter -->
-<!-- _header: "" -->
-<!-- _footer: "" -->
-
-<div class="chapter-num">KAPITEL 02</div>
-
-# 2. Kanban-Board
-## Wo das Projekt gerade steht
-
-13 Karten: vier in Arbeit, vier als Nächstes eingeplant, vier im Backlog und eine erledigt.
-
----
-
-# 2. Kanban-Board im Überblick
+# Projektstand: Kanban-Board
 
 <div class="board">
 <div class="board-col">
 <div class="board-head">To Do <span>4</span></div>
-<div class="board-card"><b>CE-22</b>RTX 6000 für parallele Samples aufsetzen<small>Finn</small></div>
-<div class="board-card"><b>CE-29</b>Rein lesender Kapazitätsstatus für Modellserver, Modelle und Instanzen</div>
-<div class="board-card crit"><b>CE-32</b>Reverse Proxy und gleichzeitiger Zugriff via WebUI statt SSH<small>Kritisch</small></div>
-<div class="board-card high"><b>CE-34</b>WebUI unabhängig von SSH mit Login absichern und freigeben<small>Hoch</small></div>
+<div class="board-card crit"><b>CE-32 <span class="prio">· Kritisch</span></b>Reverse Proxy: Zugriff per WebUI statt SSH</div>
+<div class="board-card high"><b>CE-34 <span class="prio" style="color:#8E130A">· Hoch</span></b>WebUI mit Login absichern</div>
+<div class="board-card"><b>CE-22 <span class="who">Finn</span></b>RTX 6000 für parallele Samples</div>
+<div class="board-card"><b>CE-29</b>Kapazitätsstatus der Modellserver</div>
 </div>
 <div class="board-col">
-<div class="board-head">In Bearbeitung <span>4</span></div>
-<div class="board-card"><b>CE-26</b>UI verbessern<small>Tino</small></div>
-<div class="board-card"><b>CE-25</b>Effizienz der Judgement Calls und parallele Worker</div>
-<div class="board-card"><b>CE-24</b>Präsentation mit Marp aufsetzen<small>Finn</small></div>
-<div class="board-card"><b>CE-23</b>Tests mit anderer Kategoriendefinition</div>
-</div>
-<div class="board-col">
-<div class="board-head">In Review <span>0</span></div>
-<div class="board-empty">keine Karten</div>
+<div class="board-head">In Arbeit <span>4</span></div>
+<div class="board-card crit"><b>CE-23</b>Tests mit neuer Kategoriendefinition</div>
+<div class="board-card crit"><b>CE-25</b>Effizientere Judgement Calls, parallele Worker</div>
+<div class="board-card crit"><b>CE-26 <span class="who">Tino</span></b>Ergebnis-UI verbessern</div>
+<div class="board-card crit"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
 </div>
 <div class="board-col">
 <div class="board-head">Erledigt <span>1</span></div>
-<div class="board-card done"><b>CE-21</b>E-Mail an Schilling: Rechenleistung<small>Tino</small></div>
+<div class="board-card done"><b>CE-21 <span class="who">Tino</span></b>Rechenleistung bei Prof. Schilling angefragt</div>
 </div>
 <div class="board-col">
 <div class="board-head">Backlog <span>4</span></div>
-<div class="board-card"><b>CE-28</b>Erweiterung für Multi-User Access<small>Niedrig</small></div>
 <div class="board-card"><b>CE-30</b>DSGVO und deutsches Recht</div>
-<div class="board-card"><b>CE-31</b>Statistische Tests erweitern und vervollständigen</div>
-<div class="board-card"><b>CE-33</b>CLI ausbauen, bis sie die meisten WebUI-Funktionen abdeckt</div>
+<div class="board-card"><b>CE-31</b>Statistische Tests vervollständigen</div>
+<div class="board-card"><b>CE-33</b>CLI auf WebUI-Stand bringen</div>
+<div class="board-card"><b>CE-28</b>Multi-User-Zugriff</div>
 </div>
+</div>
+
+> **Schwerpunkt:** Der Zugang wechselt von SSH zu einer abgesicherten WebUI. Erst dann können mehrere Personen gleichzeitig Läufe starten.
+
+---
+
+# Laufzeit: warum wir stufenweise skalieren
+
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="number">~147 s</div>
+    <div class="label">pro Zitat</div>
+    <div class="sub">GPT-OSS-120B mit Browser-use (Bachelorarbeit)</div>
+  </div>
+  <div class="kpi-card">
+    <div class="number">~16 Tage</div>
+    <div class="label">für 9.442 Zitate</div>
+    <div class="sub">bei rein sequentieller Ausführung</div>
+  </div>
+  <div class="kpi-card">
+    <div class="number">94 %</div>
+    <div class="label">Statusgenauigkeit (4 Stufen)</div>
+    <div class="sub">Vortest mit ca. 900 Quellen, nicht repräsentativ</div>
+  </div>
+</div>
+
+<div class="steps">
+  <div class="step-item active">
+    <div class="step-num">Stufe 1 · 50</div>
+    <div class="step-title">Smoke-Test</div>
+    <div class="step-desc">Setup, Datenformat, GT-Trennung und Parser prüfen</div>
+  </div>
+  <div class="step-item active">
+    <div class="step-num">Stufe 2 · 500</div>
+    <div class="step-title">Pilot</div>
+    <div class="step-desc">Resume, Timeouts, Logs und Metriken prüfen</div>
+  </div>
+  <div class="step-item">
+    <div class="step-num">Stufe 3 · 5.000</div>
+    <div class="step-title">Skalierung</div>
+    <div class="step-desc">Parallele Worker messen, Konfiguration einfrieren</div>
+  </div>
+  <div class="step-item">
+    <div class="step-num">Stufe 4 · 9.442</div>
+    <div class="step-title">Vollständig</div>
+    <div class="step-desc">Nur wenn die Teilläufe valide sind</div>
+  </div>
 </div>
 
 ---
 
-# 2. In Bearbeitung
+# Ergebnis: Lauf auf CiteAudit
 
-<div class="columns" style="margin-bottom: 0;">
-<div class="col">
-<div class="card accent">
+<span class="tag red">Platzhalter – Werte nach dem Lauf eintragen</span>
 
-### CE-23 · Andere Kategoriendefinition
-* Grenze zwischen Status 2 und 3 neu gefasst: **Formfehler** gegen **Inhaltsfehler**.
-* Neue Prompt-Version `citation-core-v7`, zwei Fälle neu eingestuft.
+<div class="columns" style="align-items: stretch; margin-top: 4px;">
+<div class="col kpi-stack" style="flex: 0.6;">
 
-</div>
-<div class="card slate">
-
-### CE-25 · Judgement Calls & Worker
-* Bewertungsaufrufe effizienter machen.
-* Mehrere Worker parallel auslasten.
-
-</div>
-</div>
-<div class="col">
-<div class="card accent">
-
-### CE-26 · UI verbessern
-* Worker-Steuerung, Designs und eine klarere Statistikansicht.
-* Zuständig: Tino.
-
-</div>
-<div class="card slate">
-
-### CE-24 · Präsentation mit Marp
-* DHBW-Vorlage als Grundlage für diese Folien.
-* Zuständig: Finn.
-
-</div>
-</div>
-</div>
-
----
-
-# 2. Als Nächstes und Backlog
-
-<div class="columns">
-<div class="col">
-
-### To Do
-* <span class="tag red">Kritisch</span> **CE-32** Reverse Proxy, gleichzeitiger Zugriff via WebUI statt SSH
-* <span class="tag red">Hoch</span> **CE-34** WebUI mit Login absichern und freigeben
-* **CE-22** RTX 6000 für parallele Samples aufsetzen
-* **CE-29** Rein lesender Kapazitätsstatus für Modellserver
-
-</div>
-<div class="col">
-
-### Backlog
-* **CE-30** DSGVO und deutsches Recht
-* **CE-31** Statistische Tests erweitern
-* **CE-33** CLI auf den Stand der WebUI bringen
-* <span class="tag slate">Niedrig</span> **CE-28** Multi-User Access
-
-</div>
-</div>
-
-> **Schwerpunkt:** Der Zugriff soll von SSH auf eine abgesicherte WebUI wechseln. Das ist die Voraussetzung dafür, dass mehrere Personen gleichzeitig Läufe starten können.
-
----
-
-<!-- _class: chapter -->
-<!-- _header: "" -->
-<!-- _footer: "" -->
-
-<div class="chapter-num">KAPITEL 03</div>
-
-# 3. Ergebnisse
-## Großer Lauf und Vergleiche
-
-Die Zahlen und Diagramme auf den folgenden Folien sind Platzhalter und werden nach den Läufen eingesetzt.
-
----
-
-# 3. Lauf mit dem großen Datensatz
-
-<span class="tag red">Platzhalter</span>
-
-<div class="columns" style="align-items: center; margin-top: 0;">
-<div class="col" style="flex: 0.85;">
-
-<div class="kpi-card" style="margin-bottom: 10px;">
+<div class="kpi-card">
   <div class="number">[n]</div>
-  <div class="label">Ausgewertete Zitate</div>
-  <div class="sub">von 9.442 im CiteAudit-Benchmark</div>
-</div>
-
-<div class="kpi-card" style="margin-bottom: 10px;">
-  <div class="number">[xx %]</div>
-  <div class="label">Fehlererkennungsgenauigkeit</div>
-  <div class="sub">binäre Bewertung, [Modell] mit [Agent]</div>
+  <div class="label">ausgewertete Zitate</div>
+  <div class="sub">von 9.442 · [x] Timeouts getrennt</div>
 </div>
 
 <div class="kpi-card">
-  <div class="number">[x %]</div>
-  <div class="label">Technische Fehlerquote</div>
-  <div class="sub">Timeouts und ungültige Antworten</div>
+  <div class="number">[xx %]</div>
+  <div class="label">Accuracy (binär)</div>
+  <div class="sub">[Modell] mit [Agent]</div>
+</div>
+
+<div class="kpi-card">
+  <div class="number">[0,xx]</div>
+  <div class="label">F1 für Fake</div>
+  <div class="sub">realworld [0,xx] · generated [0,xx]</div>
 </div>
 
 </div>
-<div class="col" style="flex: 1.15;">
+<div class="col" style="flex: 1.4;">
 
-<div class="placeholder" style="height: 400px;">
-  <strong>Diagramm: Ergebnis des großen Laufs</strong>
-  z. B. richtig und falsch erkannte Zitate je Label<br>
-  als SVG unter assets/ ablegen
+<div class="placeholder" style="height: 100%;">
+  <strong>Confusion Matrix je source_type</strong>
+  TP · FN · FP · TN für realworld und generated<br>
+  als SVG in assets/ ablegen
 </div>
 
 </div>
@@ -361,48 +415,47 @@ Die Zahlen und Diagramme auf den folgenden Folien sind Platzhalter und werden na
 
 ---
 
-# 3. Vergleich: Modelle und Agenten
+# Vergleich: Modelle und Agenten
 
 <span class="tag red">Platzhalter</span>
 
-| Modell | Agent | Statusgenauigkeit | Makro-F1 | Techn. Fehlerquote | Ø Dauer |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+| Modell | Agent | Accuracy | F1 (Fake) | Techn. Fehler | Ø Dauer |
+| :--- | :--- | ---: | ---: | ---: | ---: |
 | **[Modell A]** | Browser-use | [xx %] | [0,xx] | [x %] | [xx s] |
-| **[Modell A]** | Hermes | [xx %] | [0,xx] | [x %] | [xx s] |
-| **[Modell A]** | OpenCode | [xx %] | [0,xx] | [x %] | [xx s] |
+| | Hermes | [xx %] | [0,xx] | [x %] | [xx s] |
+| | OpenCode | [xx %] | [0,xx] | [x %] | [xx s] |
 | **[Modell B]** | Browser-use | [xx %] | [0,xx] | [x %] | [xx s] |
-| **[Modell B]** | Hermes | [xx %] | [0,xx] | [x %] | [xx s] |
-| **[Modell B]** | OpenCode | [xx %] | [0,xx] | [x %] | [xx s] |
+| | Hermes | [xx %] | [0,xx] | [x %] | [xx s] |
+| | OpenCode | [xx %] | [0,xx] | [x %] | [xx s] |
 
-> **Kernaussage:** [Welche Kombination aus Modell und Agent schneidet am besten ab, und um wie viel?]
+> **Kernaussage:** [Welche Kombination schneidet am besten ab, und um wie viel?]
 
 ---
 
-# 3. Vergleich: Kategoriendefinition
+# Vergleich: Kategoriendefinition v6 → v7
 
 <span class="tag red">Platzhalter</span>
 
-<div class="columns" style="align-items: center; margin-top: 0;">
+<div class="columns" style="align-items: stretch; margin-top: 4px;">
 <div class="col">
 
-### Alte gegen neue Definition (CE-23)
+### Was sich geändert hat (CE-23)
+* Die Grenze zwischen Status 2 und 3 ist neu gezogen: **Formfehler → 2**, **Inhaltsfehler → 3**.
+* Neue Prompt-Version `citation-core-v7`; zwei Fälle wurden neu eingestuft.
 
 | Kennzahl | v6 | v7 |
-| :--- | :--- | :--- |
-| **Statusgenauigkeit** | [xx %] | [xx %] |
-| **Makro-F1** | [0,xx] | [0,xx] |
-| **Verwechslung 2 ↔ 3** | [n] | [n] |
-
-* **v6:** bisherige Prompt-Definition
-* **v7:** Formfehler ergibt Status 2, Inhaltsfehler Status 3
+| :--- | ---: | ---: |
+| Statusgenauigkeit | [xx %] | [xx %] |
+| Makro-F1 | [0,xx] | [0,xx] |
+| Verwechslung 2 ↔ 3 | [n] | [n] |
 
 </div>
 <div class="col">
 
-<div class="placeholder" style="height: 380px;">
-  <strong>Diagramm: Status 1 bis 4 je Definition</strong>
-  z. B. Trefferquote je Statusklasse, v6 neben v7<br>
-  als SVG unter assets/ ablegen
+<div class="placeholder" style="height: 100%;">
+  <strong>Trefferquote je Status</strong>
+  v6 und v7 nebeneinander, Status 1 bis 4<br>
+  als SVG in assets/ ablegen
 </div>
 
 </div>
@@ -410,105 +463,24 @@ Die Zahlen und Diagramme auf den folgenden Folien sind Platzhalter und werden na
 
 ---
 
-# 3. Vergleich: Laufzeit und Parallelität
+# Ergebnis-UI: Statistikansicht
 
-<span class="tag red">Platzhalter</span>
-
-<div class="columns" style="align-items: center; margin-top: 0;">
-<div class="col" style="flex: 0.85;">
-
-<div class="kpi-card" style="margin-bottom: 10px;">
-  <div class="number">[xx s]</div>
-  <div class="label">Ø Dauer je Zitat</div>
-  <div class="sub">ein Worker, sequentiell</div>
-</div>
-
-<div class="kpi-card" style="margin-bottom: 10px;">
-  <div class="number">[xx s]</div>
-  <div class="label">Ø Dauer je Zitat</div>
-  <div class="sub">[n] parallele Worker</div>
-</div>
-
-<div class="kpi-card">
-  <div class="number">[x,x×]</div>
-  <div class="label">Beschleunigung</div>
-  <div class="sub">Gesamtlaufzeit im Vergleich</div>
-</div>
-
-</div>
-<div class="col" style="flex: 1.15;">
-
-<div class="placeholder" style="height: 400px;">
-  <strong>Diagramm: Laufzeit je Konfiguration</strong>
-  z. B. Boxplots der Ausführungszeit je Worker-Anzahl<br>
-  als SVG unter assets/ ablegen
-</div>
-
-</div>
-</div>
-
----
-
-<!-- _class: chapter -->
-<!-- _header: "" -->
-<!-- _footer: "" -->
-
-<div class="chapter-num">KAPITEL 04</div>
-
-# 4. Verbesserte Ergebnis-UI
-## Vom Einzelergebnis zur Statistikansicht
-
-Die Oberfläche zeigt Läufe und ihre Auswertung jetzt in zwei getrennten Ansichten.
-
----
-
-# 4. Ergebnis-UI: vorher und nachher
-
-<span class="tag red">Platzhalter</span>
-
-<div class="columns" style="margin-top: 0;">
-<div class="col">
-
-### Vorher
-
-<div class="placeholder" style="height: 340px;">
-  <strong>Screenshot: bisherige Ergebnisansicht</strong>
-  Bild unter assets/ ablegen
-</div>
-
-</div>
-<div class="col">
-
-### Nachher
-
-<div class="placeholder" style="height: 340px;">
-  <strong>Screenshot: neue Ergebnisansicht</strong>
-  Bild unter assets/ ablegen
-</div>
-
-</div>
-</div>
-
----
-
-# 4. Ergebnis-UI: Statistikansicht
-
-<div class="columns" style="align-items: center;">
+<div class="columns" style="align-items: stretch;">
 <div class="col" style="flex: 0.8;">
 
 ### Was neu ist
 * Getrennte Ansichten **Lauf** und **Statistik**
 * **Boxplots** für Warte- und Ausführungszeit je Konfiguration
-* Wählbares **Konfidenzniveau**: 90, 95 oder 99 Prozent
+* Wählbares **Konfidenzniveau** (90, 95 oder 99 %)
 * **Worker-Steuerung** für parallele Versuche
-* Designs: Hell, Dunkel und Pink Glass
+* Designs: Hell, Dunkel, Pink Glass
 
 </div>
 <div class="col" style="flex: 1.2;">
 
-<div class="placeholder" style="height: 400px;">
+<div class="placeholder" style="height: 100%;">
   <strong>Screenshot: Statistikansicht</strong>
-  Bild unter assets/ ablegen
+  Bild in assets/ ablegen
 </div>
 
 </div>
@@ -516,55 +488,60 @@ Die Oberfläche zeigt Läufe und ihre Auswertung jetzt in zwei getrennten Ansich
 
 ---
 
-# 5. Nächste Schritte
+# Risiken
 
-<span class="tag slate">Aus dem Kanban-Board</span>
+| Risiko | Auswirkung | Gegenmaßnahme |
+| :--- | :--- | :--- |
+| **Unscharfe Grenze Status 2/3** | Urteile schwanken, Vergleich mit CiteAudit unfair | Beispiele und Mapping mit dem Betreuer abstimmen |
+| **Langer Lauf bricht ab** | Tage an Rechenzeit verloren | Stufenplan, Timeout, Resume und Checkpoints |
+| **Bot-Erkennung, Rate-Limits** | fehlende Belege, Abbrüche | Fehler loggen, Backoff, klein testen |
+| **Ungleiche Klassen** | Gesamt-Accuracy verdeckt Schwächen | Metriken je `source_type` berichten |
+| **Lizenz des Datensatzes unklar** | Veröffentlichung nicht zulässig | Lizenz vor jeder Weitergabe klären |
+
+---
+
+# Nächste Schritte
 
 <div class="steps">
   <div class="step-item active">
     <div class="step-num">Schritt 1</div>
     <div class="step-title">Zugriff</div>
-    <div class="step-desc">Reverse Proxy einrichten und die WebUI mit Login freigeben (CE-32, CE-34).</div>
+    <div class="step-desc">Reverse Proxy einrichten, WebUI mit Login freigeben (CE-32, CE-34)</div>
   </div>
   <div class="step-item">
     <div class="step-num">Schritt 2</div>
     <div class="step-title">Rechenleistung</div>
-    <div class="step-desc">RTX 6000 für parallele Samples aufsetzen und den Kapazitätsstatus sichtbar machen (CE-22, CE-29).</div>
+    <div class="step-desc">RTX 6000 für parallele Samples, Kapazitätsstatus sichtbar machen (CE-22, CE-29)</div>
   </div>
   <div class="step-item">
     <div class="step-num">Schritt 3</div>
     <div class="step-title">Auswertung</div>
-    <div class="step-desc">Statistische Tests vervollständigen und die CLI ausbauen (CE-31, CE-33).</div>
+    <div class="step-desc">Statistische Tests vervollständigen, CLI ausbauen (CE-31, CE-33)</div>
   </div>
 </div>
 
-> **Offen:** DSGVO und deutsches Recht (CE-30) sowie Multi-User Access (CE-28) liegen im Backlog und sind noch nicht eingeplant.
+> **Noch offen:** Status-Mapping mit dem Betreuer verbindlich festlegen. DSGVO (CE-30) und Multi-User-Zugriff (CE-28) liegen im Backlog.
 
 ---
 
 <!-- _class: end -->
 <!-- _paginate: false -->
-<!-- _header: "" -->
-<!-- _footer: "" -->
 
-# Vielen Dank für Ihre Aufmerksamkeit!
+# Vielen Dank!
 ## Fragen & Diskussion
 
 <div class="end-grid">
 <div class="end-card">
 
-<strong>Duale Hochschule Baden-Württemberg Ravensburg</strong>  
-* **Campus Ravensburg:** Marienplatz 2, 88212 Ravensburg  
-* **Campus Friedrichshafen:** Fallenbrunnen 2, 88045 Friedrichshafen  
-* **Web:** [www.ravensburg.dhbw.de](https://www.ravensburg.dhbw.de)
+<strong>Team</strong>
+Finn Hertsch · Tino Strasser · Maximilian Vogt · Florian Dittmann
 
 </div>
 <div class="end-card">
 
-<strong>Projekt &amp; Kontakt</strong>  
-* **Team:** [Namen ergänzen]  
-* **E-Mail:** [Kontakt ergänzen]  
-* **Projekt-Repo:** github.com/FlorianDitt/citation-evaluation
+<strong>Projekt</strong>
+Product Owner: Prof. Dr. Andreas Schilling  
+Repo: github.com/FlorianDitt/citation-evaluation
 
 </div>
 </div>

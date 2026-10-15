@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 250" width="100%" role="img" aria-label="CiteAudit-Benchmark: realworld 2.889 real, 467 fake; generated 3.586 real, 2.500 fake">
+  <style>
+    text { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    .lbl { font-size: 17px; font-weight: 600; fill: #22252A; }
+    .sub { font-size: 14px; fill: #5C6971; }
+    .in { font-size: 15px; font-weight: 600; fill: #FFFFFF; }
+    .out { font-size: 15px; font-weight: 600; fill: #22252A; }
+    .share { font-size: 16px; font-weight: 700; fill: #22252A; }
+  </style>
+
+  <!-- Legend -->
+  <rect x="140" y="8" width="14" height="14" rx="3" fill="#5C6971"/>
+  <text class="sub" x="161" y="20">Real (GT = true)</text>
+  <rect x="300" y="8" width="14" height="14" rx="3" fill="#E2001A"/>
+  <text class="sub" x="321" y="20">Fake (GT = false)</text>
+
+  <!-- realworld: 2.889 real, 467 fake (scale 620 px = 6.086) -->
+  <text class="lbl" x="0" y="85">realworld</text>
+  <text class="sub" x="0" y="105">n = 3.356</text>
+  <rect x="140" y="64" width="294" height="44" rx="4" fill="#5C6971"/>
+  <rect x="436" y="64" width="48" height="44" rx="4" fill="#E2001A"/>
+  <text class="in" x="154" y="91">2.889</text>
+  <text class="out" x="496" y="91">467</text>
+  <text class="share" x="560" y="91">13,9 % fake</text>
+
+  <!-- generated: 3.586 real, 2.500 fake -->
+  <text class="lbl" x="0" y="175">generated</text>
+  <text class="sub" x="0" y="195">n = 6.086</text>
+  <rect x="140" y="154" width="365" height="44" rx="4" fill="#5C6971"/>
+  <rect x="507" y="154" width="253" height="44" rx="4" fill="#E2001A"/>
+  <text class="in" x="154" y="181">3.586</text>
+  <text class="in" x="521" y="181">2.500</text>
+  <text class="share" x="772" y="181">41,1 % fake</text>
+
+  <!-- Baseline -->
+  <line x1="140" y1="52" x2="140" y2="210" stroke="#9AA5AC" stroke-width="1"/>
+  <text class="sub" x="140" y="238">Zitate je source_type (Balkenlänge proportional zur Anzahl)</text>
+</svg>
