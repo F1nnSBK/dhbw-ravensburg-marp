@@ -309,10 +309,10 @@ section table { font-size: 17px; }
 </div>
 <div class="board-col">
 <div class="board-head">In Arbeit <span>4</span></div>
-<div class="board-card crit"><b>CE-23</b>Tests mit neuer Kategoriendefinition</div>
-<div class="board-card crit"><b>CE-25</b>Effizientere Judgement Calls, parallele Worker</div>
-<div class="board-card crit"><b>CE-26 <span class="who">Tino</span></b>Ergebnis-UI verbessern</div>
-<div class="board-card crit"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
+<div class="board-card"><b>CE-23</b>Tests mit neuer Kategoriendefinition</div>
+<div class="board-card"><b>CE-25</b>Effizientere Judgement Calls, parallele Worker</div>
+<div class="board-card"><b>CE-26 <span class="who">Tino</span></b>Ergebnis-UI verbessern</div>
+<div class="board-card"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
 </div>
 <div class="board-col">
 <div class="board-head">Erledigt <span>1</span></div>
@@ -376,39 +376,80 @@ section table { font-size: 17px; }
 
 ---
 
-# Ergebnis: Lauf auf CiteAudit
+# Ergebnis: Stichprobe von 200 Zitaten (v7)
 
-<span class="tag red">Platzhalter – Werte nach dem Lauf eintragen</span>
+<span class="tag slate">qwen-rtx6000 · Browser-use · Seed 20260911 · 13.10.2026</span>
 
-<div class="columns" style="align-items: stretch; margin-top: 4px;">
+<div class="columns" style="align-items: center; margin-top: 4px;">
 <div class="col kpi-stack" style="flex: 0.6;">
 
 <div class="kpi-card">
-  <div class="number">[n]</div>
-  <div class="label">ausgewertete Zitate</div>
-  <div class="sub">von 9.442 · [x] Timeouts getrennt</div>
+  <div class="number">166 / 200</div>
+  <div class="label">gültige Urteile</div>
+  <div class="sub">34 technische Ausfälle, v. a. Worker</div>
 </div>
 
 <div class="kpi-card">
-  <div class="number">[xx %]</div>
-  <div class="label">Accuracy (binär)</div>
-  <div class="sub">[Modell] mit [Agent]</div>
+  <div class="number">98 %</div>
+  <div class="label">Recall für Fake</div>
+  <div class="sub">55 von 56 Fakes erkannt</div>
 </div>
 
 <div class="kpi-card">
-  <div class="number">[0,xx]</div>
-  <div class="label">F1 für Fake</div>
-  <div class="sub">realworld [0,xx] · generated [0,xx]</div>
+  <div class="number">57 %</div>
+  <div class="label">Precision für Fake</div>
+  <div class="sub">42 echte Zitate fälschlich markiert</div>
 </div>
 
 </div>
 <div class="col" style="flex: 1.4;">
 
-<div class="placeholder" style="height: 100%;">
-  <strong>Confusion Matrix je source_type</strong>
-  TP · FN · FP · TN für realworld und generated<br>
-  als SVG in assets/ ablegen
+![w:640](assets/v7-confusion.svg)
+
 </div>
+</div>
+
+> Fast keine Fakes entgehen dem Agenten, aber er markiert zu viel – vor allem bei **realworld**. Accuracy gesamt: **74 %**.
+
+---
+
+# Neue Kategoriendefinition (v7)
+
+<div class="columns">
+<div class="col" style="flex: 1.05;">
+
+### Prüffrage
+Verschwindet die Abweichung, wenn Groß-/Kleinschreibung, Leerzeichen, Interpunktion, Bindestriche und Zitierstil ignoriert werden?
+
+<div class="columns" style="gap: 14px; margin-top: 4px;">
+<div class="card slate" style="flex: 1;">
+
+**Ja → Formfehler → Status 2**
+
+</div>
+<div class="card accent" style="flex: 1;">
+
+**Nein → Inhaltsfehler → Status 3**
+
+</div>
+</div>
+
+* Der **schwerste** Fehler bestimmt den Status, nicht die Anzahl.
+* Ab v7 hat kein Status-2-Fall mehr `GT = false`. Die Grenze passt damit zum binären Mapping.
+
+</div>
+<div class="col" style="flex: 0.95;">
+
+| Abweichung | Status |
+| :--- | :---: |
+| Titel in anderer Groß-/Kleinschreibung | 2 |
+| Leerzeichen in URL/DOI, gleiches Ziel | 2 |
+| Überflüssiges „et al.“ | 2 |
+| Autorname falsch, auch ein Buchstabe | 3 |
+| Falsche Autorenreihenfolge | 3 |
+| Autor:innen fehlen oder hinzugefügt | 3 |
+| Falsches Jahr, Venue, Band, Seiten | 3 |
+| URL/DOI eines anderen Werks | 3 |
 
 </div>
 </div>
@@ -432,34 +473,31 @@ section table { font-size: 17px; }
 
 ---
 
-# Vergleich: Kategoriendefinition v6 → v7
+# Vergleich: Definition v6 → v7
 
-<span class="tag red">Platzhalter</span>
-
-<div class="columns" style="align-items: stretch; margin-top: 4px;">
-<div class="col">
-
-### Was sich geändert hat (CE-23)
-* Die Grenze zwischen Status 2 und 3 ist neu gezogen: **Formfehler → 2**, **Inhaltsfehler → 3**.
-* Neue Prompt-Version `citation-core-v7`; zwei Fälle wurden neu eingestuft.
+<div class="columns" style="align-items: center;">
+<div class="col" style="flex: 0.9;">
 
 | Kennzahl | v6 | v7 |
 | :--- | ---: | ---: |
-| Statusgenauigkeit | [xx %] | [xx %] |
-| Makro-F1 | [0,xx] | [0,xx] |
-| Verwechslung 2 ↔ 3 | [n] | [n] |
+| Gültige Urteile | 241 | 166 |
+| Accuracy | 83 % | 74 % |
+| Recall (Fake) | 94 % | **98 %** |
+| Precision (Fake) | **63 %** | 57 % |
+| F1 (Fake) | **0,75** | 0,72 |
+| Fakes in Status 2 | 4 | **0** |
+
+<p class="caption">v6: gpt-oss-spark, erste 241 Zitate · v7: qwen-rtx6000, Zufallsstichprobe</p>
 
 </div>
-<div class="col">
+<div class="col" style="flex: 1.1;">
 
-<div class="placeholder" style="height: 100%;">
-  <strong>Trefferquote je Status</strong>
-  v6 und v7 nebeneinander, Status 1 bis 4<br>
-  als SVG in assets/ ablegen
-</div>
+![w:600](assets/v6-v7-status.svg)
 
 </div>
 </div>
+
+> **Status 2 ist jetzt sauber**, aber Status 3 und 4 fangen mehr echte Zitate ein. Modell und Stichprobe unterscheiden sich, daher ist das **noch kein fairer A/B-Test**. Nächster Lauf: v7 mit gpt-oss auf derselben Stichprobe.
 
 ---
 
