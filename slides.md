@@ -401,9 +401,26 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 # Nächste Schritte
 
 <div class="steps">
-<div class="step-item active"><div class="step-num">01</div><div class="step-title">Fehlalarme senken</div><div class="step-desc">42 False Positives analysieren, Prompt nachschärfen</div></div>
-<div class="step-item"><div class="step-num">02</div><div class="step-title">Zugriff</div><div class="step-desc">WebUI mit Login statt SSH (CE-32, CE-34)</div></div>
-<div class="step-item"><div class="step-num">03</div><div class="step-title">Skalieren</div><div class="step-desc">RTX 6000, parallele Worker, 5.000 Zitate</div></div>
+<div class="step-item active" style="border: 1.5px solid rgba(226, 0, 26, 0.4);">
+<div class="step-num" style="color: var(--red); font-weight: 700;">01 · Dringend</div>
+<div class="step-title" style="color: var(--red);">Spark-Ausfälle ausschließen</div>
+<div class="step-desc">Überhitzung verhindern, GPU-Monitoring & RTX 6000 (CE-22, CE-29)</div>
+</div>
+<div class="step-item">
+<div class="step-num">02</div>
+<div class="step-title">Fehlalarme senken</div>
+<div class="step-desc">42 False Positives analysieren, Prompt nachschärfen</div>
+</div>
+<div class="step-item">
+<div class="step-num">03</div>
+<div class="step-title">Skalieren</div>
+<div class="step-desc">RTX 6000, parallele Worker, 5.000 Zitate</div>
+</div>
+<div class="step-item">
+<div class="step-num">04</div>
+<div class="step-title">Zugriff</div>
+<div class="step-desc">WebUI mit Login statt SSH (CE-32, CE-34)</div>
+</div>
 </div>
 
 ---
