@@ -485,3 +485,23 @@ Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
 </div>
 
 > Wir prüfen, ob eine Quelle **existiert und korrekt zitiert** ist, nicht ob sie die Aussage im Text belegt.
+
+---
+
+###### Backup · Fehleranalyse
+# 42 Fehlalarme: Die Hälfte liegt am Agenten, nicht am Zitat
+
+<div class="columns" style="align-items: center; gap: 28px;">
+<div style="flex: 1.15;">
+
+<img src="assets/fp-analysis.svg" style="width: 100%; max-height: 400px; display: block;">
+
+</div>
+<div class="kpi-stack" style="flex: 0.85;">
+<div class="card"><p><strong>Wei et al. 2022</strong>, Chain-of-Thought: Status 4, keine Begründung – eines der meistzitierten Paper</p></div>
+<div class="card"><p><strong>CoQA</strong>: Agent schreibt selbst „minor form error“, vergibt aber Status 3</p></div>
+<div class="card red"><p><strong>„Philiph H. S. Torr“</strong>: nach v7-Regel Status 3, CiteAudit sagt Real – Rubrik und Benchmark widersprechen sich</p></div>
+</div>
+</div>
+
+<p class="note">qwen · RTX 6000 · Browser-use · Prompt v7 · 13.10.2026 · 42 von 110 realen Zitaten fälschlich als Fake markiert</p>
