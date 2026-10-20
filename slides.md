@@ -376,23 +376,32 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 ---
 
 ###### 05 · Ergebnis-UI
-# Vom Formular zum Dashboard
+# Vorher / Nachher
 
-<div class="columns" style="align-items: center;">
-<div class="kpi-stack" style="flex: 0 0 300px;">
-
-* Läufe **starten** und **vergleichen**
-* **Confusion Matrix** je Konfiguration
-* **95 %-KI** per Bootstrap
-* **Worker** steuern
-
-<div class="card red"><p><strong>Live-Demo</strong> → wir wechseln in die Anwendung</p></div>
+<div class="grid g2" style="gap: 24px;">
+<div class="shot">
+<div class="cap">Vorher</div>
+<img src="assets/ui-old.png" alt="Frühere Oberfläche mit Formular und Laufauswahl" style="height: 330px; object-fit: contain; background: var(--surface);">
+<div class="card" style="margin-top: 14px; text-align: center;"><strong>Formular · Tabelle</strong></div>
 </div>
-<div class="shot" style="flex: 1;">
-
-![](assets/ui-new.png)
-
+<div class="shot new">
+<div class="cap">Nachher</div>
+<img src="assets/ui-preview-dataset.png" alt="Aktueller Arbeitsbereich mit Preview Dataset und ausdrücklich synthetischen Mock-Vergleichen" style="height: 330px; object-fit: contain; background: var(--surface);">
+<div class="card red" style="margin-top: 14px; text-align: center;"><strong>Dashboard · Analyse</strong><span class="tag red" style="margin-left: 10px;">Mock-Werte</span></div>
 </div>
+</div>
+
+---
+
+###### 05 · Ergebnis-UI
+# Live-Demo
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+<div><span class="tag">Preview Dataset</span> <span class="tag red">Mock-Werte</span></div>
+<a href="http://127.0.0.1:8765/#run=c2560d59-4a16-43b2-8b01-06942112cbc2&amp;view=statistics&amp;metric=generation_seconds&amp;chart=box&amp;unit=case" target="_blank" rel="noopener noreferrer" style="font-size: 20px; font-weight: 700;">Browser öffnen ↗</a>
+</div>
+<div style="height: 396px; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;">
+<iframe src="http://127.0.0.1:8765/#run=c2560d59-4a16-43b2-8b01-06942112cbc2&amp;view=statistics&amp;metric=generation_seconds&amp;chart=box&amp;unit=case" title="Live-Demo: Preview Dataset mit gekennzeichneten Mock-Werten" sandbox="allow-scripts allow-same-origin allow-downloads" loading="lazy" style="display: block; width: 1136px; height: 396px; border: 0;"></iframe>
 </div>
 
 ---
@@ -447,6 +456,115 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 ---
 
+<!-- frontend-ui-status:start -->
+###### Backup · Frontend
+# UI-Stand
+
+<div class="board" style="grid-template-columns: repeat(3, 1fr); gap: 18px;">
+<div class="board-col">
+<div class="board-head">Umgesetzt</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">Navigation · Runs · Filter</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">Themes · Sprachen</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">Mobil · Tastatur</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">Statistiken · Diagramme</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">Vergleiche · Quantile</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">Tokens · Thinking · Kosten</div>
+<div class="board-card" style="font-size: 18px; padding: 10px;">CSV · JSON · SVG</div>
+</div>
+<div class="board-col">
+<div class="board-head">Hinterlegt / vorbereitet</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Konten · Rechte</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Limits · Fair Queue</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">API-Verträge</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Mock-Daten · Thinking</div>
+<div class="card" style="padding: 12px 0;"><strong>Frontend vorbereitet</strong></div>
+</div>
+<div class="board-col" style="background: var(--red-soft);">
+<div class="board-head">Fehlt</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Login · Sitzungen</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Konten-Persistenz</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Quoten · Fair Queue</div>
+<div class="board-card" style="font-size: 20px; padding: 14px;">Live-Modellstatus</div>
+<div class="card red" style="padding: 12px 0;"><strong>Backend offen</strong><br><span style="font-size: 16px;">Multiuser · Live-Status</span></div>
+</div>
+</div>
+
+---
+
+<!-- frontend-ui-status:end -->
+<!-- frontend-ui-functions:start -->
+###### Backup · Frontend
+# UI-Funktionen
+
+<div class="grid g3" style="gap: 12px; font-size: 17px; line-height: 1.35;">
+<div class="card" style="padding: 12px 16px;">
+<h3>Laufverwaltung</h3>
+Modelle · Agenten · Datensatz<br>
+Binärmodus · Wiederholungen · Timeout<br>
+Start · Pause · Fortsetzen · Ausblenden<br>
+Suche · Laufwahl · Fortschritt · Restzeit
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Ergebnisansicht</h3>
+Modell-/Agenten-/Statusfilter<br>
+Suche · Sortierung · Filter zurücksetzen<br>
+Fehlerdetails · Antwort · Referenz<br>
+Rohdaten · JSON-Vergleich · Messwerte
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Qualitätskennzahlen</h3>
+Status · Autor · Titel · Jahr · Fehlerzahl<br>
+Accuracy · Präzision · Recall · F1<br>
+FPR · FNR · technische Fehler<br>
+Balanced Accuracy · MCC · Kappa
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Statistik &amp; Vergleiche</h3>
+Mittelwert · Median · Quantile · IQR<br>
+Konfidenzintervalle · Messabdeckung<br>
+Paar-/Mehrfachtests · Effektgrößen<br>
+Pearson · Spearman · Holm-Korrektur
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Diagramme</h3>
+Boxplot · Histogramm · ECDF<br>
+Outcomes · Matrix · Scatter · Timeline<br>
+Paare · Forest · Differenzen<br>
+Richtung · Quantile
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Ressourcen &amp; Nutzung</h3>
+Adapter · Queue · Generation · Tokens/s<br>
+Input · Output · Thinking · Kosten<br>
+Exa-Limits · Mock-Kennzeichnung<br>
+Nutzung je Lauf/Modell · alle Läufe
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Darstellung &amp; Bedienung</h3>
+Hell · Dunkel · Pink Glass · System<br>
+Liquid Glass · Animationen · 4 Sprachen<br>
+Mobil · Tastatur · reduzierte Bewegung<br>
+Hilfe · Verbindungsstatus · Wiederholen
+</div>
+<div class="card" style="padding: 12px 16px;">
+<h3>Export &amp; Konfiguration</h3>
+CSV · JSON · SVG · Direktlinks<br>
+Diagrammfilter · Beobachtungseinheit<br>
+Konfidenzniveau · Parallelität · Seed<br>
+Docker-Worker · Tokenpreise
+</div>
+<div class="card red" style="padding: 12px 16px;">
+<h3>Vorbereitet · Backend offen</h3>
+Profil · Login · Sitzungen · Rollen<br>
+Nutzerverwaltung · Datenschutzaktionen<br>
+Limits · Quoten · Fair Queue<br>
+Live-Modellstatus
+</div>
+</div>
+
+---
+
+<!-- frontend-ui-functions:end -->
 ###### Backup · System
 # Die Ground Truth verlässt den Evaluator nie
 
