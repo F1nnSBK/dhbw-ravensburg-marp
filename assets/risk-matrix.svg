@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 370" width="100%" role="img" aria-label="Risikomatrix: R1 Wahrscheinlichkeit gering, Auswirkung hoch; R2 Wahrscheinlichkeit hoch, Auswirkung mittel; R3 und R4 mittel, mittel">
+  <style>
+    text { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    .ax { font-size: 13px; fill: #5C6971; }
+    .hd { font-size: 14px; font-weight: 600; fill: #3F474C; }
+    .id { font-size: 13px; font-weight: 700; fill: #FFFFFF; }
+  </style>
+  <rect x="70" y="204" width="100" height="90" rx="4" fill="#F0F3F5"/>
+  <rect x="172" y="204" width="100" height="90" rx="4" fill="#F0F3F5"/>
+  <rect x="274" y="204" width="100" height="90" rx="4" fill="#F7E6E8"/>
+  <rect x="70" y="112" width="100" height="90" rx="4" fill="#F0F3F5"/>
+  <rect x="172" y="112" width="100" height="90" rx="4" fill="#F7E6E8"/>
+  <rect x="274" y="112" width="100" height="90" rx="4" fill="#FBD3D8"/>
+  <rect x="70" y="20" width="100" height="90" rx="4" fill="#F7E6E8"/>
+  <rect x="172" y="20" width="100" height="90" rx="4" fill="#FBD3D8"/>
+  <rect x="274" y="20" width="100" height="90" rx="4" fill="#F9C4CB"/>
+  <text class="ax" x="62" y="254" text-anchor="end">gering</text>
+  <text class="ax" x="120" y="312" text-anchor="middle">gering</text>
+  <text class="ax" x="62" y="162" text-anchor="end">mittel</text>
+  <text class="ax" x="222" y="312" text-anchor="middle">mittel</text>
+  <text class="ax" x="62" y="70" text-anchor="end">hoch</text>
+  <text class="ax" x="324" y="312" text-anchor="middle">hoch</text>
+  <text class="hd" x="223" y="336" text-anchor="middle">Auswirkung</text>
+  <text class="hd" transform="translate(14,158) rotate(-90)" text-anchor="middle">Wahrscheinlichkeit</text>
+  <circle cx="324" cy="249" r="17" fill="#E2001A"/><text class="id" x="324" y="254" text-anchor="middle">R1</text>
+  <circle cx="222" cy="65" r="17" fill="#E2001A"/><text class="id" x="222" y="70" text-anchor="middle">R2</text>
+  <circle cx="201" cy="157" r="17" fill="#E2001A"/><text class="id" x="201" y="162" text-anchor="middle">R3</text>
+  <circle cx="243" cy="157" r="17" fill="#5C6971"/><text class="id" x="243" y="162" text-anchor="middle">R4</text>
+</svg>

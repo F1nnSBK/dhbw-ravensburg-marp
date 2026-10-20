@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 390" width="100%" role="img" aria-label="Confusion Matrix Spark-Lauf gpt-oss, Prompt v6, n = 241: TP 63, FN 4, FP 37, TN 137">
+  <style>
+    text { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    .ttl { font-size: 19px; font-weight: 700; fill: #22252A; }
+    .ax { font-size: 14px; fill: #5C6971; }
+    .hd { font-size: 15px; font-weight: 600; fill: #3F474C; }
+    .ok { fill: #F0F3F5; }
+    .err { fill: #FDF2F2; }
+    .nok { font-size: 30px; font-weight: 700; fill: #22252A; }
+    .nerr { font-size: 30px; font-weight: 700; fill: #E2001A; }
+    .k { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #5C6971; }
+    .m { font-size: 15px; fill: #3F474C; }
+  </style>
+
+  <text class="hd" x="0" y="122">Fake</text>
+  <text class="hd" x="0" y="222">Real</text>
+
+  <g transform="translate(70,0)">
+    <text class="ttl" x="0" y="34">gpt-oss · v6 <tspan class="ax">n = 241</tspan></text>
+    <text class="hd" x="62" y="70" text-anchor="middle">Fake</text>
+    <text class="hd" x="188" y="70" text-anchor="middle">Real</text>
+    <rect class="ok"  x="0"   y="80"  width="124" height="96" rx="4"/>
+    <rect class="err" x="126" y="80"  width="124" height="96" rx="4"/>
+    <rect class="err" x="0"   y="178" width="124" height="96" rx="4"/>
+    <rect class="ok"  x="126" y="178" width="124" height="96" rx="4"/>
+    <text class="k" x="10" y="98">TP</text><text class="nok"  x="62"  y="140" text-anchor="middle">63</text>
+    <text class="k" x="136" y="98">FN</text><text class="nerr" x="188" y="140" text-anchor="middle">4</text>
+    <text class="k" x="10" y="196">FP</text><text class="nerr" x="62"  y="238" text-anchor="middle">37</text>
+    <text class="k" x="136" y="196">TN</text><text class="nok"  x="188" y="238" text-anchor="middle">137</text>
+    <text class="m" x="0" y="306">Precision 63 % · Recall 94 %</text>
+    <text class="m" x="0" y="330">F1 0,75 · Accuracy 83 %</text>
+  </g>
+
+  <text class="ax" x="0" y="370">Zeilen: Ground Truth · Spalten: Vorhersage</text>
+  <text class="ax" x="0" y="388">Rot: Fehlurteile · Positive Klasse: Fake</text>
+</svg>
