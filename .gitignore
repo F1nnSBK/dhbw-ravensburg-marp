@@ -9,6 +9,8 @@ dist/
 build/
 out/
 export/
+.tmp/
+tmp/
 *.pdf
 *.pptx
 *.html

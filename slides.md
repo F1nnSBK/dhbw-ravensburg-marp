@@ -398,10 +398,10 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
 <div><span class="tag">Preview Dataset</span> <span class="tag red">Mock-Werte</span></div>
-<a href="http://127.0.0.1:8765/#run=c2560d59-4a16-43b2-8b01-06942112cbc2&amp;view=statistics&amp;metric=generation_seconds&amp;chart=box&amp;unit=case" target="_blank" rel="noopener noreferrer" style="font-size: 20px; font-weight: 700;">Browser öffnen ↗</a>
+<a href="http://127.0.0.1:8765/#run=preview-synthetic-evaluation&amp;view=statistics&amp;metric=generation_seconds&amp;chart=box&amp;unit=case" target="_blank" rel="noopener noreferrer" style="font-size: 20px; font-weight: 700;">Browser öffnen ↗</a>
 </div>
 <div style="height: 396px; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;">
-<iframe src="http://127.0.0.1:8765/#run=c2560d59-4a16-43b2-8b01-06942112cbc2&amp;view=statistics&amp;metric=generation_seconds&amp;chart=box&amp;unit=case" title="Live-Demo: Preview Dataset mit gekennzeichneten Mock-Werten" sandbox="allow-scripts allow-same-origin allow-downloads" loading="lazy" style="display: block; width: 1136px; height: 396px; border: 0;"></iframe>
+<iframe src="http://127.0.0.1:8765/#run=preview-synthetic-evaluation&amp;view=statistics&amp;metric=generation_seconds&amp;chart=box&amp;unit=case" title="Live-Demo: Preview Dataset mit gekennzeichneten Mock-Werten" sandbox="allow-scripts allow-same-origin allow-downloads" loading="lazy" style="display: block; width: 1136px; height: 396px; border: 0;"></iframe>
 </div>
 
 ---
