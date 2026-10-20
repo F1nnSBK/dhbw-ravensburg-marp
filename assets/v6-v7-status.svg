@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="100%" role="img" aria-label="Anteil vorhergesagter Status: v6 40,7 / 17,8 / 37,8 / 3,7 Prozent; v7 37,3 / 4,2 / 48,2 / 10,2 Prozent">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="100%" role="img" aria-label="Anteil vorhergesagter Status, qwen auf RTX 6000, gleiche 200 Zitate: v6 36,5 / 8,2 / 40,6 / 14,7; v7 37,3 / 4,2 / 48,2 / 10,2 Prozent">
   <style>
     text { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
     .v { font-size: 14px; font-weight: 600; fill: #22252A; }
@@ -8,35 +8,35 @@
 
   <!-- Legend -->
   <rect x="40" y="6" width="14" height="14" rx="3" fill="#9AA5AC"/>
-  <text class="sub" x="60" y="18">v6 (n = 241)</text>
+  <text class="sub" x="60" y="18">v6 (n = 170)</text>
   <rect x="170" y="6" width="14" height="14" rx="3" fill="#E2001A"/>
   <text class="sub" x="190" y="18">v7 (n = 166)</text>
 
   <!-- baseline y=270, 4.5 px per % -->
   <line x1="30" y1="270" x2="620" y2="270" stroke="#9AA5AC" stroke-width="1"/>
 
-  <!-- Status 1: 40.7 / 37.3 -->
-  <rect x="64"  y="87"  width="44" height="183" rx="4" fill="#9AA5AC"/>
+  <!-- Status 1: 36.5 / 37.3 -->
+  <rect x="64" y="106" width="44" height="164" rx="4" fill="#9AA5AC"/>
   <rect x="112" y="102" width="44" height="168" rx="4" fill="#E2001A"/>
-  <text class="v" x="86"  y="80" text-anchor="middle">41 %</text>
+  <text class="v" x="86" y="99" text-anchor="middle">36 %</text>
   <text class="v" x="134" y="95" text-anchor="middle">37 %</text>
 
-  <!-- Status 2: 17.8 / 4.2 -->
-  <rect x="204" y="190" width="44" height="80" rx="4" fill="#9AA5AC"/>
+  <!-- Status 2: 8.2 / 4.2 -->
+  <rect x="204" y="233" width="44" height="37" rx="4" fill="#9AA5AC"/>
   <rect x="252" y="251" width="44" height="19" rx="4" fill="#E2001A"/>
-  <text class="v" x="226" y="183" text-anchor="middle">18 %</text>
+  <text class="v" x="226" y="226" text-anchor="middle">8 %</text>
   <text class="v" x="274" y="244" text-anchor="middle">4 %</text>
 
-  <!-- Status 3: 37.8 / 48.2 -->
-  <rect x="344" y="100" width="44" height="170" rx="4" fill="#9AA5AC"/>
-  <rect x="392" y="53"  width="44" height="217" rx="4" fill="#E2001A"/>
-  <text class="v" x="366" y="93" text-anchor="middle">38 %</text>
+  <!-- Status 3: 40.6 / 48.2 -->
+  <rect x="344" y="87" width="44" height="183" rx="4" fill="#9AA5AC"/>
+  <rect x="392" y="53" width="44" height="217" rx="4" fill="#E2001A"/>
+  <text class="v" x="366" y="80" text-anchor="middle">41 %</text>
   <text class="v" x="414" y="46" text-anchor="middle">48 %</text>
 
-  <!-- Status 4: 3.7 / 10.2 -->
-  <rect x="484" y="253" width="44" height="17" rx="4" fill="#9AA5AC"/>
+  <!-- Status 4: 14.7 / 10.2 -->
+  <rect x="484" y="204" width="44" height="66" rx="4" fill="#9AA5AC"/>
   <rect x="532" y="224" width="44" height="46" rx="4" fill="#E2001A"/>
-  <text class="v" x="506" y="246" text-anchor="middle">4 %</text>
+  <text class="v" x="506" y="197" text-anchor="middle">15 %</text>
   <text class="v" x="554" y="217" text-anchor="middle">10 %</text>
 
   <!-- Category labels -->

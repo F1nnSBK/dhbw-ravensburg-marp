@@ -107,6 +107,8 @@ code { background: var(--surface); border: none; color: var(--ink); }
 .board-card .prio { color: var(--red); }
 .board-card .who { float: right; color: var(--muted); }
 .board-card.done { color: var(--faint); text-decoration: line-through; }
+.board-col.compact .board-card { font-size: 14px; padding: 6px 10px; margin-bottom: 6px; }
+.board-col.compact .board-card b { font-size: 10px; margin-bottom: 0; }
 
 /* Screenshots */
 .shot img { width: 100%; max-height: 440px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid var(--rule); display: block; }
@@ -149,53 +151,78 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 # Agenda
 
 <div class="agenda">
-<div><span>01</span>Problem & Ziel</div>
+<div><span>01</span>Projektmanagement</div>
 <div><span>04</span>Neue Kategoriendefinition</div>
-<div><span>02</span>System & Benchmark</div>
+<div><span>02</span>Benchmark & Bewertung</div>
 <div><span>05</span>Ergebnis-UI</div>
 <div><span>03</span>Ergebnisse</div>
-<div><span>06</span>Risiken & nächste Schritte</div>
+<div><span>06</span>Ausblick</div>
 </div>
 
 ---
 
-###### 01 · Problem & Ziel
-# KI erfindet Quellen – wir prüfen sie automatisch
+###### 01 · Projektstand
+# Kanban-Board
 
-<div class="grid g3">
-<div class="card">
-
-### Problem
-Falsche Titel, Autor:innen, Jahre und DOIs fallen beim Lesen kaum auf.
-
+<div class="board" style="grid-template-columns: repeat(5, 1fr); gap: 12px;">
+<div class="board-col compact">
+<div class="board-head">Backlog <span>7</span></div>
+<div class="board-card"><b>CE-30</b>DSGVO & Recht</div>
+<div class="board-card"><b>CE-31</b>Statistische Tests</div>
+<div class="board-card"><b>CE-33</b>CLI ausbauen</div>
+<div class="board-card"><b>CE-28</b>Multi-User-Zugriff</div>
+<div class="board-card"><b>CE-29</b>Status Modellserver</div>
+<div class="board-card"><b>CE-34</b>WebUI mit Login</div>
+<div class="board-card"><b>CE-32</b>WebUI statt SSH</div>
 </div>
-<div class="card">
-
-### Ansatz
-Ein Agent sucht jede Quelle im Web, ein **lokales LLM** bewertet die Treffer.
-
+<div class="board-col">
+<div class="board-head">To Do <span>0</span></div>
 </div>
-<div class="card red">
-
-### Ziel
-Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
-
+<div class="board-col">
+<div class="board-head">In Arbeit <span>3</span></div>
+<div class="board-card"><b>CE-25 <span class="who">Maximilian</span></b>Judgement Calls & parallele Worker</div>
+<div class="board-card"><b>CE-23 <span class="who">Florian</span></b>Neue Kategoriendefinition testen</div>
+<div class="board-card"><b>CE-22 <span class="who">Finn</span></b>RTX 6000 für parallele Samples</div>
+</div>
+<div class="board-col">
+<div class="board-head">In Review <span>1</span></div>
+<div class="board-card"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
+</div>
+<div class="board-col">
+<div class="board-head">Erledigt <span>2</span></div>
+<div class="board-card done"><b>CE-21 <span class="who">Tino</span></b>Rechenleistung angefragt</div>
+<div class="board-card done"><b>CE-26 <span class="who">Tino</span></b>Ergebnis-UI verbessern</div>
 </div>
 </div>
-
-> Wir prüfen, ob eine Quelle **existiert und korrekt zitiert** ist, nicht ob sie die Aussage im Text belegt.
 
 ---
 
-###### 02 · System
-# Die Ground Truth verlässt den Evaluator nie
+###### 01 · Zeitplan
+# Projektplan (Oktober 2026)
 
-![w:1136](assets/citation-pipeline.svg)
+![w:1136](assets/project-plan-gantt.svg)
 
-<div class="grid g3" style="margin-top: 18px;">
-<div class="card"><p><strong>Lokal</strong> auf DHBW-GPUs (RTX 6000, DGX Spark)</p></div>
-<div class="card"><p><strong>3 Agenten:</strong> Browser-use, Hermes, OpenCode</p></div>
-<div class="card"><p><strong>600 s</strong> Timeout, Läufe fortsetzbar</p></div>
+---
+
+###### 01 · Risikomanagement
+# Risiken früh sehen, nicht erst im Ergebnis
+
+<div class="columns" style="align-items: center;">
+<div style="flex: 1.55;">
+
+| | Risiko | Strategie | Maßnahme |
+| :--- | :--- | :--- | :--- |
+| **R1** | **Server fällt unbemerkt aus** (Spark 2× überhitzt) | Vermeiden | Läufe auf RTX 6000 (CE-22), Kapazitätsstatus (CE-29) |
+| **R2** | **Viele Fehlalarme** | Vermindern | Fehlfälle analysieren, Prompt nachschärfen |
+| **R3** | **Technische Ausfälle** | Vermindern | Worker stabilisieren, Resume testen |
+| **R4** | **Bot-Erkennung**, Rate-Limits | Akzeptieren | Backoff, Fehler protokollieren |
+
+</div>
+<div style="flex: 0.75;">
+
+<img src="assets/risk-matrix.svg" style="width: 100%; max-height: 400px; display: block;">
+
+</div>
 </div>
 
 ---
@@ -242,46 +269,6 @@ Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
 
 ---
 
-###### 03 · Projektstand
-# Kanban-Board
-
-<div class="board">
-<div class="board-col">
-<div class="board-head">To Do <span>4</span></div>
-<div class="board-card"><b>CE-32 · <span class="prio">KRITISCH</span></b>WebUI statt SSH (Reverse Proxy)</div>
-<div class="board-card"><b>CE-34 · <span class="prio">HOCH</span></b>WebUI mit Login absichern</div>
-<div class="board-card"><b>CE-22 <span class="who">Finn</span></b>RTX 6000 für parallele Samples</div>
-<div class="board-card"><b>CE-29</b>Kapazitätsstatus der Modellserver</div>
-</div>
-<div class="board-col">
-<div class="board-head">In Arbeit <span>4</span></div>
-<div class="board-card"><b>CE-23</b>Neue Kategoriendefinition testen</div>
-<div class="board-card"><b>CE-25</b>Judgement Calls & parallele Worker</div>
-<div class="board-card"><b>CE-26 <span class="who">Tino</span></b>Ergebnis-UI verbessern</div>
-<div class="board-card"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
-</div>
-<div class="board-col">
-<div class="board-head">Erledigt <span>1</span></div>
-<div class="board-card done"><b>CE-21 <span class="who">Tino</span></b>Rechenleistung angefragt</div>
-</div>
-<div class="board-col">
-<div class="board-head">Backlog <span>4</span></div>
-<div class="board-card"><b>CE-30</b>DSGVO & deutsches Recht</div>
-<div class="board-card"><b>CE-31</b>Statistische Tests</div>
-<div class="board-card"><b>CE-33</b>CLI ausbauen</div>
-<div class="board-card"><b>CE-28</b>Multi-User-Zugriff</div>
-</div>
-</div>
-
----
-
-###### 03 · Zeitplan
-# Projektplan (Oktober 2026)
-
-![w:1136](assets/project-plan-gantt.svg)
-
----
-
 ###### 03 · Laufzeit
 # Ein Vollauf dauert sequentiell gut zwei Wochen
 
@@ -300,154 +287,113 @@ Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
 
 ---
 
-###### 03 · Ergebnis
-# Fast alle Fakes erkannt – aber zu viele Fehlalarme
+###### 03 · Erster Lauf
+# DGX Spark: Vollauf geplant, 241 Zitate geschafft
 
 <div class="columns" style="align-items: center;">
-<div class="kpi-stack" style="flex: 0.55;">
-<div class="kpi-card hl"><div class="number">98 %</div><div class="label">Recall</div><div class="sub">55 von 56 Fakes</div></div>
-<div class="kpi-card"><div class="number">57 %</div><div class="label">Precision</div><div class="sub">42 Fehlalarme</div></div>
-<div class="kpi-card"><div class="number">166 / 200</div><div class="label">gültige Urteile</div><div class="sub">34 technische Ausfälle</div></div>
+<div class="kpi-stack" style="flex: 0.9;">
+<div class="card"><p>Ziel war ein <strong>Vollauf</strong> über alle 9.442 Zitate mit <strong>gpt-oss</strong> auf der <strong>DGX Spark</strong>.</p></div>
+<div class="card red"><p>Die Spark ist <strong>zweimal überhitzt</strong> – und wir haben es jeweils <strong>viel zu spät</strong> bemerkt.</p></div>
+<div class="card"><p>Übrig blieben <strong>241 Zitate</strong>: ein erster Anhaltspunkt, kein Endergebnis.</p></div>
 </div>
-<div style="flex: 1.45;">
+<div style="flex: 1.1;">
 
-![w:680](assets/v7-confusion.svg)
+![w:400](assets/spark-confusion.svg)
 
 </div>
 </div>
-
-<p class="note">Stichprobe von 200 Zitaten · qwen-rtx6000 · Browser-use · Prompt v7 · 13.10.2026</p>
 
 ---
 
 ###### 04 · Kategoriendefinition
-# Form oder Inhalt?
+# v6 nennt Fehlertypen, v7 stellt eine Prüffrage
 
-<div class="columns">
-<div style="flex: 1;">
-<div class="card" style="margin-bottom: 16px;">
+<div class="columns" style="gap: 24px; margin-bottom: 22px;">
+<div class="card" style="flex: 1;">
 
-### Prüffrage
-Verschwindet der Fehler, wenn Schreibweise, Leerzeichen, Interpunktion und Zitierstil ignoriert werden?
+### v6 · zwei Typenlisten
+<p><strong>Status 2:</strong> Tippfehler, Formatierung, Groß-/Kleinschreibung</p>
+<p><strong>Status 3:</strong> Autorname falsch, Jahr, URL-Domain, fehlende Metadaten</p>
 
-</div>
-<div class="grid g2">
-<div class="card"><p><span class="st">2</span>&nbsp; <strong>Ja:</strong> Formfehler</p></div>
-<div class="card red"><p><span class="st f">3</span>&nbsp; <strong>Nein:</strong> Inhaltsfehler</p></div>
-</div>
-
-> Der **schwerste** Fehler bestimmt den Status.
+<p class="note">Überschneidung: Ist ein Tippfehler im Autornamen ein Tippfehler oder ein falscher Autorname?</p>
 
 </div>
-<div style="flex: 1;">
+<div class="card red" style="flex: 1;">
 
-| Beispiel | Status |
-| :--- | :---: |
-| Titel anders groß/klein geschrieben | 2 |
-| Überflüssiges „et al.“ | 2 |
-| Autorname falsch, auch ein Buchstabe | 3 |
-| Autor:innen fehlen oder vertauscht | 3 |
-| Falsches Jahr, Venue oder Seiten | 3 |
-| DOI eines anderen Werks | 3 |
+### v7 · Form oder Inhalt?
+<p>Verschwindet der Fehler, wenn Schreibweise, Leerzeichen, Interpunktion und Zitierstil ignoriert werden?</p>
+<p><strong>Ja → 2 Formfehler · Nein → 3 Inhaltsfehler</strong></p>
+
+<p class="note">Der schwerste Fehler bestimmt den Status, nicht die Anzahl.</p>
 
 </div>
 </div>
+
+| Beispiel | v6 | v7 |
+| :--- | :---: | :---: |
+| „Sennnrich“ statt „Sennrich“ | 2 oder 3 | **3** |
+| Falsche Autorenreihenfolge | unklar | **3** |
+| Titel anders groß/klein geschrieben | 2 | **2** |
 
 ---
 
 ###### 04 · Vergleich v6 → v7
-# Status 2 ist jetzt sauber
+# v7 erkennt mehr Fakes – die Fehlalarme bleiben
 
-<div class="columns" style="align-items: center;">
-<div style="flex: 0.85;">
-
-| | v6 | v7 |
-| :--- | ---: | ---: |
-| Recall | 94 % | **98 %** |
-| Precision | **63 %** | 57 % |
-| F1 | **0,75** | 0,72 |
-| Fakes in Status 2 | 4 | **0** |
-
-<p class="note">v6: gpt-oss, 241 Zitate · v7: qwen, 166 Zitate.<br>Andere Modelle und Stichproben, also noch kein fairer A/B-Test.</p>
-
-</div>
+<div class="columns" style="align-items: center; gap: 28px;">
 <div style="flex: 1.15;">
 
-![w:600](assets/v6-v7-status.svg)
+<img src="assets/ab-confusion.svg" style="width: 100%; max-height: 420px; display: block;">
+
+</div>
+<div style="flex: 0.85;">
+
+<img src="assets/v6-v7-status.svg" style="width: 100%; display: block;">
 
 </div>
 </div>
+
+<p class="note">qwen · RTX 6000 · Browser-use · dieselben 200 Zitate · v6: 18.10., v7: 13.10.2026</p>
 
 ---
 
 ###### 04 · Vergleich
-# Modelle und Agenten
+# gpt-oss ist präziser, qwen findet mehr Fakes
 
-<span class="tag red">Platzhalter</span>
+<div class="columns" style="align-items: center;">
+<div style="flex: 1;">
 
-| Modell | Agent | Recall | Precision | F1 | Ø Dauer |
-| :--- | :--- | ---: | ---: | ---: | ---: |
-| **[Modell A]** | Browser-use | [xx %] | [xx %] | [0,xx] | [xx s] |
-| | Hermes | [xx %] | [xx %] | [0,xx] | [xx s] |
-| | OpenCode | [xx %] | [xx %] | [0,xx] | [xx s] |
-| **[Modell B]** | Browser-use | [xx %] | [xx %] | [0,xx] | [xx s] |
-| | Hermes | [xx %] | [xx %] | [0,xx] | [xx s] |
-| | OpenCode | [xx %] | [xx %] | [0,xx] | [xx s] |
+<img src="assets/model-comparison.svg" style="width: 100%; max-height: 420px; display: block;">
+
+</div>
+<div class="kpi-stack" style="flex: 0 0 280px;">
+<div class="kpi-card"><div class="number">160 s</div><div class="label">gpt-oss pro Zitat</div><div class="sub">DGX Spark</div></div>
+<div class="kpi-card hl"><div class="number">~240 s</div><div class="label">qwen pro Zitat</div><div class="sub">RTX 6000</div></div>
+<div class="card"><p>Alle mit Browser-use. gpt-oss lief auf einer <strong>anderen Stichprobe</strong>, also nur grob vergleichbar.</p></div>
+</div>
+</div>
 
 ---
 
 ###### 05 · Ergebnis-UI
 # Vom Formular zum Dashboard
 
-<div class="grid g2" style="gap: 24px;">
-<div class="shot">
-<div class="cap">Vorher</div>
+<div class="columns" style="align-items: center;">
+<div class="kpi-stack" style="flex: 0 0 300px;">
 
-![](assets/ui-old.png)
+* Läufe **starten** und **vergleichen**
+* **Confusion Matrix** je Konfiguration
+* **95 %-KI** per Bootstrap
+* **Worker** steuern
 
+<div class="card red"><p><strong>Live-Demo</strong> → wir wechseln in die Anwendung</p></div>
 </div>
-<div class="shot new">
-<div class="cap">Nachher</div>
+<div class="shot" style="flex: 1;">
 
 ![](assets/ui-new.png)
 
 </div>
 </div>
-
-<p class="note">Beide Ansichten mit denselben synthetischen Vorschau-Daten, ohne Modellaufrufe.</p>
-
----
-
-###### 05 · Ergebnis-UI
-# Statistik mit Konfidenzintervallen
-
-<div class="columns" style="align-items: center;">
-<div style="flex: 0.6;">
-
-* Läufe **vergleichen**
-* **95 %-KI** per Bootstrap
-* **Worker** steuern
-* Hell, Dunkel, Pink Glass
-
-</div>
-<div class="shot" style="flex: 1.4;">
-
-![](assets/ui-stats.png)
-
-</div>
-</div>
-
----
-
-###### 06 · Risiken
-# Was uns bremsen kann
-
-| Risiko | Gegenmaßnahme |
-| :--- | :--- |
-| **Viele Fehlalarme** bei realworld | Fehlfälle analysieren, Prompt nachschärfen |
-| **Technische Ausfälle** (17 %) | Worker stabilisieren, Resume testen |
-| **Bot-Erkennung**, Rate-Limits | Backoff, Fehler protokollieren |
-| **Lizenz** des Datensatzes unklar | vor jeder Weitergabe klären |
 
 ---
 
@@ -455,7 +401,7 @@ Verschwindet der Fehler, wenn Schreibweise, Leerzeichen, Interpunktion und Zitie
 # Nächste Schritte
 
 <div class="steps">
-<div class="step-item active"><div class="step-num">01</div><div class="step-title">Fairer A/B-Test</div><div class="step-desc">v6 und v7 mit gleichem Modell und gleicher Stichprobe</div></div>
+<div class="step-item active"><div class="step-num">01</div><div class="step-title">Fehlalarme senken</div><div class="step-desc">42 False Positives analysieren, Prompt nachschärfen</div></div>
 <div class="step-item"><div class="step-num">02</div><div class="step-title">Zugriff</div><div class="step-desc">WebUI mit Login statt SSH (CE-32, CE-34)</div></div>
 <div class="step-item"><div class="step-num">03</div><div class="step-title">Skalieren</div><div class="step-desc">RTX 6000, parallele Worker, 5.000 Zitate</div></div>
 </div>
@@ -472,3 +418,53 @@ Verschwindet der Fehler, wenn Schreibweise, Leerzeichen, Interpunktion und Zitie
 <div><strong>Team</strong>Finn Hertsch · Tino Strasser<br>Maximilian Vogt · Florian Dittmann</div>
 <div><strong>Repo</strong>github.com/FlorianDitt/citation-evaluation</div>
 </div>
+
+---
+
+<!-- _class: chapter -->
+<!-- _paginate: false -->
+
+<div class="chapter-num">Backup</div>
+
+# Backup-Folien
+
+---
+
+###### Backup · System
+# Die Ground Truth verlässt den Evaluator nie
+
+![w:1136](assets/citation-pipeline.svg)
+
+<div class="grid g3" style="margin-top: 18px;">
+<div class="card"><p><strong>Lokal</strong> auf DHBW-GPUs (RTX 6000, DGX Spark)</p></div>
+<div class="card"><p><strong>3 Agenten:</strong> Browser-use, Hermes, OpenCode</p></div>
+<div class="card"><p><strong>600 s</strong> Timeout, Läufe fortsetzbar</p></div>
+</div>
+
+---
+
+###### Backup · Problem & Ziel
+# KI erfindet Quellen – wir prüfen sie automatisch
+
+<div class="grid g3">
+<div class="card">
+
+### Problem
+Falsche Titel, Autor:innen, Jahre und DOIs fallen beim Lesen kaum auf.
+
+</div>
+<div class="card">
+
+### Ansatz
+Ein Agent sucht jede Quelle im Web, ein **lokales LLM** bewertet die Treffer.
+
+</div>
+<div class="card red">
+
+### Ziel
+Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
+
+</div>
+</div>
+
+> Wir prüfen, ob eine Quelle **existiert und korrekt zitiert** ist, nicht ob sie die Aussage im Text belegt.
