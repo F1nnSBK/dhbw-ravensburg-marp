@@ -275,6 +275,13 @@ Qualität und Laufzeit **reproduzierbar** am CiteAudit-Benchmark messen.
 
 ---
 
+###### 03 · Zeitplan
+# Projektplan (Oktober 2026)
+
+![w:1136](assets/project-plan-gantt.svg)
+
+---
+
 ###### 03 · Laufzeit
 # Ein Vollauf dauert sequentiell gut zwei Wochen
 

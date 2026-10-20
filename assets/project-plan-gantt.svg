@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 410" width="1136" height="410" role="img" aria-label="Projektplan Oktober 2026">
+  <style>
+    text { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .title { font-size: 12.5px; font-weight: 700; fill: #22252A; letter-spacing: 0.06em; text-transform: uppercase; }
+    .sec-title { font-size: 10px; font-weight: 700; fill: #5C6971; text-transform: uppercase; letter-spacing: 0.08em; }
+    .task-id { font-size: 10.5px; font-weight: 700; fill: #5C6971; }
+    .task-id.active { fill: #E2001A; }
+    .task-name { font-size: 10.5px; font-weight: 500; fill: #22252A; }
+    .task-name.active { font-weight: 700; fill: #22252A; }
+    .task-dur { font-size: 9px; font-weight: 500; fill: #9AA5AC; }
+    .who-pill { rx: 3px; }
+    .who-text { font-size: 8.5px; font-weight: 700; }
+    .axis-week { font-size: 10.5px; font-weight: 700; fill: #5C6971; }
+    .axis-day { font-size: 9px; font-weight: 500; fill: #9AA5AC; }
+    .axis-day.today { font-weight: 700; fill: #E2001A; font-size: 10px; }
+    .grid-line { stroke: #ECEFF1; stroke-width: 0.75; }
+    .week-div { stroke: #C6CDD2; stroke-width: 1.2; stroke-dasharray: 2,2; }
+    .today-line { stroke: #E2001A; stroke-width: 1.5; stroke-dasharray: 3,3; }
+    .bar-done { fill: #9AA5AC; }
+    .bar-active { fill: #E2001A; }
+    .bar-todo { fill: #5C6971; }
+    .bar-open { fill: #D6DCE2; }
+    .bar-label-in { font-size: 9.5px; font-weight: 600; fill: #FFFFFF; }
+    .bar-label-in.dark { fill: #333A42; font-weight: 700; }
+    .bar-label-out { font-size: 9.5px; font-weight: 600; fill: #5C6971; }
+    .bar-label-out.active { font-weight: 700; fill: #E2001A; }
+    .legend-text { font-size: 9.5px; fill: #5C6971; }
+  </style>
+  <rect x="0" y="0" width="1136" height="410" rx="14" fill="#F8F9FA" />
+  <g transform="translate(40, 10)">
+    <text class="title" x="0" y="11">Projektplan · Oktober 2026</text>
+    <g transform="translate(0, 21)">
+      <rect x="0" y="2" width="8" height="8" rx="2" fill="#9AA5AC" />
+      <text class="legend-text" x="12" y="9">Erledigt</text>
+      <rect x="64" y="2" width="8" height="8" rx="2" fill="#E2001A" />
+      <text class="legend-text" x="76" y="9">Aktiv (Heute)</text>
+      <rect x="148" y="2" width="8" height="8" rx="2" fill="#5C6971" />
+      <text class="legend-text" x="160" y="9">Geplant</text>
+      <rect x="216" y="2" width="8" height="8" rx="2" fill="#D6DCE2" />
+      <text class="legend-text" x="228" y="9">Ohne Zeitschätzung</text>
+    </g>
+  </g>
+  <line x1="28" y1="48" x2="1104" y2="48" stroke="#E2E6E9" stroke-width="1" />
+  <text class="axis-week" x="400.9090909090909" y="17" text-anchor="middle">KW 40</text>
+  <text class="axis-week" x="516.0909090909091" y="17" text-anchor="middle">KW 41</text>
+  <line class="week-div" x1="433.8181818181818" y1="10" x2="433.8181818181818" y2="394" />
+  <text class="axis-week" x="680.6363636363636" y="17" text-anchor="middle">KW 42</text>
+  <line class="week-div" x1="598.3636363636364" y1="10" x2="598.3636363636364" y2="394" />
+  <text class="axis-week" x="845.1818181818181" y="17" text-anchor="middle">KW 43</text>
+  <line class="week-div" x1="762.9090909090909" y1="10" x2="762.9090909090909" y2="394" />
+  <text class="axis-week" x="1009.7272727272726" y="17" text-anchor="middle">KW 44</text>
+  <line class="week-div" x1="927.4545454545454" y1="10" x2="927.4545454545454" y2="394" />
+  <text class="axis-day" x="384.45454545454544" y="33" text-anchor="middle">01</text>
+  <text class="axis-day" x="417.3636363636363" y="33" text-anchor="middle">02</text>
+  <text class="axis-day" x="450.27272727272725" y="33" text-anchor="middle">05</text>
+  <text class="axis-day" x="483.1818181818182" y="33" text-anchor="middle">06</text>
+  <text class="axis-day" x="516.0909090909091" y="33" text-anchor="middle">07</text>
+  <text class="axis-day" x="549.0" y="33" text-anchor="middle">08</text>
+  <text class="axis-day" x="581.909090909091" y="33" text-anchor="middle">09</text>
+  <text class="axis-day" x="614.8181818181819" y="33" text-anchor="middle">12</text>
+  <text class="axis-day" x="647.7272727272727" y="33" text-anchor="middle">13</text>
+  <text class="axis-day" x="680.6363636363636" y="33" text-anchor="middle">14</text>
+  <text class="axis-day" x="713.5454545454545" y="33" text-anchor="middle">15</text>
+  <text class="axis-day" x="746.4545454545455" y="33" text-anchor="middle">16</text>
+  <text class="axis-day" x="779.3636363636364" y="33" text-anchor="middle">19</text>
+  <text class="axis-day today" x="812.2727272727273" y="33" text-anchor="middle">20</text>
+  <text class="axis-day" x="845.1818181818182" y="33" text-anchor="middle">21</text>
+  <text class="axis-day" x="878.0909090909091" y="33" text-anchor="middle">22</text>
+  <text class="axis-day" x="911.0" y="33" text-anchor="middle">23</text>
+  <text class="axis-day" x="943.9090909090909" y="33" text-anchor="middle">26</text>
+  <text class="axis-day" x="976.8181818181818" y="33" text-anchor="middle">27</text>
+  <text class="axis-day" x="1009.7272727272727" y="33" text-anchor="middle">28</text>
+  <text class="axis-day" x="1042.6363636363635" y="33" text-anchor="middle">29</text>
+  <text class="axis-day" x="1075.5454545454545" y="33" text-anchor="middle">30</text>
+  <line class="grid-line" x1="368.0" y1="39" x2="368.0" y2="394" />
+  <line class="grid-line" x1="400.9090909090909" y1="39" x2="400.9090909090909" y2="394" />
+  <line class="grid-line" x1="433.8181818181818" y1="39" x2="433.8181818181818" y2="394" />
+  <line class="grid-line" x1="466.72727272727275" y1="39" x2="466.72727272727275" y2="394" />
+  <line class="grid-line" x1="499.6363636363636" y1="39" x2="499.6363636363636" y2="394" />
+  <line class="grid-line" x1="532.5454545454545" y1="39" x2="532.5454545454545" y2="394" />
+  <line class="grid-line" x1="565.4545454545455" y1="39" x2="565.4545454545455" y2="394" />
+  <line class="grid-line" x1="598.3636363636364" y1="39" x2="598.3636363636364" y2="394" />
+  <line class="grid-line" x1="631.2727272727273" y1="39" x2="631.2727272727273" y2="394" />
+  <line class="grid-line" x1="664.1818181818181" y1="39" x2="664.1818181818181" y2="394" />
+  <line class="grid-line" x1="697.090909090909" y1="39" x2="697.090909090909" y2="394" />
+  <line class="grid-line" x1="730.0" y1="39" x2="730.0" y2="394" />
+  <line class="grid-line" x1="762.9090909090909" y1="39" x2="762.9090909090909" y2="394" />
+  <line class="grid-line" x1="795.8181818181818" y1="39" x2="795.8181818181818" y2="394" />
+  <line class="grid-line" x1="828.7272727272727" y1="39" x2="828.7272727272727" y2="394" />
+  <line class="grid-line" x1="861.6363636363636" y1="39" x2="861.6363636363636" y2="394" />
+  <line class="grid-line" x1="894.5454545454545" y1="39" x2="894.5454545454545" y2="394" />
+  <line class="grid-line" x1="927.4545454545454" y1="39" x2="927.4545454545454" y2="394" />
+  <line class="grid-line" x1="960.3636363636363" y1="39" x2="960.3636363636363" y2="394" />
+  <line class="grid-line" x1="993.2727272727273" y1="39" x2="993.2727272727273" y2="394" />
+  <line class="grid-line" x1="1026.181818181818" y1="39" x2="1026.181818181818" y2="394" />
+  <line class="grid-line" x1="1059.090909090909" y1="39" x2="1059.090909090909" y2="394" />
+  <line class="grid-line" x1="1092.0" y1="39" x2="1092.0" y2="394" />
+  <!-- Today marker (20.10.) -->
+  <rect x="794.2727272727273" y="36" width="36" height="11" rx="2" fill="#E2001A" />
+  <text x="812.2727272727273" y="44.5" text-anchor="middle" font-size="7" font-weight="700" fill="#FFFFFF">HEUTE</text>
+  <line class="today-line" x1="812.2727272727273" y1="48" x2="812.2727272727273" y2="394" />
+  <text class="sec-title" x="40" y="67">Abgeschlossen</text>
+  <line x1="40" y1="71" x2="354" y2="71" stroke="#E2E6E9" stroke-width="0.75" />
+  <text class="task-id" x="58" y="84">CE-21</text>
+  <rect class="who-pill" x="102" y="74.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="83" text-anchor="middle" fill="#4A555D">Tino</text>
+  <text class="task-name" x="142" y="84">Email an Schilling</text>
+  <text class="task-dur" x="354" y="84" text-anchor="end">2h</text>
+  <rect class="bar-done" x="370.0" y="73.5" width="28.909090909090907" height="13" rx="3" />
+  <text class="bar-label-in" x="384.45454545454544" y="83.0" text-anchor="middle">&#x2713;</text>
+  <text class="bar-label-out" x="403.9090909090909" y="83.0">CE-21</text>
+  <text class="task-id" x="58" y="103">CE-26</text>
+  <rect class="who-pill" x="102" y="93.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="102" text-anchor="middle" fill="#4A555D">Tino</text>
+  <text class="task-name" x="142" y="103">UI Verbessern</text>
+  <text class="task-dur" x="354" y="103" text-anchor="end">1w 3d</text>
+  <rect class="bar-done" x="435.8181818181818" y="92.5" width="292.18181818181813" height="13" rx="3" />
+  <text class="bar-label-in" x="581.9090909090909" y="102.0" text-anchor="middle">✓ CE-26</text>
+  <text class="sec-title" x="40" y="141">Woche 41 (ab 5. Okt)</text>
+  <line x1="40" y1="145" x2="354" y2="145" stroke="#E2E6E9" stroke-width="0.75" />
+  <text class="task-id" x="58" y="158">CE-23</text>
+  <rect class="who-pill" x="102" y="148.5" width="28" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="116.0" y="157" text-anchor="middle" fill="#4A555D">Flo</text>
+  <text class="task-name" x="136" y="158">Tests m. Kategoriendefinition</text>
+  <text class="task-dur" x="354" y="158" text-anchor="end">3d</text>
+  <rect class="bar-todo" x="435.8181818181818" y="147.5" width="94.72727272727272" height="13" rx="3" />
+  <text class="bar-label-in" x="483.1818181818182" y="157.0" text-anchor="middle">CE-23</text>
+  <text class="task-id" x="58" y="177">CE-22</text>
+  <rect class="who-pill" x="102" y="167.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="176" text-anchor="middle" fill="#4A555D">Finn</text>
+  <text class="task-name" x="142" y="177">RTX 6000 f. Parallele Samples</text>
+  <text class="task-dur" x="354" y="177" text-anchor="end">1w</text>
+  <rect class="bar-todo" x="435.8181818181818" y="166.5" width="160.54545454545453" height="13" rx="3" />
+  <text class="bar-label-in" x="516.0909090909091" y="176.0" text-anchor="middle">CE-22</text>
+  <text class="task-id" x="58" y="196">CE-25</text>
+  <rect class="who-pill" x="102" y="186.5" width="28" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="116.0" y="195" text-anchor="middle" fill="#4A555D">Flo</text>
+  <text class="task-name" x="136" y="196">Effizienz Judgement &amp; Worker</text>
+  <text class="task-dur" x="354" y="196" text-anchor="end">–</text>
+  <rect class="bar-open" x="435.8181818181818" y="185.5" width="390.9090909090909" height="13" rx="3" />
+  <text class="bar-label-in dark" x="631.2727272727273" y="195.0" text-anchor="middle">CE-25</text>
+  <text class="task-id" x="58" y="215">CE-24</text>
+  <rect class="who-pill" x="102" y="205.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="214" text-anchor="middle" fill="#4A555D">Finn</text>
+  <text class="task-name" x="142" y="215">Präsentation mit MARP</text>
+  <text class="task-dur" x="354" y="215" text-anchor="end">3d</text>
+  <rect class="bar-todo" x="501.6363636363636" y="204.5" width="94.72727272727272" height="13" rx="3" />
+  <text class="bar-label-in" x="549.0" y="214.0" text-anchor="middle">CE-24</text>
+  <text class="sec-title" x="40" y="253">Woche 43 &amp; 44 (ab 20. Okt)</text>
+  <line x1="40" y1="257" x2="354" y2="257" stroke="#E2E6E9" stroke-width="0.75" />
+  <rect x="50" y="258" width="1058" height="19" rx="4" fill="#FDF0F1" opacity="0.8" />
+  <text class="task-id active" x="58" y="270">CE-27</text>
+  <rect class="who-pill" x="102" y="260.5" width="34" height="12" fill="#FDF0F1" />
+  <text class="who-text" x="119.0" y="269" text-anchor="middle" fill="#E2001A">Team</text>
+  <text class="task-name active" x="142" y="270">Termin 20.10. (Präsentation 1)</text>
+  <text class="task-dur" x="354" y="270" text-anchor="end">2h</text>
+  <rect class="bar-active" x="797.8181818181818" y="259.5" width="28.909090909090907" height="13" rx="3" />
+  <text class="bar-label-out active" x="831.7272727272726" y="269.0">CE-27</text>
+  <text class="task-id" x="58" y="289">CE-33</text>
+  <rect class="who-pill" x="102" y="279.5" width="28" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="116.0" y="288" text-anchor="middle" fill="#4A555D">Flo</text>
+  <text class="task-name" x="136" y="289">CLI ausbauen</text>
+  <text class="task-dur" x="354" y="289" text-anchor="end">–</text>
+  <rect class="bar-open" x="830.7272727272727" y="278.5" width="193.45454545454544" height="13" rx="3" />
+  <text class="bar-label-in dark" x="927.4545454545455" y="288.0" text-anchor="middle">CE-33</text>
+  <text class="task-id" x="58" y="308">CE-32</text>
+  <rect class="who-pill" x="102" y="298.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="307" text-anchor="middle" fill="#4A555D">Tino</text>
+  <text class="task-name" x="142" y="308">Reverse Proxy &amp; WebUI</text>
+  <text class="task-dur" x="354" y="308" text-anchor="end">–</text>
+  <rect class="bar-open" x="830.7272727272727" y="297.5" width="193.45454545454544" height="13" rx="3" />
+  <text class="bar-label-in dark" x="927.4545454545455" y="307.0" text-anchor="middle">CE-32</text>
+  <text class="task-id" x="58" y="327">CE-31</text>
+  <rect class="who-pill" x="102" y="317.5" width="28" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="116.0" y="326" text-anchor="middle" fill="#4A555D">Max</text>
+  <text class="task-name" x="136" y="327">Statistische Tests erweitern</text>
+  <text class="task-dur" x="354" y="327" text-anchor="end">–</text>
+  <rect class="bar-open" x="830.7272727272727" y="316.5" width="193.45454545454544" height="13" rx="3" />
+  <text class="bar-label-in dark" x="927.4545454545455" y="326.0" text-anchor="middle">CE-31</text>
+  <text class="task-id" x="58" y="346">CE-34</text>
+  <rect class="who-pill" x="102" y="336.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="345" text-anchor="middle" fill="#4A555D">Tino</text>
+  <text class="task-name" x="142" y="346">WebUI mit Login absichern</text>
+  <text class="task-dur" x="354" y="346" text-anchor="end">–</text>
+  <rect class="bar-open" x="830.7272727272727" y="335.5" width="193.45454545454544" height="13" rx="3" />
+  <text class="bar-label-in dark" x="927.4545454545455" y="345.0" text-anchor="middle">CE-34</text>
+  <text class="task-id" x="58" y="365">CE-29</text>
+  <rect class="who-pill" x="102" y="355.5" width="34" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="119.0" y="364" text-anchor="middle" fill="#4A555D">Finn</text>
+  <text class="task-name" x="142" y="365">Kapazitätsstatus Modellserver</text>
+  <text class="task-dur" x="354" y="365" text-anchor="end">1w</text>
+  <rect class="bar-todo" x="830.7272727272727" y="354.5" width="160.54545454545453" height="13" rx="3" />
+  <text class="bar-label-in" x="911.0" y="364.0" text-anchor="middle">CE-29</text>
+  <text class="task-id" x="58" y="384">CE-28</text>
+  <rect class="who-pill" x="102" y="374.5" width="28" height="12" fill="#E8ECEE" />
+  <text class="who-text" x="116.0" y="383" text-anchor="middle" fill="#4A555D">Max</text>
+  <text class="task-name" x="136" y="384">Erweiterung Multi-User Access</text>
+  <text class="task-dur" x="354" y="384" text-anchor="end">4d</text>
+  <rect class="bar-todo" x="830.7272727272727" y="373.5" width="127.63636363636363" height="13" rx="3" />
+  <text class="bar-label-in" x="894.5454545454545" y="383.0" text-anchor="middle">CE-28</text>
+  <text class="task-id" x="58" y="403">CE-35</text>
+  <rect class="who-pill" x="102" y="393.5" width="34" height="12" fill="#FDF0F1" />
+  <text class="who-text" x="119.0" y="402" text-anchor="middle" fill="#E2001A">Team</text>
+  <text class="task-name" x="142" y="403">Weekly</text>
+  <text class="task-dur" x="354" y="403" text-anchor="end">2h</text>
+  <rect class="bar-todo" x="995.2727272727273" y="392.5" width="28.909090909090907" height="13" rx="3" />
+  <text class="bar-label-out" x="1029.1818181818182" y="402.0">CE-35</text>
+</svg>
