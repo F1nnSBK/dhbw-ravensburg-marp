@@ -161,13 +161,81 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 ---
 
-###### 01 · Projektstand
-# Kanban-Board
+###### 01 · Projektstand · letztes Mal
+# Wo wir bei der letzten Präsentation standen
 
-<div class="placeholder" style="height: 400px;">
-TODO: Board-Stand vom 19.11.2026 einfügen<br>
-(Vorlage: Folie „Kanban-Board“ aus Präsentation 1 im Branch presentation/citation-evaluation)
+<div class="board" style="grid-template-columns: repeat(5, 1fr); gap: 12px;">
+<div class="board-col compact">
+<div class="board-head">Backlog <span>7</span></div>
+<div class="board-card"><b>CE-30</b>DSGVO & Recht</div>
+<div class="board-card"><b>CE-31</b>Statistische Tests</div>
+<div class="board-card"><b>CE-33</b>CLI ausbauen</div>
+<div class="board-card"><b>CE-28</b>Multi-User-Zugriff</div>
+<div class="board-card"><b>CE-29</b>Status Modellserver</div>
+<div class="board-card"><b>CE-34</b>WebUI mit Login</div>
+<div class="board-card"><b>CE-32</b>WebUI statt SSH</div>
 </div>
+<div class="board-col compact">
+<div class="board-head">To Do <span>0</span></div>
+</div>
+<div class="board-col compact">
+<div class="board-head">In Arbeit <span>3</span></div>
+<div class="board-card"><b>CE-25 <span class="who">Maximilian</span></b>Judgement Calls & parallele Worker</div>
+<div class="board-card"><b>CE-23 <span class="who">Florian</span></b>Neue Kategoriendefinition testen</div>
+<div class="board-card"><b>CE-22 <span class="who">Finn</span></b>RTX 6000 für parallele Samples</div>
+</div>
+<div class="board-col compact">
+<div class="board-head">In Review <span>1</span></div>
+<div class="board-card"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
+</div>
+<div class="board-col compact">
+<div class="board-head">Erledigt <span>2</span></div>
+<div class="board-card done"><b>CE-21 <span class="who">Tino</span></b>Rechenleistung angefragt</div>
+<div class="board-card done"><b>CE-26 <span class="who">Tino</span></b>Ergebnis-UI verbessern</div>
+</div>
+</div>
+
+<p class="note">Snapshot aus der letzten Präsentation — Status und Aufgaben wie damals übernommen.</p>
+
+---
+
+###### 01 · Projektstand · jetzt
+# Vollauf abgeschlossen, Analyse läuft weiter
+
+<div class="board" style="grid-template-columns: repeat(5, 1fr); gap: 12px;">
+<div class="board-col compact">
+<div class="board-head">Backlog <span>6</span></div>
+<div class="board-card"><b>CE-30</b>DSGVO & Recht</div>
+<div class="board-card"><b>CE-31</b>Statistische Tests</div>
+<div class="board-card"><b>CE-33</b>CLI ausbauen</div>
+<div class="board-card"><b>CE-28</b>Multi-User-Zugriff</div>
+<div class="board-card"><b>CE-34</b>WebUI mit Login</div>
+<div class="board-card"><b>CE-32</b>WebUI statt SSH</div>
+</div>
+<div class="board-col compact">
+<div class="board-head">To Do <span>0</span></div>
+</div>
+<div class="board-col compact">
+<div class="board-head">In Arbeit <span>2</span></div>
+<div class="board-card"><b>CE-25</b>Judgement Calls & Worker-Stabilität</div>
+<div class="board-card"><b>CE-24</b>Präsentation mit Marp</div>
+</div>
+<div class="board-col compact">
+<div class="board-head">In Review <span>0</span></div>
+</div>
+<div class="board-col compact">
+<div class="board-head">Erledigt <span>7</span></div>
+<div class="board-card done"><b>CE-21</b>Rechenleistung angefragt</div>
+<div class="board-card done"><b>CE-22</b>RTX 6000 für Vollauf genutzt</div>
+<div class="board-card done"><b>CE-23</b>Kategoriendefinition v7.2 getestet</div>
+<div class="board-card done"><b>CE-26</b>Ergebnis-UI verbessert</div>
+<div class="board-card done"><b>CE-29</b>Modellserver im Vollauf stabil</div>
+<div class="board-card done"><b>Vollauf</b>9.354 Antworten, 0 fatale Fehler</div>
+<div class="board-card done"><b>Bugfix</b>Chromium-Zombieprozesse behoben</div>
+</div>
+</div>
+
+<p class="note">Offen bleiben insbesondere die statistische Auswertung und die noch geplanten Zugriffs-/CLI-Funktionen. Run 2 liegt hier aggregiert vor, nicht als Einzelfalldatensatz.</p>
 
 ---
 
@@ -175,7 +243,7 @@ TODO: Board-Stand vom 19.11.2026 einfügen<br>
 # Läufe auf der RTX 6000 statt auf der Spark
 
 <div class="grid g3">
-<div class="kpi-card"><div class="number">9.354 / 9.354</div><div class="label">gültige Antworten im Vollauf</div><div class="sub">0 fatale Fehler</div></div>
+<div class="kpi-card"><div class="number">9.354 / 9.354</div><div class="label">gültige Antworten im Vollauf</div><div class="sub">0 fatale Fehler · Chromium-Zombieprozesse behoben</div></div>
 <div class="kpi-card hl"><div class="number">~51 s</div><div class="label">pro Zitat (Median 51 s)</div><div class="sub">Sprint 1: ~150 s auf der Spark</div></div>
 <div class="kpi-card"><div class="number">gpt-oss-120b</div><div class="label">auf dem RTX6000-Server</div><div class="sub">Browser-use, 600 s Timeout</div></div>
 </div>
@@ -228,6 +296,21 @@ TODO: Board-Stand vom 19.11.2026 einfügen<br>
 > Die Fakes werden fast alle erkannt. Das Problem sind die **905 Fehlalarme** (14,1 % der echten Zitate).
 
 <p class="note">Lauf fb3ebb05 · Prompt v7.2 · 18 Tage Kalenderzeit mit Pausen, rund 5,5 Tage reine Laufzeit bei einem Worker (9.354 × 51 s)</p>
+
+---
+
+###### 03 · Runvergleich
+# Run 2 senkt Fehlalarme bei gleicher Fallzahl
+
+<img src="assets/run1-run2-confusion.svg" alt="Vergleich der Confusion Matrices von Run 1 und Run 2" style="height: 260px; width: auto; max-width: 100%; display: block; margin: -10px auto 4px;">
+
+<div class="grid g3" style="gap: 12px;">
+<div class="kpi-card hl"><div class="number">+1,5 pp</div><div class="label">Genauigkeit</div><div class="sub">87,4 % → 88,8 %</div></div>
+<div class="kpi-card"><div class="number">−126</div><div class="label">Fehlalarme (FP)</div><div class="sub">1.031 → 905</div></div>
+<div class="kpi-card"><div class="number">−12</div><div class="label">übersehene Fakes (FN)</div><div class="sub">152 → 140</div></div>
+</div>
+
+<p class="note">Beide Läufe: dieselben 9.354 case_ids. Run 1 aus attempts.csv; Run 2 aus den gemergten Vollauf-Aggregaten. Für Run 2 liegen hier keine Einzelfalldaten vor, daher kein fallweiser Signifikanztest.</p>
 
 ---
 
