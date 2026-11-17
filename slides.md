@@ -155,7 +155,7 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div><span>04</span>Fehlalarme & Prompt v7.2</div>
 <div><span>02</span>RTX 6000 statt Spark</div>
 <div><span>05</span>Ergebnis-UI</div>
-<div><span>03</span>Lauf mit Prompt v7.1</div>
+<div><span>03</span>Läufe v7.1, v7.2 und Vollauf</div>
 <div><span>06</span>Ausblick</div>
 </div>
 
@@ -175,36 +175,59 @@ TODO: Board-Stand vom 19.11.2026 einfügen<br>
 # Läufe auf der RTX 6000 statt auf der Spark
 
 <div class="grid g3">
-<div class="kpi-card"><div class="number">200 / 200</div><div class="label">gültige Antworten</div><div class="sub">Spark mit v6: 131 von 1.172</div></div>
-<div class="kpi-card hl"><div class="number">2 Profile</div><div class="label">auf dem RTX6000-Server</div><div class="sub">gpt-oss-120b und Qwen3.8</div></div>
-<div class="kpi-card"><div class="number">fest gezogen</div><div class="label">200 Zitate je Lauf</div><div class="sub">je 100 mit und ohne Problem</div></div>
+<div class="kpi-card"><div class="number">9.354 / 9.354</div><div class="label">gültige Antworten im Vollauf</div><div class="sub">0 fatale Fehler</div></div>
+<div class="kpi-card hl"><div class="number">~51 s</div><div class="label">pro Zitat (Median 51 s)</div><div class="sub">Sprint 1: ~150 s auf der Spark</div></div>
+<div class="kpi-card"><div class="number">gpt-oss-120b</div><div class="label">auf dem RTX6000-Server</div><div class="sub">Browser-use, 600 s Timeout</div></div>
 </div>
 
-> Die Spark-Ausfälle aus Sprint 1 sind damit kein Risiko mehr für den Lauf. Dieselbe Anzahl Zitate zieht dieselbe Stichprobe, Läufe sind vergleichbar.
+> Die Spark-Ausfälle sind kein Risiko mehr: Der Vollauf lief auf der RTX 6000 durch, dreimal schneller pro Zitat als geplant.
 
 ---
 
-###### 03 · Erster Lauf mit v7.1
-# gpt-oss-120b: 90 % Genauigkeit auf 200 Zitaten
+###### 03 · Läufe
+# Von 200 Zitaten zum Vollauf mit 9.354
 
 <div class="columns" style="align-items: center;">
+<div style="flex: 1.5;">
+
+| Lauf | Prompt | Zitate | Genauigkeit | FPR | FNR |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| 28.10. | v7.1 | 200 | 90,0 % | 15 % | 5 % |
+| 28.10. | v7.2 | 200 | **91,5 %** | **13 %** | **4 %** |
+| 29.10. – 16.11. | v7.2 | **9.354** | 88,8 % | 14,1 % | 4,8 % |
+
+</div>
+<div class="kpi-stack" style="flex: 0.6;">
+<div class="card"><p>Dieselben <strong>200 Zitate</strong> in Zeile 1 und 2: v7.2 ist <strong>leicht besser</strong></p></div>
+<div class="card red"><p>Nur <strong>2 Fälle</strong> Unterschied bei FP, 1 bei FN: statistisch noch <strong>nicht belastbar</strong></p></div>
+</div>
+</div>
+
+<p class="note">gpt-oss-120b · RTX 6000 · Browser-use · binärer Benchmark (Fake = positive Klasse) · FPR/FNR: Falsch-positiv-/Falsch-negativ-Rate</p>
+
+---
+
+###### 03 · Vollauf
+# 9.354 Zitate vollständig geprüft
+
+<div class="columns" style="align-items: center;">
+<div class="kpi-stack" style="flex: 1;">
+<div class="kpi-card hl"><div class="number">88,8 %</div><div class="label">Genauigkeit</div><div class="sub">8.309 von 9.354 richtig</div></div>
+<div class="kpi-card"><div class="number">4,8 %</div><div class="label">Fakes übersehen</div><div class="sub">140 von 2.937 Fakes</div></div>
+</div>
 <div style="flex: 1.3;">
 
-| Kennzahl | v7.1 · RTX 6000 | v6 · Spark |
+| | Vorhersage Fake | Vorhersage Real |
 | :--- | :---: | :---: |
-| Gültige Antworten | **200 / 200** | 131 / 1.172 |
-| Genauigkeit | **90,0 %** | 84,7 % |
-| Falsch-positiv-Rate | **15 %** (15/100) | 17,3 % (17/98) |
-| Falsch-negativ-Rate | **5 %** (5/100) | 9,1 % (3/33) |
+| **Fake** (2.937) | 2.797 | 140 |
+| **Real** (6.417) | 905 | 5.512 |
 
-</div>
-<div class="kpi-stack" style="flex: 0.7;">
-<div class="card red"><p><strong>Nicht direkt vergleichbar:</strong> anderer Server, andere Stichprobe, nur 33 Fälle mit Problem bei v6</p></div>
-<div class="card"><p>Aussage: v7.1 ist <strong>nicht schlechter</strong>, mehr nicht</p></div>
 </div>
 </div>
 
-<p class="note">gpt-oss-120b · RTX 6000 · Browser-use · binärer Benchmark · Lauf f95d4a4c · 28.10.2026</p>
+> Die Fakes werden fast alle erkannt. Das Problem sind die **905 Fehlalarme** (14,1 % der echten Zitate).
+
+<p class="note">Lauf fb3ebb05 · Prompt v7.2 · 18 Tage Kalenderzeit mit Pausen, rund 5,5 Tage reine Laufzeit bei einem Worker (9.354 × 51 s)</p>
 
 ---
 
@@ -251,7 +274,7 @@ TODO: Board-Stand vom 19.11.2026 einfügen<br>
 </div>
 </div>
 
-> Der Effekt von v7.2 ist **noch nicht gemessen**. Dafür braucht es einen neuen Lauf auf denselben 200 Zitaten.
+> Auf denselben 200 Zitaten ist v7.2 leicht besser als v7.1 (91,5 % gegenüber 90,0 %). Der Vollauf zeigt: 905 Fehlalarme bleiben.
 
 ---
 
@@ -287,6 +310,7 @@ TODO: Board-Stand vom 19.11.2026 einfügen<br>
 * **Filter** nach FP / FN / TP / TN aus der Confusion Matrix
 * **Läufe** umbenennen, löschen, fehlgeschlagene Versuche wiederholen
 * **Prompt-Version** je Lauf sichtbar
+* **Live-Dashboard** mit Laufzeitprognose und Export
 
 <div class="card red"><p><strong>Live-Demo</strong> → wir wechseln in die Anwendung</p></div>
 </div>
@@ -305,18 +329,18 @@ TODO: Board-Stand vom 19.11.2026 einfügen<br>
 <div class="steps">
 <div class="step-item active" style="border: 1.5px solid rgba(226, 0, 26, 0.4);">
 <div class="step-num" style="color: var(--red); font-weight: 700;">01 · Als Nächstes</div>
-<div class="step-title" style="color: var(--red);">v7.2 messen</div>
-<div class="step-desc">Neuer Lauf auf denselben 200 Zitaten, Worker neu bauen</div>
+<div class="step-title" style="color: var(--red);">905 Fehlalarme analysieren</div>
+<div class="step-desc">Muster im Vollauf finden, Prompt nachschärfen</div>
 </div>
 <div class="step-item">
 <div class="step-num">02</div>
-<div class="step-title">Falsch Negative</div>
-<div class="step-desc">Fünf akzeptierte Zitate mit Problem-Label an der Quelle prüfen</div>
+<div class="step-title">Auswertung je Quelltyp</div>
+<div class="step-desc">Statistische Tests, Konfidenzintervalle, Label-Fehler im Benchmark prüfen</div>
 </div>
 <div class="step-item">
 <div class="step-num">03</div>
-<div class="step-title">Skalieren</div>
-<div class="step-desc">Parallele Worker, 5.000 Zitate, dann Vollauf</div>
+<div class="step-title">Modelle und Agenten vergleichen</div>
+<div class="step-desc">Qwen3.8, Hermes, OpenCode auf denselben Zitaten</div>
 </div>
 <div class="step-item">
 <div class="step-num">04</div>
