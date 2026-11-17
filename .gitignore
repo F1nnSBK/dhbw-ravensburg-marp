@@ -5,7 +5,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build and export outputs
-dist/
 build/
 out/
 export/
@@ -14,6 +13,8 @@ tmp/
 *.pdf
 *.pptx
 *.html
+!dist/*.html
+!dist/*.pdf
 !assets/**/*.svg
 !assets/**/*.png
 !assets/**/*.jpg
