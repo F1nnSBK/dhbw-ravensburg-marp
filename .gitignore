@@ -19,6 +19,7 @@ tmp/
 !assets/**/*.jpg
 !assets/**/*.jpeg
 !assets/reference/*.pptx
+!data/citation-confusion-matrix/*.html
 
 # Operating system files
 .DS_Store

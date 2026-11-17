@@ -1,0 +1,188 @@
+:root {
+  color-scheme: light;
+  --cm-red: #e2001a;
+  --cm-slate: #5c6971;
+  --cm-dark: #22252a;
+  --cm-light: #f8f9fa;
+  --cm-border: #e2e6e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--cm-dark);
+  background: #fff;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.cm-component {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 18px 22px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.cm-component h1 {
+  margin: 0 0 4px;
+  color: var(--cm-dark);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.cm-meta,
+.cm-intro,
+.cm-note {
+  margin: 4px 0 10px;
+  color: var(--cm-slate);
+}
+
+.cm-meta code,
+.cm-note code {
+  color: var(--cm-dark);
+}
+
+.cm-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cm-matrix {
+  position: relative;
+  flex: 1 1 320px;
+  min-width: 285px;
+}
+
+.cm-matrix h2,
+.cm-axis-title {
+  margin: 4px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cm-grid {
+  display: grid;
+  grid-template-columns: minmax(92px, 1fr) repeat(2, minmax(84px, 1fr));
+  align-items: stretch;
+  gap: 3px;
+  text-align: center;
+}
+
+.cm-grid > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: var(--cm-slate);
+}
+
+.cm-cell {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  min-height: 66px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #aeb8bf;
+  border-radius: 3px;
+  background: rgb(var(--cell-shade), calc(var(--cell-shade) + 5), 255);
+  color: #17212b;
+  cursor: help;
+}
+
+.cm-cell:hover,
+.cm-cell:focus {
+  z-index: 10;
+  outline: 2px solid var(--cm-red);
+  outline-offset: 1px;
+}
+
+.cm-cell > span {
+  pointer-events: none;
+}
+
+.cm-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+  display: block;
+  width: min(390px, 78vw);
+  max-height: 168px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 10px 12px;
+  border: 1px solid #89969e;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 3px 8px #0003;
+  color: var(--cm-dark);
+  cursor: auto;
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+  text-align: left;
+  visibility: hidden;
+  opacity: 0;
+  /* auto, not none: hovering the tooltip must keep its own cell hovered
+     (tooltip is a child of the cell) instead of falling through to the
+     cell underneath and triggering that cell's tooltip */
+  pointer-events: auto;
+}
+
+.cm-cell:nth-child(3n) .cm-tooltip {
+  right: 0;
+  left: auto;
+}
+
+/* Bottom row (FN/TP are grid children 8/9): open upward so the tooltip
+   stays inside the embedding iframe instead of being clipped at its edge */
+.cm-grid > .cm-cell:nth-child(8) .cm-tooltip,
+.cm-grid > .cm-cell:nth-child(9) .cm-tooltip {
+  top: auto;
+  bottom: 100%;
+}
+
+/* Second matrix, left column (TN/FN are grid children 5/8): align the
+   tooltip to the cell's right edge so it does not overflow the iframe */
+.cm-layout > .cm-matrix:nth-child(2) .cm-grid > .cm-cell:nth-child(5) .cm-tooltip,
+.cm-layout > .cm-matrix:nth-child(2) .cm-grid > .cm-cell:nth-child(8) .cm-tooltip {
+  right: 0;
+  left: auto;
+}
+
+.cm-cell:hover .cm-tooltip,
+.cm-cell:focus .cm-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cm-tooltip ul {
+  margin: 3px 0 8px;
+  padding-left: 20px;
+}
+
+.cm-tooltip small {
+  color: var(--cm-slate);
+}
+
+.cm-note {
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 1px solid var(--cm-border);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 680px) {
+  .cm-component {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .cm-matrix {
+    flex-basis: 100%;
+  }
+}
