@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%" role="img" aria-label="Hochrechnung für 9.354 Quellen: Spark seriell etwa 385 h, RTX seriell 126 h, RTX ohne Judges 105 bis 113 h, mit 4 Workern 44 h, mit 8 Workern etwa 28 h">
+  <style>
+    text { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    .h { font-size: 15px; font-weight: 600; fill: #3F474C; }
+    .lab { font-size: 14px; fill: #3F474C; }
+    .sub { font-size: 12px; fill: #5C6971; }
+    .v { font-size: 15px; font-weight: 700; fill: #22252A; }
+    .vr { font-size: 15px; font-weight: 700; fill: #E2001A; }
+  </style>
+
+  <text class="h" x="0" y="20">Dauer für 9.354 Quellen (Hochrechnung)</text>
+
+  <!-- bars start x=200, 1.1 px per hour -->
+  <text class="lab" x="0" y="64">Spark seriell</text>
+  <text class="sub" x="0" y="80">wie Bachelorarbeit</text>
+  <rect x="200" y="50" width="424" height="24" rx="4" fill="#C6CDD2"/>
+  <text class="v" x="632" y="68">~385 h</text>
+
+  <text class="lab" x="0" y="117">RTX seriell</text>
+  <rect x="200" y="102" width="139" height="24" rx="4" fill="#9AA5AC"/>
+  <text class="v" x="347" y="120">126 h</text>
+
+  <text class="lab" x="0" y="164">RTX, Judges aus</text>
+  <rect x="200" y="150" width="116" height="24" rx="4" fill="#9AA5AC"/>
+  <rect x="316" y="150" width="8" height="24" fill="#C6CDD2"/>
+  <text class="v" x="332" y="168">105–113 h</text>
+
+  <text class="lab" x="0" y="212">+ 4 Worker</text>
+  <rect x="200" y="198" width="48" height="24" rx="4" fill="#5C6971"/>
+  <text class="v" x="256" y="216">44 h</text>
+
+  <text class="lab" x="0" y="260" font-weight="700" fill="#E2001A">+ 8 Worker</text>
+  <rect x="200" y="246" width="31" height="24" rx="4" fill="#E2001A"/>
+  <text class="vr" x="239" y="264">~28 h</text>
+</svg>

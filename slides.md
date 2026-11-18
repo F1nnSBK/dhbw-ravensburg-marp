@@ -81,6 +81,8 @@ code { background: var(--surface); border: none; color: var(--ink); }
 .kpi-card .label { font-size: 16px; font-weight: 600; color: var(--ink); margin-top: 2px; }
 .kpi-card .sub { font-size: 14px; color: var(--muted); }
 .kpi-stack { display: flex; flex-direction: column; gap: 14px; }
+.kpi-stack.compact .kpi-card { padding: 12px 20px; }
+.kpi-stack.compact .kpi-card .number { font-size: 34px; }
 
 .step-item { padding: 20px 22px; border-top: none; }
 .step-item.active { background: var(--red-soft); border-top: none; box-shadow: none; }
@@ -153,7 +155,7 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div class="agenda">
 <div><span>01</span>Projektstand</div>
 <div><span>04</span>Fehlalarme & Prompt v7.2</div>
-<div><span>02</span>RTX 6000 statt Spark</div>
+<div><span>02</span>RTX 6000 & Laufzeit</div>
 <div><span>05</span>Ergebnis-UI</div>
 <div><span>03</span>Läufe v7.1, v7.2 und Vollauf</div>
 <div><span>06</span>Ausblick</div>
@@ -249,6 +251,139 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 </div>
 
 > Die Spark-Ausfälle sind kein Risiko mehr: Der Vollauf lief auf der RTX 6000 durch, dreimal schneller pro Zitat als geplant.
+
+---
+
+###### 02 · Laufzeit
+# Von ~385 h auf ~28 h für 9.354 Quellen
+
+<div class="columns" style="align-items: center;">
+<div class="kpi-stack compact" style="flex: 0 0 340px; gap: 10px;">
+<div class="kpi-card"><div class="number">≈ 3×</div><div class="label">RTX 6000 statt Spark</div><div class="sub">schnellerer Modellserver</div></div>
+<div class="kpi-card"><div class="number">−10 bis −17 %</div><div class="label">Judges aus</div><div class="sub">gleiches Ergebnis, weniger LLM-Calls</div></div>
+<div class="kpi-card hl"><div class="number">3,9×</div><div class="label">8 parallele Prüfungen</div><div class="sub">Durchsatz je Server</div></div>
+</div>
+<div style="flex: 1;">
+
+<img src="assets/runtime-projection.svg" alt="Hochrechnung der Laufzeit für 9.354 Quellen" style="width: 100%; display: block;">
+
+</div>
+</div>
+
+> Übernommen wurde nur, was das Ergebnis **nachweislich nicht verändert**.
+
+<p class="note">Hochrechnung aus Messungen auf dem Test-Split · GPT-OSS-120B auf RTX 6000 · Faktor 3× zur Spark grob (anderer Split, Codestand, Hardware)</p>
+
+<!--
+- Kernaussage: Für alle 9.354 CiteAudit-Quellen brauchen wir statt gut zwei Wochen nur noch gut einen Tag.
+- Spark seriell, wie in der Bachelorarbeit: ~385 h, also rund 16 Tage.
+- Drei Hebel:
+  - Schnellerer Server: RTX statt Spark, grob Faktor 3. Grob, weil Split, Codestand und Hardware sich unterscheiden.
+  - Judges aus: 10 bis 17 % weniger Zeit. Dazu gleich mehr.
+  - Größter Hebel: 8 parallele Prüfungen je Server, 3,9-facher Durchsatz.
+- Zusammen: ~28 h. Die beiden Vollläufe liefen schon mit Judges aus, aber noch seriell.
+-->
+
+---
+
+###### 02 · Laufzeit · Judges
+# Judges aus: gleiches Ergebnis, weniger Calls
+
+<div class="columns" style="align-items: start;">
+<div style="flex: 1.3;">
+
+| je Quelle | Qwen3.8-27B | GPT-OSS-120B |
+| :--- | ---: | ---: |
+| Zeit mit Judges | 63,6 s | 48,3 s |
+| Zeit ohne Judges | 48,3 s | 43,5 s |
+| Ersparnis | **−24 %** | **−10 %** |
+| LLM-Calls | 5,0 → 2,7 | 6,1 → 4,6 |
+| Qualität | unverändert | unverändert |
+
+</div>
+<div class="kpi-stack" style="flex: 1; gap: 12px;">
+<div class="card"><p><strong>Was sind Judges?</strong> browser-use bewertet nach jeder Prüfung den Verlauf mit 2 zusätzlichen LLM-Calls. Unser Ergebnis ändert das nicht: <strong>bytegleiches Endergebnis</strong>.</p></div>
+<div class="card red"><p><strong>Verworfen</strong>, weil sie Entscheidungen ändern: reasoning low (−42 %), Flash (−53 %), No-Thinking (−39 %)</p></div>
+</div>
+</div>
+
+<p class="note">Test-Split, 10 Fälle × 3 Wiederholungen · Schalter BU_DISABLE_JUDGE, BU_DISABLE_SIMPLE_JUDGE · Nebenbefund: Telemetrie von browser-use an PostHog jetzt fest aus</p>
+
+<!--
+- Judges: browser-use macht nach jeder fertigen Prüfung zwei zusätzliche LLM-Calls, Simple Judge und Full Judge. Die bewerten nur den Verlauf, nicht die Quelle.
+- Unser Ergebnis ändern sie nicht. Test mit dem echten Agenten: bytegleiches Endergebnis. Außerdem laufen sie außerhalb der Timeouts.
+- Lösung: zwei Schalter. Standard ist "an", damit alte Läufe reproduzierbar bleiben.
+- Messung: Qwen spart 24 %, GPT-OSS 10 %. Direkt gemessen kosten die Judges bei GPT-OSS 16,6 % der Zeit. Dass nur 10 % herauskamen, liegt an Zufall: In den Läufen ohne Judges waren 3 Cloudflare-Sperren.
+- LLM-Calls sinken um 47 % (Qwen) bzw. 25 % (GPT-OSS).
+- Andere Schalter waren schneller, ändern aber Einzelentscheidungen. Deshalb verworfen.
+- Nebenbefund Datenschutz: browser-use schickte standardmäßig Zitat, URLs und Ergebnis an PostHog. Das ist jetzt fest aus.
+-->
+
+---
+
+###### 02 · Laufzeit · Parallelität
+# 8 parallele Prüfungen: 3,9× Durchsatz
+
+<div class="columns" style="align-items: center;">
+<div style="flex: 1.2;">
+
+<img src="assets/parallel-throughput.svg" alt="Durchsatz nach Anzahl Worker" style="width: 100%; display: block;">
+
+</div>
+<div class="kpi-stack compact" style="flex: 1; gap: 10px;">
+<div class="kpi-card hl"><div class="number">8</div><div class="label">Requests gleichzeitig</div><div class="sub">mehr verarbeitet der Server nicht, darüber Warteschlange</div></div>
+<div class="kpi-card"><div class="number">85–90 %</div><div class="label">binäre Genauigkeit bis 8 Worker</div><div class="sub">bei 12 Workern 82 %</div></div>
+<div class="kpi-card"><div class="number">13 %</div><div class="label">KV-Cache maximal belegt</div><div class="sub">GPU-Speicher ist kein Engpass</div></div>
+</div>
+</div>
+
+> **8 Worker je Server** sind der Sweet Spot: 0 HTTP-Fehler, 0 fehlgeschlagene Quellen.
+
+<p class="note">GPT-OSS-120B auf RTX 6000 · Judges aus · je Worker-Anzahl ein Lauf · Grenze vermutlich max_num_seqs = 8</p>
+
+<!--
+- Gemessen mit GPT-OSS auf der RTX, Judges aus, mit 1, 2, 4, 8 und 12 Workern.
+- Seriell schaffen wir 86 Quellen pro Stunde, mit 8 Workern 330, also 3,9-fach.
+- Jede einzelne Prüfung wird dabei langsamer (Median 36 s auf 80 s), aber es laufen 8 gleichzeitig.
+- Warum 8? Der Server verarbeitet höchstens 8 Requests gleichzeitig, vermutlich max_num_seqs = 8. Bei 12 Workern warten bis zu 4 in der Warteschlange, der längste LLM-Call liegt mit 71 s knapp am Timeout von 75 s, und die Qualität fällt auf 82 %.
+- Bis 8 Worker ist die Qualität stabil bei 85 bis 90 %.
+- Der GPU-Speicher ist kein Engpass: KV-Cache maximal 13 % belegt.
+-->
+
+---
+
+###### 02 · Laufzeit · Nächste Schritte
+# Drei Dinge vor dem 28-h-Lauf
+
+<div class="steps">
+<div class="step-item active">
+<div class="step-num">01 · Runner</div>
+<div class="step-title">8 Worker je Server erlauben</div>
+<div class="step-desc">Der Runner startet bisher nur einen Versuch je Modellserver. Änderung in runner.py, eigenes Ticket.</div>
+</div>
+<div class="step-item">
+<div class="step-num">02 · Kontext</div>
+<div class="step-title">max_model_len ≥ 64k</div>
+<div class="step-desc">Größter Prompt 27,9k Token + 4.096 Antwort ≈ 32k von 32.768. Sonst drohen Abbrüche.</div>
+</div>
+<div class="step-item">
+<div class="step-num">03 · Drosselung</div>
+<div class="step-title">Testlauf 1–2 h mit 8 Workern</div>
+<div class="step-desc">Ungetestet, ob DuckDuckGo oder Cloudflare bei ~1.000 Suchen pro Stunde drosseln.</div>
+</div>
+</div>
+
+> Danach läuft der volle CiteAudit-Lauf in **gut einem Tag** statt gut zwei Wochen.
+
+<p class="note">10 Fälle × 3 Wiederholungen reichen nur für grobe Aussagen: Unterschiede unter ~15 Prozentpunkten sind nicht belegbar.</p>
+
+<!--
+- Bevor wir den 28-h-Lauf starten, müssen drei Dinge passieren.
+- Erstens der Runner: Er erlaubt aktuell nur einen Versuch pro Modellserver. Für 8 Worker braucht es eine Änderung in evaluation/app/runner.py, das wird ein eigenes Ticket.
+- Zweitens die Kontextlänge: Der größte Prompt hatte 27,9k Token, mit 4.096 Antwort-Token sind das fast die vollen 32.768. Bei 9.354 Quellen sind Abbrüche wahrscheinlich, daher am RTX-Server auf mindestens 64k erhöhen.
+- Drittens Drosselung: Mit 8 Workern machen wir rund 1.000 Suchen pro Stunde. Ob DuckDuckGo oder Cloudflare das über 28 h mitmachen, ist ungetestet. Deshalb vorher 1 bis 2 Stunden testen.
+- Zur Einordnung: Die Messungen sind klein. Unterschiede unter etwa 15 Prozentpunkten können wir nicht belegen.
+-->
 
 ---
 
