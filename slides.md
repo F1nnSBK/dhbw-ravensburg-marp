@@ -255,33 +255,32 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 ---
 
 ###### 02 · Laufzeit
-# Von ~385 h auf ~28 h für 9.354 Quellen
+# Vollauf in 6,5 Tagen statt 16
 
 <div class="columns" style="align-items: center;">
 <div class="kpi-stack compact" style="flex: 0 0 340px; gap: 10px;">
+<div class="kpi-card hl"><div class="number">45 s</div><div class="label">Median je Zitat</div><div class="sub">geplant: 157 s</div></div>
 <div class="kpi-card"><div class="number">≈ 3×</div><div class="label">RTX 6000 statt Spark</div><div class="sub">schnellerer Modellserver</div></div>
 <div class="kpi-card"><div class="number">−10 bis −17 %</div><div class="label">Judges aus</div><div class="sub">gleiches Ergebnis, weniger LLM-Calls</div></div>
-<div class="kpi-card hl"><div class="number">3,9×</div><div class="label">8 parallele Prüfungen</div><div class="sub">Durchsatz je Server</div></div>
 </div>
 <div style="flex: 1;">
 
-<img src="assets/runtime-projection.svg" alt="Hochrechnung der Laufzeit für 9.354 Quellen" style="width: 100%; display: block;">
+<img src="assets/runtime-planned-vs-measured.svg" alt="Geplant gegen gemessen im Vollauf" style="width: 100%; display: block;">
 
 </div>
 </div>
 
-> Übernommen wurde nur, was das Ergebnis **nachweislich nicht verändert**.
+> Zwei Gründe: **schnellerer Server** und **Judges aus**. Ein Worker, noch ohne Parallelität.
 
-<p class="note">Hochrechnung aus Messungen auf dem Test-Split · GPT-OSS-120B auf RTX 6000 · Faktor 3× zur Spark grob (anderer Split, Codestand, Hardware)</p>
+<p class="note">Run 1 · gpt-oss-120b · Browser-use · Prompt v6 · n = 9.354 · 02.–09.11.2026 · Faktor 3× zur Spark grob (anderer Split, Codestand, Hardware)</p>
 
 <!--
-- Kernaussage: Für alle 9.354 CiteAudit-Quellen brauchen wir statt gut zwei Wochen nur noch gut einen Tag.
-- Spark seriell, wie in der Bachelorarbeit: ~385 h, also rund 16 Tage.
-- Drei Hebel:
-  - Schnellerer Server: RTX statt Spark, grob Faktor 3. Grob, weil Split, Codestand und Hardware sich unterscheiden.
-  - Judges aus: 10 bis 17 % weniger Zeit. Dazu gleich mehr.
-  - Größter Hebel: 8 parallele Prüfungen je Server, 3,9-facher Durchsatz.
-- Zusammen: ~28 h. Die beiden Vollläufe liefen schon mit Judges aus, aber noch seriell.
+- Geplant hatten wir 16 Tage, gerechnet mit 157 s je Zitat auf der Spark.
+- Der Vollauf mit 9.354 Zitaten hat 6,5 Tage gedauert, im Median 45 s je Zitat.
+- Warum kürzer? Zwei Gründe, beide in den Vollläufen aktiv:
+  - Schnellerer Server: RTX 6000 statt Spark, grob Faktor 3. Grob, weil Split, Codestand und Hardware sich unterscheiden.
+  - Judges aus: spart 10 bis 17 % je Zitat, ohne das Ergebnis zu ändern. Das zeige ich auf der nächsten Folie.
+- Wichtig: Beide Vollläufe liefen mit einem Worker, also noch ohne Parallelität. Dazu danach.
 -->
 
 ---
@@ -321,8 +320,8 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 ---
 
-###### 02 · Laufzeit · Parallelität
-# 8 parallele Prüfungen: 3,9× Durchsatz
+###### 02 · Laufzeit · Ausblick
+# Noch mehr drin: 8 parallele Prüfungen, 3,9× Durchsatz
 
 <div class="columns" style="align-items: center;">
 <div style="flex: 1.2;">
@@ -333,21 +332,23 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div class="kpi-stack compact" style="flex: 1; gap: 10px;">
 <div class="kpi-card hl"><div class="number">8</div><div class="label">Requests gleichzeitig</div><div class="sub">mehr verarbeitet der Server nicht, darüber Warteschlange</div></div>
 <div class="kpi-card"><div class="number">85–90 %</div><div class="label">binäre Genauigkeit bis 8 Worker</div><div class="sub">bei 12 Workern 82 %</div></div>
-<div class="kpi-card"><div class="number">13 %</div><div class="label">KV-Cache maximal belegt</div><div class="sub">GPU-Speicher ist kein Engpass</div></div>
+<div class="kpi-card"><div class="number">~28 h</div><div class="label">Hochrechnung für 9.354 Zitate</div><div class="sub">statt 105–113 h seriell mit Judges aus</div></div>
 </div>
 </div>
 
-> **8 Worker je Server** sind der Sweet Spot: 0 HTTP-Fehler, 0 fehlgeschlagene Quellen.
+> Bisher **nur getestet**, in den Vollläufen noch nicht genutzt. Sweet Spot: 8 Worker je Server.
 
-<p class="note">GPT-OSS-120B auf RTX 6000 · Judges aus · je Worker-Anzahl ein Lauf · Grenze vermutlich max_num_seqs = 8</p>
+<p class="note">GPT-OSS-120B auf RTX 6000 · Judges aus · je Worker-Anzahl ein Lauf · 0 HTTP-Fehler · Grenze vermutlich max_num_seqs = 8 · KV-Cache max. 13 % belegt</p>
 
 <!--
+- Das ist der nächste Hebel, den wir bisher nur getestet haben. In den Vollläufen war er noch nicht drin.
 - Gemessen mit GPT-OSS auf der RTX, Judges aus, mit 1, 2, 4, 8 und 12 Workern.
 - Seriell schaffen wir 86 Quellen pro Stunde, mit 8 Workern 330, also 3,9-fach.
 - Jede einzelne Prüfung wird dabei langsamer (Median 36 s auf 80 s), aber es laufen 8 gleichzeitig.
 - Warum 8? Der Server verarbeitet höchstens 8 Requests gleichzeitig, vermutlich max_num_seqs = 8. Bei 12 Workern warten bis zu 4 in der Warteschlange, der längste LLM-Call liegt mit 71 s knapp am Timeout von 75 s, und die Qualität fällt auf 82 %.
 - Bis 8 Worker ist die Qualität stabil bei 85 bis 90 %.
 - Der GPU-Speicher ist kein Engpass: KV-Cache maximal 13 % belegt.
+- Hochgerechnet: ~28 h für alle 9.354 Zitate statt 105 bis 113 h seriell.
 -->
 
 ---

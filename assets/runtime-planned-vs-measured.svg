@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="100%" role="img" aria-label="Geplant gegen gemessen im Vollauf: 157 s gegen 45 s Median je Zitat; 16 Tage gegen 6,5 Tage Gesamtdauer">
+  <style>
+    text { font-family: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    .h { font-size: 15px; font-weight: 600; fill: #3F474C; }
+    .lab { font-size: 14px; fill: #5C6971; }
+    .v { font-size: 15px; font-weight: 700; fill: #22252A; }
+    .vr { font-size: 15px; font-weight: 700; fill: #E2001A; }
+  </style>
+
+  <!-- Group 1: seconds per citation, 400 px = 157 s -->
+  <text class="h" x="0" y="22">Sekunden je Zitat (Median)</text>
+  <text class="lab" x="0" y="59">geplant</text>
+  <rect x="90" y="42" width="400" height="26" rx="4" fill="#C6CDD2"/>
+  <text class="v" x="500" y="60">157 s</text>
+  <text class="lab" x="0" y="99">Vollauf</text>
+  <rect x="90" y="82" width="115" height="26" rx="4" fill="#E2001A"/>
+  <text class="vr" x="215" y="100">45 s</text>
+
+  <!-- Group 2: total days, 400 px = 16 d -->
+  <text class="h" x="0" y="162">Gesamtdauer für 9.354 Zitate</text>
+  <text class="lab" x="0" y="199">geplant</text>
+  <rect x="90" y="182" width="400" height="26" rx="4" fill="#C6CDD2"/>
+  <text class="v" x="500" y="200">16 Tage</text>
+  <text class="lab" x="0" y="239">Vollauf</text>
+  <rect x="90" y="222" width="163" height="26" rx="4" fill="#E2001A"/>
+  <text class="vr" x="263" y="240">6,5 Tage</text>
+</svg>
