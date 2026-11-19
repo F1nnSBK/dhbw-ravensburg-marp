@@ -219,7 +219,7 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 </div>
 <div class="board-col compact">
 <div class="board-head">In Arbeit <span>2</span></div>
-<div class="board-card"><b>CE-25</b>Judgement Calls & Worker-Stabilität</div>
+<div class="board-card"><b>CE-25</b>Judgement Calls & parallele Worker</div>
 <div class="board-card"><b>CE-24</b>Präsentation mit Marp</div>
 </div>
 <div class="board-col compact">
@@ -245,12 +245,12 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 # Läufe auf der RTX 6000 statt auf der Spark
 
 <div class="grid g3">
-<div class="kpi-card"><div class="number">9.354 / 9.354</div><div class="label">gültige Antworten im Vollauf</div><div class="sub">0 fatale Fehler · Chromium-Zombieprozesse behoben</div></div>
-<div class="kpi-card hl"><div class="number">~51 s</div><div class="label">pro Zitat (Median 51 s)</div><div class="sub">Sprint 1: ~150 s auf der Spark</div></div>
-<div class="kpi-card"><div class="number">gpt-oss-120b</div><div class="label">auf dem RTX6000-Server</div><div class="sub">Browser-use, 600 s Timeout</div></div>
+<div class="kpi-card"><div class="number">9.354 / 9.354</div><div class="label">gültige Antworten je Vollauf</div><div class="sub">0 fatale Fehler · Chromium-Zombieprozesse behoben</div></div>
+<div class="kpi-card hl"><div class="number">2</div><div class="label">Vollläufe mit je 9.354 Zitaten</div><div class="sub">Run 1 mit Prompt v6 · Run 2 mit v7.2</div></div>
+<div class="kpi-card"><div class="number">gpt-oss-120b</div><div class="label">auf dem RTX6000-Server</div><div class="sub">Browser-use · 600 s Timeout je Zitat</div></div>
 </div>
 
-> Die Spark-Ausfälle sind kein Risiko mehr: Der Vollauf lief auf der RTX 6000 durch, dreimal schneller pro Zitat als geplant.
+> Die Spark-Ausfälle sind kein Risiko mehr: **Beide Vollläufe** liefen auf der RTX 6000 durch.
 
 ---
 
@@ -272,7 +272,7 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 > Zwei Gründe: **schnellerer Server** und **Judges aus**. Ein Worker, noch ohne Parallelität.
 
-<p class="note">Run 1 · gpt-oss-120b · Browser-use · Prompt v6 · n = 9.354 · 02.–09.11.2026 · Faktor 3× zur Spark grob (anderer Split, Codestand, Hardware)</p>
+<p class="note">Run 1 · gpt-oss-120b · Browser-use · Prompt v6 · n = 9.354 · 02.–09.11.2026 · Run 2 (v7.2): Median 51 s · Faktor 3× zur Spark grob (anderer Split, Codestand, Hardware)</p>
 
 <!--
 - Geplant hatten wir 16 Tage, gerechnet mit 157 s je Zitat auf der Spark.
@@ -291,11 +291,12 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div class="columns" style="align-items: start;">
 <div style="flex: 1.3;">
 
-| je Quelle | Qwen3.8-27B | GPT-OSS-120B |
+| Mittel je Quelle, Test-Split | Qwen3.8-27B | GPT-OSS-120B |
 | :--- | ---: | ---: |
 | Zeit mit Judges | 63,6 s | 48,3 s |
 | Zeit ohne Judges | 48,3 s | 43,5 s |
-| Ersparnis | **−24 %** | **−10 %** |
+| Ersparnis gemessen | **−24 %** | **−10 %** |
+| davon Judges direkt | 10,4 s | 8,0 s (16,6 %) |
 | LLM-Calls | 5,0 → 2,7 | 6,1 → 4,6 |
 | Qualität | unverändert | unverändert |
 
@@ -312,6 +313,7 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 - Judges: browser-use macht nach jeder fertigen Prüfung zwei zusätzliche LLM-Calls, Simple Judge und Full Judge. Die bewerten nur den Verlauf, nicht die Quelle.
 - Unser Ergebnis ändern sie nicht. Test mit dem echten Agenten: bytegleiches Endergebnis. Außerdem laufen sie außerhalb der Timeouts.
 - Lösung: zwei Schalter. Standard ist "an", damit alte Läufe reproduzierbar bleiben.
+- Achtung, andere Messgröße als auf der Folie davor: hier Mittelwert auf dem Test-Split, nicht Median im Vollauf.
 - Messung: Qwen spart 24 %, GPT-OSS 10 %. Direkt gemessen kosten die Judges bei GPT-OSS 16,6 % der Zeit. Dass nur 10 % herauskamen, liegt an Zufall: In den Läufen ohne Judges waren 3 Cloudflare-Sperren.
 - LLM-Calls sinken um 47 % (Qwen) bzw. 25 % (GPT-OSS).
 - Andere Schalter waren schneller, ändern aber Einzelentscheidungen. Deshalb verworfen.
@@ -345,7 +347,7 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 - Gemessen mit GPT-OSS auf der RTX, Judges aus, mit 1, 2, 4, 8 und 12 Workern.
 - Seriell schaffen wir 86 Quellen pro Stunde, mit 8 Workern 330, also 3,9-fach.
 - Jede einzelne Prüfung wird dabei langsamer (Median 36 s auf 80 s), aber es laufen 8 gleichzeitig.
-- Warum 8? Der Server verarbeitet höchstens 8 Requests gleichzeitig, vermutlich max_num_seqs = 8. Bei 12 Workern warten bis zu 4 in der Warteschlange, der längste LLM-Call liegt mit 71 s knapp am Timeout von 75 s, und die Qualität fällt auf 82 %.
+- Warum 8? Der Server verarbeitet höchstens 8 Requests gleichzeitig, vermutlich max_num_seqs = 8. Bei 12 Workern warten bis zu 4 in der Warteschlange, der längste LLM-Call liegt mit 71 s knapp am LLM-Call-Timeout von 75 s, und die Qualität fällt auf 82 %.
 - Bis 8 Worker ist die Qualität stabil bei 85 bis 90 %.
 - Der GPU-Speicher ist kein Engpass: KV-Cache maximal 13 % belegt.
 - Hochgerechnet: ~28 h für alle 9.354 Zitate statt 105 bis 113 h seriell.
