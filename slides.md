@@ -147,6 +147,10 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div><strong>Sprint 2</strong>DSKI · WDS124 / WDS224<br>19.11.2026</div>
 </div>
 
+<!--
+Einstieg: In Sprint 1 haben wir einen Prüfer gebaut und auf 200 Zitaten getestet. Heute: Was passiert, wenn er auf den ganzen Datensatz mit 9.354 Zitaten läuft? Erst die Frage, wie wir das überhaupt schaffen, dann, was dabei herauskommt.
+-->
+
 ---
 
 ###### Überblick
@@ -154,11 +158,10 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 <div class="agenda">
 <div><span>01</span>Projektstand</div>
-<div><span>04</span>Fehlalarme & Prompt v7.2</div>
+<div><span>04</span>Warum so viele Fehlalarme?</div>
 <div><span>02</span>RTX 6000 & Laufzeit</div>
-<div><span>05</span>Ergebnis-UI</div>
-<div><span>03</span>Läufe v7.1, v7.2 und Vollauf</div>
-<div><span>06</span>Ausblick</div>
+<div><span>05</span>Ausblick</div>
+<div><span>03</span>Läufe, Prompt v7.2 und Vergleich</div>
 </div>
 
 ---
@@ -199,6 +202,10 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 <p class="note">Snapshot aus der letzten Präsentation — Status und Aufgaben wie damals übernommen.</p>
 
+<!--
+Zur Erinnerung: Stand aus Präsentation 1. Zwei Dinge waren offen, die den Vollauf bestimmen: die RTX 6000 (CE-22) und die Judgement Calls (CE-25).
+-->
+
 ---
 
 ###### 01 · Projektstand · jetzt
@@ -206,38 +213,49 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 
 <div class="board" style="grid-template-columns: repeat(5, 1fr); gap: 12px;">
 <div class="board-col compact">
-<div class="board-head">Backlog <span>6</span></div>
+<div class="board-head">Backlog <span>8</span></div>
 <div class="board-card"><b>CE-30</b>DSGVO & Recht</div>
 <div class="board-card"><b>CE-31</b>Statistische Tests</div>
 <div class="board-card"><b>CE-33</b>CLI ausbauen</div>
 <div class="board-card"><b>CE-28</b>Multi-User-Zugriff</div>
+<div class="board-card"><b>CE-29</b>Status Modellserver</div>
+<div class="board-card"><b>CE-22 <span class="who">Finn</span></b>RTX 6000 für parallele Samples</div>
 <div class="board-card"><b>CE-34</b>WebUI mit Login</div>
 <div class="board-card"><b>CE-32</b>WebUI statt SSH</div>
 </div>
 <div class="board-col compact">
-<div class="board-head">To Do <span>0</span></div>
+<div class="board-head">To Do <span>2</span></div>
+<div class="board-card"><b>CE-40</b>Modellvergleich Qwen vs. GPT vs. Deepseek</div>
+<div class="board-card"><b>CE-41</b>Open-Weights-Modelle auf RTX 6000 / DGX Spark</div>
 </div>
 <div class="board-col compact">
 <div class="board-head">In Arbeit <span>2</span></div>
-<div class="board-card"><b>CE-25</b>Judgement Calls & parallele Worker</div>
-<div class="board-card"><b>CE-24</b>Präsentation mit Marp</div>
+<div class="board-card"><b>CE-44 <span class="who">Tino</span></b>Docker-Worker sammelt Zombie-Prozesse an</div>
+<div class="board-card"><b>CE-37 <span class="who">Finn</span></b>Kritische Prüfung der Modellwahl</div>
 </div>
 <div class="board-col compact">
 <div class="board-head">In Review <span>0</span></div>
 </div>
-<div class="board-col compact">
-<div class="board-head">Erledigt <span>7</span></div>
-<div class="board-card done"><b>CE-21</b>Rechenleistung angefragt</div>
-<div class="board-card done"><b>CE-22</b>RTX 6000 für Vollauf genutzt</div>
-<div class="board-card done"><b>CE-23</b>Kategoriendefinition v7.2 getestet</div>
-<div class="board-card done"><b>CE-26</b>Ergebnis-UI verbessert</div>
-<div class="board-card done"><b>CE-29</b>Modellserver im Vollauf stabil</div>
-<div class="board-card done"><b>Vollauf</b>9.354 Antworten, 0 fatale Fehler</div>
-<div class="board-card done"><b>Bugfix</b>Chromium-Zombieprozesse behoben</div>
+<div class="board-col compact" style="padding: 10px;">
+<div class="board-head">Erledigt <span>10</span></div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-38</b>Datensatz-Analyse</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-43 <span class="who">Tino</span></b>Test auf V6</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-39 <span class="who">Florian</span></b>Drilldown-Feature</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-23 <span class="who">Florian</span></b>Neue Kategoriendefinition</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-25 <span class="who">Maximilian</span></b>Judge-Calls</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-26 <span class="who">Tino</span></b>UI verbessern</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-24 <span class="who">Finn</span></b>Präsentation mit Marp</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-42 <span class="who">Finn</span></b>Slides an Schilling</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-21 <span class="who">Tino</span></b>Rechenleistung</div>
+<div class="board-card done" style="font-size: 12px; padding: 4px 8px; margin-bottom: 4px;"><b>CE-36 <span class="who">Finn</span></b>Steckdose aussuchen</div>
 </div>
 </div>
 
-<p class="note">Offen bleiben insbesondere die statistische Auswertung und die noch geplanten Zugriffs-/CLI-Funktionen. Run 2 liegt hier aggregiert vor, nicht als Einzelfalldatensatz.</p>
+<p class="note">YouTrack, Stand 19.11.2026. Offen bleiben die statistische Auswertung, der Modellvergleich und die geplanten Zugriffs-/CLI-Funktionen.</p>
+
+<!--
+Heute: 10 Tickets erledigt, 2 in Arbeit, 2 als Nächstes. Der Vollauf ist durch, offen ist vor allem die Auswertung. Überleitung: Wie kam es, dass der Vollauf plötzlich machbar war? Das war eine Frage der Laufzeit.
+-->
 
 ---
 
@@ -251,6 +269,10 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 </div>
 
 > Die Spark-Ausfälle sind kein Risiko mehr: **Beide Vollläufe** liefen auf der RTX 6000 durch.
+
+<!--
+Ausgangsfrage: 9.354 Zitate mit ~150 s auf der Spark wären über 16 Tage und ein hohes Ausfallrisiko (die Spark ist zweimal überhitzt). Die RTX 6000 hat den Vollauf ohne fatalen Fehler durchgetragen. Die nächsten Folien zeigen, woher die Zeitersparnis genau kommt.
+-->
 
 ---
 
@@ -391,177 +413,293 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 ---
 
 ###### 03 · Läufe
-# Von 200 Zitaten zum Vollauf mit 9.354
+# Zwei Prompt-Versionen, zwei Testgrößen
 
-<div class="columns" style="align-items: center;">
-<div style="flex: 1.5;">
+<div class="grid g2">
+<div class="card">
 
-| Lauf | Prompt | Zitate | Genauigkeit | FPR | FNR |
-| :--- | :--- | ---: | ---: | ---: | ---: |
-| 28.10. | v7.1 | 200 | 90,0 % | 15 % | 5 % |
-| 28.10. | v7.2 | 200 | **91,5 %** | **13 %** | **4 %** |
-| 29.10. – 16.11. | v7.2 | **9.354** | 88,8 % | 14,1 % | 4,8 % |
+### Test: 200 Zitate (28.10.)
+
+| Prompt | Genauigkeit | FPR | FNR |
+| :--- | ---: | ---: | ---: |
+| v7.1 | 90,0 % | 15 % | 5 % |
+| v7.2 | **91,5 %** | **13 %** | **4 %** |
+
+<p class="note" style="margin-top: 14px;"><strong>Nicht belastbar:</strong> Im Saldo 2 FP und 1 FN weniger. Fallweise sind 5 FP behoben, aber 3 neu dazugekommen.</p>
 
 </div>
-<div class="kpi-stack" style="flex: 0.6;">
-<div class="card"><p>Dieselben <strong>200 Zitate</strong> in Zeile 1 und 2: v7.2 ist <strong>leicht besser</strong></p></div>
-<div class="card red"><p>Nur <strong>2 Fälle</strong> Unterschied bei FP, 1 bei FN: statistisch noch <strong>nicht belastbar</strong></p></div>
+<div class="card">
+
+### Vollauf: 9.354 Zitate
+
+| Lauf | Genauigkeit | FPR | FNR |
+| :--- | ---: | ---: | ---: |
+| Run 1 · v6 | 87,4 % | 16,1 % | 5,2 % |
+| Run 2 · v7.2 | **88,8 %** | **14,1 %** | **4,8 %** |
+
+<p class="note" style="margin-top: 14px;"><strong>Belastbar:</strong> Die Fehlalarme sinken signifikant (McNemar p &lt; 0,001), die übersehenen Fakes nicht.</p>
+
 </div>
 </div>
 
-<p class="note">gpt-oss-120b · RTX 6000 · Browser-use · binärer Benchmark (Fake = positive Klasse) · FPR/FNR: Falsch-positiv-/Falsch-negativ-Rate</p>
+> Der Test mit 200 Zitaten ist zu klein für eine Aussage. Tragen kann sie nur der Vergleich der Vollläufe.
+
+<p class="note">gpt-oss-120b · RTX 6000 · Browser-use · Fake = positive Klasse · FPR/FNR: Falsch-positiv-/Falsch-negativ-Rate · Run 1: 02.–09.11., Run 2: 29.10.–16.11.</p>
+
+<!--
+Zwei Prompt-Versionen, zwei Größen, und die Kästen gehören jeweils zur Tabelle darüber. Links der Test auf 200 Zitaten: v7.2 wirkt leicht besser, aber im Saldo sind es nur 2 Fehlalarme, fallweise 5 behoben und 3 neu. Das ist Rauschen. Rechts die zwei Vollläufe auf allen 9.354 Zitaten: Run 1 mit Prompt v6 ist unsere Baseline, Run 2 mit v7.2. Dort ist der Rückgang der Fehlalarme signifikant. Deshalb stützen wir uns auf die Vollläufe.
+-->
 
 ---
 
-###### 03 · Vollauf
-# 9.354 Zitate vollständig geprüft
+###### 03 · Baseline
+# Run 1 (Prompt v6): Fakes erkannt, aber 1.031 Fehlalarme
 
 <div class="columns" style="align-items: center;">
 <div class="kpi-stack" style="flex: 1;">
-<div class="kpi-card hl"><div class="number">88,8 %</div><div class="label">Genauigkeit</div><div class="sub">8.309 von 9.354 richtig</div></div>
-<div class="kpi-card"><div class="number">4,8 %</div><div class="label">Fakes übersehen</div><div class="sub">140 von 2.937 Fakes</div></div>
+<div class="kpi-card"><div class="number">87,4 %</div><div class="label">Genauigkeit</div><div class="sub">8.171 von 9.354 richtig</div></div>
+<div class="kpi-card hl"><div class="number">16,1 %</div><div class="label">Fehlalarme (FPR)</div><div class="sub">1.031 von 6.417 echten Zitaten</div></div>
+<div class="kpi-card"><div class="number">5,2 %</div><div class="label">Fakes übersehen (FNR)</div><div class="sub">152 von 2.937 Fakes</div></div>
 </div>
 <div style="flex: 1.3;">
 
-| | Vorhersage Fake | Vorhersage Real |
-| :--- | :---: | :---: |
-| **Fake** (2.937) | 2.797 | 140 |
-| **Real** (6.417) | 905 | 5.512 |
+<img src="assets/run1-confusion.svg" alt="Confusion Matrix von Run 1" style="width: 100%; display: block;">
 
 </div>
 </div>
 
-> Die Fakes werden fast alle erkannt. Das Problem sind die **905 Fehlalarme** (14,1 % der echten Zitate).
+<p class="note">Run 1 · Prompt v6 · gpt-oss-120b · Browser-use · 02.–09.11.2026 · 5,1 Tage reine Laufzeit, Median 45 s · Fake = positive Klasse</p>
 
-<p class="note">Lauf fb3ebb05 · Prompt v7.2 · 18 Tage Kalenderzeit mit Pausen, rund 5,5 Tage reine Laufzeit bei einem Worker (9.354 × 51 s)</p>
+<!--
+Das ist die Baseline, mit der wir den Rest vergleichen. Run 1, Prompt v6, alle 9.354 Zitate. Von den 2.937 Fakes erkennen wir 2.785, nur 152 rutschen durch. Die Schwäche sind die 1.031 Fehlalarme: echte Zitate, die wir fälschlich als Fake markieren, 16 Prozent aller echten Zitate.
+-->
 
 ---
 
 ###### 03 · Runvergleich
-# Run 2 senkt Fehlalarme bei gleicher Fallzahl
+# Prompt v7.2 senkt die Fehlalarme von 1.031 auf 905
 
 <img src="assets/run1-run2-confusion.svg" alt="Vergleich der Confusion Matrices von Run 1 und Run 2" style="height: 260px; width: auto; max-width: 100%; display: block; margin: -10px auto 4px;">
 
 <div class="grid g3" style="gap: 12px;">
 <div class="kpi-card hl"><div class="number">+1,5 pp</div><div class="label">Genauigkeit</div><div class="sub">87,4 % → 88,8 %</div></div>
-<div class="kpi-card"><div class="number">−126</div><div class="label">Fehlalarme (FP)</div><div class="sub">1.031 → 905</div></div>
-<div class="kpi-card"><div class="number">−12</div><div class="label">übersehene Fakes (FN)</div><div class="sub">152 → 140</div></div>
+<div class="kpi-card"><div class="number">−126</div><div class="label">Fehlalarme (FP)</div><div class="sub">1.031 → 905 · McNemar p &lt; 0,001</div></div>
+<div class="kpi-card"><div class="number">−12</div><div class="label">übersehene Fakes (FN)</div><div class="sub">152 → 140 · p = 0,39: nicht belegt</div></div>
 </div>
 
-<p class="note">Beide Läufe: dieselben 9.354 case_ids. Run 1 aus attempts.csv; Run 2 aus den gemergten Vollauf-Aggregaten. Für Run 2 liegen hier keine Einzelfalldaten vor, daher kein fallweiser Signifikanztest.</p>
+<p class="note">Dieselben 9.354 Zitate, gepaart verglichen. Fehlalarme: 424 behoben, 298 neu, 607 in beiden Läufen falsch. Übersehene Fakes: 89 behoben, 77 neu. Exakter McNemar-Test, zweiseitig.</p>
+
+<!--
+Gleiche 9.354 Zitate, nur der Prompt ist anders, und wir haben die Einzelfälle beider Läufe. Die Genauigkeit steigt um 1,5 Prozentpunkte, die Fehlalarme sinken um 126. Gepaart (McNemar) ist das klar signifikant. Die übersehenen Fakes gehen nur um 12 zurück, das ist nicht belegbar.
+Ehrlich dazu sagen: Netto sind es 126 weniger, aber dahinter stehen 424 behobene und 298 neu falsche echte Zitate. Und 607 Fehlalarme treten in beiden Läufen auf. Überleitung: Was ist zwischen Run 1 und Run 2 anders? Der Prompt. Woher kamen die Änderungen? Aus einer Handanalyse.
+-->
 
 ---
 
-###### 04 · Fehlalarme
-# 15 Fehlalarme zeigen drei Lücken im Prompt
+###### 03 · Handanalyse
+# Fünf Muster erklären 12 von 15 Fehlalarmen im Test mit 200 Zitaten
 
 <div class="columns" style="align-items: start;">
-<div style="flex: 1.5;">
+<div style="flex: 1.6;">
 
-| Lücke | Beispiel | v7.1 | v7.2 |
+| Was der Prüfer als Fehler wertete | Warum das kein Fehler ist | Fälle | später mit v7.2 behoben |
 | :--- | :--- | :---: | :---: |
-| **Frühere Fassung** trägt Titel oder Autoren (arXiv v1, v2) | Doloriel 2025, 8 weitere Autoren in der aktuellen Fassung | 3 | **1** |
-| **Proceedings- und Nachdruckjahr** | Liu et al., NeurIPS 36: Konferenzjahr 2023, Bandjahr 2024 | 3 | **1** |
-| **Organisation als Autor**, fehlendes Jahr | Google Research, Med-Gemini, 2024b | 3 | **2** |
-| **Mitwirkende einer Auflage** | Spirtes et al., MIT Press 2000 | 3 | **1** |
-| **Gesperrte Quelle**, keine Alternative gesucht | OpenReview hinter Cloudflare | 4 | **1** |
+| **Frühere Fassung** (arXiv v1, v2) | Dasselbe Werk, andere Version: Doloriel 2025 hat in der aktuellen Fassung 8 weitere Autoren | 6 | **2** |
+| **Konferenzjahr oder Jahr des Tagungsbands** | Beide sind üblich: Liu et al., NeurIPS 36 – Konferenz 2023, Tagungsband 2024 | 2 | **1** |
+| **Organisation als Autor** | Google Research (Med-Gemini) ist der Autor, keine Person | 2 | **1** |
+| **Mitwirkende einer Auflage** | Spirtes et al., MIT Press 2000: weitere Mitwirkende in der Auflage | 1 | **0** |
+| **Gesperrte Quelle** | OpenReview hinter Cloudflare, keine Alternative gefunden | 1 | **1** |
 
 </div>
 <div class="kpi-stack" style="flex: 0.5;">
-<div class="kpi-card hl"><div class="number">12</div><div class="label">Fälle mit neuer Regel</div><div class="sub">Status nach v7.2 erwartet</div></div>
+<div class="kpi-card hl"><div class="number">5 / 12</div><div class="label">mit v7.2 behoben</div><div class="sub">3 neue Fehlalarme dazugekommen</div></div>
 </div>
 </div>
+
+<p class="note">Lauf v7.1 auf 200 Zitaten: 15 Fehlalarme, davon 12 mit diesen Mustern und 3 bewusst nicht ausgeglichen. Neu in v7.2: ca-00114, ca-02720, ca-03061.</p>
+
+<!--
+Die Handanalyse: 15 Fehlalarme aus dem 200er-Lauf von Hand angeschaut. 12 lassen sich fünf Mustern zuordnen, bei denen der Prüfer etwas als Fehler wertet, das keiner ist. Mit v7.2 sind 5 der 12 behoben, dafür kamen 3 neue Fehlalarme dazu (Captcha, Titel ohne Untertitel, fehlender Autor). Drei weitere gleichen wir bewusst nicht aus, dazu später bei den Messgrenzen. Überleitung: Aus diesen Mustern haben wir Prompt v7.2 abgeleitet.
+-->
 
 ---
 
-###### 04 · Prompt v7.2
-# Lockerer an der Form, strenger bei der Autorenliste
+###### 03 · Prompt v7.2
+# Prompt v7.2: lockerer bei der Form, strenger bei der Autorenliste
 
 <div class="columns">
 <div class="card" style="flex: 1;">
 
 ### Neu in v7.2
-<p>Titel, Autoren und Reihenfolge einer <strong>früheren Fassung</strong> sind kein Fehler</p>
-<p><strong>Organisationen</strong> dürfen Autor von Webseiten, Datensätzen und Software sein</p>
+<p style="margin-bottom: 10px;">Titel, Autoren und Reihenfolge einer <strong>früheren Fassung</strong> sind kein Fehler</p>
+<p style="margin-bottom: 10px;"><strong>Organisationen</strong> dürfen Autor von Webseiten, Blogeinträgen, Datensätzen und Software sein</p>
 <p><strong>DBLP und Semantic Scholar</strong> vor Status 4 prüfen</p>
 
 </div>
 <div class="card red" style="flex: 1;">
 
 ### Gegenmaßnahme
-<p>Die <strong>vollständige Autorenliste</strong> muss abgeglichen werden: 5 Fälle mit Problem wurden akzeptiert, bei einem nannte das Modell nur den Erstautor</p>
-<p class="note">Risiko: Behauptet das Modell eine frühere Fassung ohne Beleg, steigt die Falsch-negativ-Rate.</p>
+<p>Die <strong>vollständige Autorenliste</strong> muss abgeglichen werden, damit die Lockerung keine Fakes durchlässt. Im Test mit 200 Zitaten sinken die übersehenen Fakes von 5 auf 4</p>
 
 </div>
 </div>
 
-> Auf denselben 200 Zitaten ist v7.2 leicht besser als v7.1 (91,5 % gegenüber 90,0 %). Der Vollauf zeigt: 905 Fehlalarme bleiben.
+> Die Regeln antworten auf die fünf Muster der Handanalyse. Im Vollauf sinken die Fehlalarme damit von 1.031 auf 905, aber nicht auf null.
+
+<!--
+Das ist der Unterschied zwischen Run 1 und Run 2, abgeleitet aus der Handanalyse. Prompt v7.2 ist lockerer bei der Form: frühere Fassungen und Organisationen als Autor sind kein Fehler, und bei gesperrten Quellen werden erst DBLP und Semantic Scholar geprüft. Als Gegenmaßnahme muss die vollständige Autorenliste abgeglichen werden, damit die Lockerung keine Fakes durchlässt. Im Test mit 200 Zitaten sinken die übersehenen Fakes von 5 auf 4.
+-->
+
+---
+
+###### 04 · Warum so viele Fehlalarme?
+# Kein Zufall: Zwei Prompts scheitern an denselben Zitaten
+
+<div class="grid g3">
+<div class="kpi-card hl"><div class="number">607</div><div class="label">in Run 1 und Run 2 falsch</div><div class="sub">67 % der 905 Fehlalarme in Run 2</div></div>
+<div class="kpi-card"><div class="number">424</div><div class="label">nur in Run 1 falsch</div><div class="sub">in Run 2 richtig</div></div>
+<div class="kpi-card"><div class="number">298</div><div class="label">nur in Run 2 falsch</div><div class="sub">in Run 1 noch richtig</div></div>
+</div>
+
+> Zwei verschiedene Prompts scheitern an **denselben** Zitaten. Das spricht für systematische Ursachen (Zitate, Label oder Verhalten des Modells), nicht für Zufall.
+
+<p class="note">Run 1: 1.031 Fehlalarme = 607 + 424. Run 2: 905 Fehlalarme = 607 + 298. Dieselben 6.417 echten Zitate, gepaart verglichen.</p>
+
+<!--
+Erste Antwort auf die Frage vom letzten Mal: Die Fehlalarme sind kein Zufall. 607 von 905 treten in beiden Läufen auf, mit zwei verschiedenen Prompts. Zwischen den Läufen wechseln 424 Zitate zu richtig und 298 zu falsch, netto 126 weniger.
+-->
+
+---
+
+###### 04 · Was das Modell behauptet
+# Fast immer eine konkrete Abweichung, meist in der Autorenliste
+
+<div class="columns" style="align-items: center;">
+<div style="flex: 1.5;">
+
+| Das Modell behauptet … | Fälle | Anteil |
+| :--- | ---: | ---: |
+| **Status 3 · Inhaltsfehler** | **755** | **83 %** |
+| … in der Autorenliste | 396 | 44 % |
+| … im Titel | 180 | 20 % |
+| … im Jahr | 104 | 11 % |
+| … bei Venue oder Seiten | 62 | 7 % |
+| … sonstiges | 13 | 1 % |
+| **Status 4 · Quelle nicht verifizierbar** | **150** | **17 %** |
+
+</div>
+<div class="kpi-stack" style="flex: 0.8;">
+<div class="kpi-card hl"><div class="number">83 %</div><div class="label">behaupten einen Inhaltsfehler</div><div class="sub">755 von 905 (Status 3)</div></div>
+</div>
+</div>
+
+<p class="note">Run 2 (v7.2), 905 FP. Zuordnung automatisch nach dem zuerst genannten Stichwort in der Begründung des Modells, nicht manuell geprüft.</p>
+
+<!--
+Was behauptet das Modell bei diesen Fehlalarmen? In 83 Prozent einen konkreten Inhaltsfehler, fast die Hälfte betrifft die Autorenliste: Reihenfolge, fehlende oder zusätzliche Autoren, abweichende Namen. Bei 150 Fällen kann es die Quelle nicht verifizieren, zum Beispiel wegen Cloudflare oder leerer Seiten.
+-->
+
+---
+
+###### 04 · Autorenfehler
+# Autorenfehler: Das Modell liest oft eine neuere Fassung
+
+<div class="columns" style="align-items: center;">
+<div style="flex: 1.3;">
+
+| Vorwurf bei 392 Autoren-Fehlalarmen | Fälle | Anteil |
+| :--- | ---: | ---: |
+| Autor fehlt im Zitat | 142 | 36 % |
+| Namensvariante, Initialen | 92 | 23 % |
+| Autor im Zitat, nicht in der Quelle | 79 | 20 % |
+| Reihenfolge | 42 | 11 % |
+| sonstiges | 37 | 9 % |
+
+</div>
+<div class="kpi-stack" style="flex: 1; gap: 10px;">
+<div class="kpi-card hl"><div class="number">58 %</div><div class="label">Zitat = arXiv v1</div><div class="sub">23 von 40 geprüften arXiv-Fällen (95 %: 42–72 %)</div></div>
+<div class="kpi-card"><div class="number">47 % / 4 %</div><div class="label">letzte Version nach dem Snapshot</div><div class="sub">generated / realworld</div></div>
+</div>
+</div>
+
+> Neue Autoren seit der Erfassung erklären **nur einen Teil**: bei generated knapp die Hälfte, bei realworld kaum. Der Kern ist allgemeiner: Das Zitat gibt eine **ältere Fassung** wieder, das Modell prüft die neueste.
+
+<p class="note">generated = vom LLM erzeugte Zitate, realworld = Zitate aus echten PDFs, Snapshot = CiteAudit-Stand vom 30.04.2026. Autoren-FP = erster Vorwurf betrifft die Autoren (43 % der 905), Zuordnung per Regeln. 234 von 392 haben eine arXiv-ID, 158 nicht (Journals, Bücher): dort greift Versionsdrift nicht, Ursache nicht geprüft. Stichprobe 40, Seed 1, je Fall v1 und aktuelle Fassung bei arXiv verglichen; 30 % davon sind Modellfehler. <a href="belege/versionsdrift-stichprobe.md">Alle 40 Fälle mit Links</a>.</p>
+
+<!--
+Woher kommen die vielen Autorenfehler? Zuerst die Art: In 36 Prozent fehlt laut Modell ein Autor im Zitat, in 23 Prozent geht es um Namensvarianten, in 20 Prozent steht ein Autor im Zitat, der in der Quelle fehlt. Dann die Ursache: Wir haben 40 Fälle mit arXiv-Nummer gegen arXiv geprüft. In 23, also 58 Prozent, entspricht das Zitat genau der ersten Fassung, und die aktuelle Fassung hat andere Autoren. In 30 Prozent hat das Modell dagegen selbst unrecht.
+Zur Frage, ob seit der Erfassung neue Autoren dazugekommen sind: Teilweise. Bei den generierten Zitaten hat knapp die Hälfte der Papers ihre letzte Version nach dem Snapshot vom 30. April 2026, bei den realworld-Zitaten nur 4 Prozent. Von den 23 Drift-Fällen liegt bei 8 die Überarbeitung nach dem Snapshot, bei 15 davor. Allgemeiner Kern: Das Zitat ist eine ältere Fassung.
+Grenzen: Die 158 Autorenfehler ohne arXiv-Nummer sind nicht erklärt. 40 Fälle sind eine kleine Stichprobe.
+-->
+
+---
+
+###### 04 · Stichprobe
+# Von 12 geprüften Fehlalarmen lag das Modell 10-mal falsch
+
+<div class="grid g3">
+<div class="kpi-card hl"><div class="number">10 / 12</div><div class="label">Modell falsch</div><div class="sub">8 durch Versionsdrift: Zitat = erste Fassung, das Modell prüft die neueste</div></div>
+<div class="kpi-card"><div class="number">1 / 12</div><div class="label">Label falsch</div><div class="sub">zu nachsichtig (ca-02988)</div></div>
+<div class="kpi-card"><div class="number">1 / 12</div><div class="label">nicht entscheidbar</div><div class="sub">ca-02260</div></div>
+</div>
+
+<table style="margin-top: 6px;">
+<thead><tr><th>Fall</th><th>Zitat</th><th>Label</th><th>Modell behauptet</th><th>Befund</th></tr></thead>
+<tbody>
+<tr><td style="white-space: nowrap;"><a href="https://arxiv.org/abs/2512.23365v1"><code>ca‑08875</code></a></td><td>Lee et al., SpatialMosaic, 2025</td><td>Real</td><td>Autorenreihenfolge falsch</td><td>Zitat = arXiv <a href="https://arxiv.org/abs/2512.23365v1">v1</a>, das Modell prüfte die aktuelle Fassung <a href="https://arxiv.org/abs/2512.23365v4">v4</a></td></tr>
+<tr><td style="white-space: nowrap;"><a href="https://arxiv.org/abs/2304.06767v1"><code>ca‑02169</code></a></td><td>Dong et al., RAFT, 2023</td><td>Real</td><td>Zwei Autoren fehlen</td><td><a href="https://arxiv.org/abs/2304.06767v1">v1</a> hat 8 Autoren wie zitiert, die <a href="https://arxiv.org/abs/2304.06767">aktuelle Fassung</a> 10</td></tr>
+<tr><td style="white-space: nowrap;"><a href="https://doi.org/10.1038/s41586-025-09429-6"><code>ca‑02988</code></a></td><td>Correia et al., BindCraft, 2025</td><td>Real</td><td>Band und Seiten falsch</td><td>Stimmt: <a href="https://doi.org/10.1038/s41586-025-09429-6">Nature 646, 483–492</a>, das Label ist zu nachsichtig</td></tr>
+</tbody>
+</table>
+
+<p class="note">12 der 607 wiederkehrenden FP (Seed 1, nach Fehlerart geschichtet), je Fall per Webquelle geprüft, Belege: Backup-Folie. Label-Fehler 1/12: 95-%-Intervall 1,5–35 %.</p>
+
+<!--
+Wir haben 12 der 607 wiederkehrenden Fehlalarme gegen die Quellen geprüft. In 10 Fällen lag das Modell falsch, in 8 davon wegen Versionsdrift: Das Zitat entspricht genau der ersten arXiv-Fassung, die später überarbeitet wurde, etwa um Autoren ergänzt. Das Modell liest die aktuelle Fassung und meldet einen Fehler. Nach unserer eigenen Regel aus v7.2 wäre das kein Fehler. Nur ein Fall ist ein echter Label-Fehler, BindCraft mit falschem Band. Ehrlich: Das sind 12 Fälle, das Intervall für den Label-Fehleranteil ist breit.
+-->
 
 ---
 
 ###### 04 · Messgrenzen
-# Manchmal liegt das Modell richtig und das Label falsch
+# Nicht jeder Fehlalarm ist ein Modellfehler: fünf Grenzfälle
 
-<div class="columns" style="align-items: center;">
-<div style="flex: 1.2;">
+<table>
+<thead><tr><th>Fall</th><th>Zitat</th><th>Label</th><th>Modell sagt</th><th>Bewertung</th></tr></thead>
+<tbody>
+<tr><td style="white-space: nowrap;"><a href="https://arxiv.org/abs/2001.08361"><code>ca‑01632</code></a></td><td>Kaplan et al., Scaling laws, 2020</td><td>Real</td><td>Jeffrey Wu fehlt in der Autorenliste</td><td><strong>Modell hat recht</strong>, Label vermutlich falsch</td></tr>
+<tr><td style="white-space: nowrap;"><a href="https://arxiv.org/abs/2106.13008"><code>ca‑01851</code></a></td><td>Wu, Wang, Long, Autoformer, 2021</td><td>Real</td><td>Jiehui Xu fehlt in der Autorenliste</td><td><strong>Modell hat recht</strong>, Label vermutlich falsch</td></tr>
+<tr><td style="white-space: nowrap;"><a href="https://doi.org/10.7551/mitpress/1754.001.0001"><code>ca‑03078</code></a></td><td>Spirtes et al., MIT Press, 2000</td><td>Real</td><td>Heckerman fehlt, Jahr 2001</td><td>Offen: laut Doku Mitwirkender der 2. Auflage, an der Quelle prüfen</td></tr>
+<tr><td style="white-space: nowrap;"><a href="https://doi.org/10.1007/978-1-4471-0211-3"><code>ca‑03060</code></a></td><td>d’Avila Garcez et al., Springer, 2012</td><td>Real</td><td>Erstausgabe 2002, kein Beleg für 2012</td><td>Offen: Nachdruck 2012, an der Quelle prüfen</td></tr>
+<tr><td style="white-space: nowrap;"><code>ca‑00997</code></td><td>„Revolutionizing data …“, 2024, ohne Autoren</td><td>Real</td><td>Keine passende Quelle gefunden (v7.1)</td><td>Offen: Quelle auch von uns nicht auffindbar (arXiv, Crossref)</td></tr>
+</tbody>
+</table>
 
-| Fall | Zitat | Modell sagt |
-| :--- | :--- | :--- |
-| `ca-01632` | Kaplan et al., Scaling laws, 2020 | Jeffrey Wu fehlt in der Autorenliste |
-| `ca-01851` | Wu, Wang, Long, Autoformer, 2021 | Jiehui Xu fehlt in der Autorenliste |
+<p class="note">ca-01632 und ca-01851 gleichen wir bewusst nicht aus: Ein fehlender Autor bleibt ein Inhaltsfehler, auch wenn CiteAudit „Real“ sagt.</p>
 
-</div>
-<div class="kpi-stack" style="flex: 0.8;">
-<div class="card"><p>Fehlender Autor bleibt <strong>Inhaltsfehler</strong>, auch wenn CiteAudit „Real“ sagt</p></div>
-<div class="card red"><p>Wir gleichen diese Fälle <strong>bewusst nicht aus</strong>: das Label ist vermutlich falsch</p></div>
-</div>
-</div>
-
-<p class="note">Zwei Fälle bleiben außerdem unklar: ca-03078 und ca-03060 beruhen auf Vorwissen und müssen an der Quelle bestätigt werden.</p>
-
----
-
-###### 05 · Ergebnis-UI
-# Läufe verwalten, Fälle einzeln prüfen
-
-<div class="columns" style="align-items: center;">
-<div class="kpi-stack" style="flex: 0 0 340px;">
-
-* **Drilldown:** Anfrage, Status und Musterlösung je Zitat
-* **Filter** nach FP / FN / TP / TN aus der Confusion Matrix
-* **Läufe** umbenennen, löschen, fehlgeschlagene Versuche wiederholen
-* **Prompt-Version** je Lauf sichtbar
-* **Live-Dashboard** mit Laufzeitprognose und Export
-
-<div class="card red"><p><strong>Live-Demo</strong> → wir wechseln in die Anwendung</p></div>
-</div>
-<div class="shot" style="flex: 1;">
-
-![](assets/ui-new.png)
-
-</div>
-</div>
+<!--
+Nicht jeder Fehlalarm ist ein Fehler des Modells. Bei den ersten zwei liegt vermutlich das Label falsch: Ein Autor fehlt tatsächlich in der Zitierung. Zwei weitere beruhen auf bibliografischem Vorwissen und müssen noch an der Quelle bestätigt werden. Beim fünften (ca-00997) haben auch wir die Quelle nicht gefunden, er bleibt offen.
+-->
 
 ---
 
-###### 06 · Ausblick
+###### 05 · Ausblick
 # Nächste Schritte
 
 <div class="steps">
 <div class="step-item active" style="border: 1.5px solid rgba(226, 0, 26, 0.4);">
 <div class="step-num" style="color: var(--red); font-weight: 700;">01 · Als Nächstes</div>
-<div class="step-title" style="color: var(--red);">905 Fehlalarme analysieren</div>
-<div class="step-desc">Muster im Vollauf finden, Prompt nachschärfen</div>
+<div class="step-title" style="color: var(--red);">Versionsprüfung erzwingen</div>
+<div class="step-desc">Bei arXiv und bioRxiv die Versionsliste abrufen und vor Status 3 gegen v1 abgleichen (Prompt v7.3)</div>
 </div>
 <div class="step-item">
 <div class="step-num">02</div>
-<div class="step-title">Auswertung je Quelltyp</div>
-<div class="step-desc">Statistische Tests, Konfidenzintervalle, Label-Fehler im Benchmark prüfen</div>
+<div class="step-title">Label-Fehler belegen</div>
+<div class="step-desc">Stichprobe auf 50–100 FP vergrößern, belegte Fälle als Revisionsdatei führen, Kennzahlen mit und ohne Korrektur</div>
 </div>
 <div class="step-item">
 <div class="step-num">03</div>
 <div class="step-title">Modelle und Agenten vergleichen</div>
-<div class="step-desc">Qwen3.8, Hermes, OpenCode auf denselben Zitaten</div>
+<div class="step-desc">Qwen3.8, Hermes, OpenCode auf denselben Zitaten, getrennt nach realworld und generated (CE-40, CE-41)</div>
 </div>
 <div class="step-item">
 <div class="step-num">04</div>
@@ -569,6 +707,11 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div class="step-desc">WebUI mit Login statt SSH (CE-32, CE-34)</div>
 </div>
 </div>
+</div>
+
+<!--
+Schluss: Wir wissen jetzt, wo der Prüfer irrt. Als Nächstes die 905 Fehlalarme systematisch auswerten und Modelle auf denselben Zitaten vergleichen. Danach Fragen.
+-->
 
 ---
 
@@ -582,3 +725,137 @@ section.title h2, section.end h2 { font-size: 26px; font-weight: 500; color: var
 <div><strong>Team</strong>Finn Hertsch · Tino Strasser<br>Maximilian Vogt · Florian Dittmann</div>
 <div><strong>Repo</strong>github.com/FlorianDitt/citation-evaluation</div>
 </div>
+
+---
+
+###### Backup · Belege Stichprobe
+# Alle 12 geprüften Fehlalarme mit Quelle
+
+<style scoped>
+table { font-size: 14px; }
+th, td { padding: 4px 10px; }
+</style>
+
+| Fall | Modell behauptet | Befund | Beleg |
+| :--- | :--- | :--- | :--- |
+| `ca‑01252` | Penzar fehlt, Titel weicht ab | Versionsdrift | [bioRxiv v1](https://www.biorxiv.org/content/10.1101/2023.06.12.544594v1) |
+| `ca‑08875` | Reihenfolge falsch | Versionsdrift | [arXiv v1](https://arxiv.org/abs/2512.23365v1) · [v4](https://arxiv.org/abs/2512.23365v4) |
+| `ca‑00599` | Filippas, Manning fehlen | Versionsdrift (NBER-Erstausgabe nicht direkt belegt) | [arXiv v1](https://arxiv.org/abs/2301.07543v1) · [NBER](https://www.nber.org/papers/w31122) |
+| `ca‑02169` | Zwei Autoren fehlen | Versionsdrift | [arXiv v1](https://arxiv.org/abs/2304.06767v1) · [aktuell](https://arxiv.org/abs/2304.06767) |
+| `ca‑01124` | 4 Autoren fehlen | Versionsdrift | [arXiv v1](https://arxiv.org/abs/2402.01788v1) |
+| `ca‑07418` | Titel weicht ab, Koautoren fehlen | Versionsdrift | [arXiv v1](https://arxiv.org/abs/2512.18542v1) |
+| `ca‑08703` | Titel weicht ab | Versionsdrift | [arXiv v1](https://arxiv.org/abs/2512.22777v1) |
+| `ca‑06604` | Titel weicht ab | Versionsdrift | [arXiv v1](https://arxiv.org/abs/2601.00396v1) |
+| `ca‑02809` | 1995 statt 1993 | Modell falsch (Clarendon Press 1993) | [Cambridge](https://www.cambridge.org/core/journals/language-in-society/article/abs/carol-myersscotton-social-motivations-for-codeswitching-evidence-from-africa-oxford-studies-in-language-contact-oxford-clarendon-1993-pp-xii-177-hb-3500/41026149A62638461EDEDADD3EB73D8A) |
+| `ca‑00765` | Gehört zu keiner Reihe | Modell falsch (Bd. 56 der Reihe Texts in Applied Mathematics) | Link nicht abrufbar |
+| `ca‑02260` | 2022 statt 2023 | nicht entscheidbar | [Zenodo](https://zenodo.org/records/7421784) |
+| `ca‑02988` | Band und Seiten falsch | Label zu nachsichtig | [Nature, DOI](https://doi.org/10.1038/s41586-025-09429-6) |
+
+<p class="note">Selbst nachgeprüft: ca‑08875, ca‑02169, ca‑02988 (Autorenlisten und Versionen bei arXiv, Band und Seiten über Crossref). Übrige Fälle nach der Prüfung durch einen Hilfs-Agenten, die Links sind erreichbar, Inhalte nicht einzeln von mir kontrolliert.</p>
+
+---
+
+###### Backup · Spark
+# Die Spark überhitzt nicht mehr: Wachhund statt Dauerlast
+
+<div class="grid g3">
+<div class="kpi-card hl"><div class="number">85 °C</div><div class="label">Pause</div><div class="sub">keine neuen Versuche</div></div>
+<div class="kpi-card"><div class="number">70 °C</div><div class="label">automatisch weiter</div><div class="sub">Hysterese gegen Flackern</div></div>
+<div class="kpi-card"><div class="number">90 °C</div><div class="label">Abbruch</div><div class="sub">Pause bleibt bis zur manuellen Freigabe</div></div>
+</div>
+
+<div class="grid g2" style="margin-top: 16px;">
+<div class="card">
+
+### Regeln
+<p style="margin-bottom: 10px;">Gemessen wird die <strong>heißeste Thermal-Zone</strong>, nicht nur die GPU</p>
+<p style="margin-bottom: 10px;">Abbruch auch, wenn sich die GPU <strong>selbst drosselt</strong></p>
+<p style="margin-bottom: 10px;">Nur <strong>ein</strong> schwerer Job gleichzeitig, erst eine <strong>10-Minuten-Probe</strong></p>
+
+</div>
+<div class="card">
+
+### In der Evaluation
+<p style="margin-bottom: 10px;">Der Wachhund liest die Temperatur per SSH und <strong>pausiert die Vergabe</strong> neuer Versuche an die Spark</p>
+<p style="margin-bottom: 10px;"><strong>Mehrere Worker je Server</strong> sind einstellbar, Start mit 2 und Temperatur beobachten</p>
+
+</div>
+</div>
+
+<p class="note">Herkunft: tools/spark-thermo (BeeHive-Projekt), dort zusätzlich Bremse im Training (halbe Rechenzeit, Pause ab 75 °C). In der Evaluation steuert der Wachhund nur die Vergabe, laufende Versuche enden regulär. Temperaturmessungen vorher/nachher liegen hier nicht vor.</p>
+
+<!--
+Backup, falls nach den Spark-Ausfällen gefragt wird. Die Spark ist zweimal überhitzt. Lösung aus dem BeeHive-Projekt: ein Wachhund misst die heißeste Thermal-Zone, pausiert ab 85 Grad, macht unter 70 Grad weiter und bricht ab 90 Grad ab. In der Evaluation ist das als Hitzeschutz in der Ablaufsteuerung eingebaut. Zusammen mit mehreren Workern je Server können wir die Spark gezielt auslasten, ohne sie zu überhitzen. Noch nicht belegt: Messwerte vorher/nachher.
+-->
+
+---
+
+###### Backup · Metriken
+# Accuracy und F1 messen Verschiedenes
+
+<div class="columns" style="align-items: start;">
+<div class="card" style="flex: 1.1;">
+
+### Formeln (Fake = positive Klasse)
+<p style="margin-bottom: 8px;"><strong>Accuracy</strong> = <code>(TP + TN) / (TP + TN + FP + FN)</code></p>
+<p style="margin-bottom: 8px;"><strong>Precision</strong> = <code>TP / (TP + FP)</code></p>
+<p style="margin-bottom: 8px;"><strong>Recall</strong> = <code>TP / (TP + FN)</code></p>
+<p style="margin-bottom: 8px;"><strong>F1</strong> = <code>2 · P · R / (P + R)</code></p>
+<p style="margin-left: 38px;">= <code>2 · TP / (2 · TP + FP + FN)</code></p>
+
+</div>
+<div style="flex: 1;">
+
+| | Run 1 (v6) | Run 2 (v7.2) |
+| :--- | ---: | ---: |
+| Accuracy | 87,4 % | 88,8 % |
+| Precision | 73,0 % | 75,6 % |
+| Recall | 94,8 % | 95,2 % |
+| **F1** | **82,5 %** | **84,3 %** |
+
+</div>
+</div>
+
+> Accuracy zählt auch die richtig erkannten echten Zitate (TN). F1 ignoriert sie und zeigt, wie gut die **Fakes** gefunden werden, ohne zu viele Fehlalarme.
+
+<p class="note">Nur 31 % der 9.354 Zitate sind Fakes. „Immer Real“ erreicht 68,6 % Accuracy, aber F1 = 0. Die Fehlalarme (FP) senken die Precision, deshalb liegt F1 unter der Accuracy.</p>
+
+<!--
+Accuracy ist der Anteil aller richtig klassifizierten Zitate. F1 ist das harmonische Mittel aus Precision und Recall für die Klasse Fake, die richtig erkannten echten Zitate zählen dort nicht mit. Weil nur 31 Prozent der Zitate Fakes sind, wäre "immer Real" schon 68,6 Prozent Accuracy, aber F1 null. Der niedrigere F1-Wert zeigt, dass die Fehlalarme die Precision drücken: Recall 95 Prozent, Precision 73 bis 76 Prozent.
+-->
+
+---
+
+###### Backup · Statistik
+# McNemar-Test: gepaarter Vergleich von Run 1 und Run 2
+
+<div class="columns" style="align-items: center;">
+<div style="flex: 1.5;">
+
+| Klasse | Run 2 behoben (b) | Run 2 neu falsch (c) | p |
+| :--- | ---: | ---: | ---: |
+| Fehlalarme (6.417 echte) | 424 | 298 | **&lt;&nbsp;0,001** |
+| Übersehene Fakes (2.937) | 89 | 77 | 0,39 |
+| Gesamt (9.354) | 513 | 375 | **&lt;&nbsp;0,001** |
+
+</div>
+<div class="card" style="flex: 1;">
+
+### Warum McNemar?
+<p style="margin-bottom: 10px;">Beide Läufe prüfen <strong>dieselben 9.354 Zitate</strong>, die Messungen sind gepaart</p>
+<p>Nur Zitate mit geändertem Ergebnis tragen Information. Wäre der Prompt egal, wären „behoben“ und „neu falsch“ <strong>gleich häufig</strong></p>
+
+</div>
+</div>
+
+<div class="card" style="margin-top: 14px;">
+<p style="margin-bottom: 6px;">Exakt: <code>p = 2 · Σ<sub>i=0…min(b,c)</sub> C(b+c, i) / 2<sup>b+c</sup></code></p>
+<p>Näherung: <code>χ² = (b − c)² / (b + c)</code> · Fehlalarme: χ² = 126² / 722 ≈ 22,0 (1 Freiheitsgrad)</p>
+</div>
+
+<p class="note">Exakter Binomialtest, zweiseitig (p ≈ 3 · 10⁻⁶ bei den Fehlalarmen). Bonferroni (α = 0,025) ändert nichts am FP-Befund. Grenze: je Prompt nur ein Lauf, Modellrauschen nicht gemessen.</p>
+
+<!--
+Backup, falls nach dem Signifikanztest gefragt wird. McNemar ist der passende Test, weil beide Läufe dieselben 9.354 Zitate bewerten. Wir zählen nur die Zitate, bei denen sich das Ergebnis zwischen Run 1 und Run 2 ändert. Bei den echten Zitaten sind das 424, die jetzt richtig sind, und 298, die jetzt falsch sind. Wäre der Prompt egal, müssten die beiden Zahlen etwa gleich groß sein, das testen wir mit einem exakten Binomialtest. Ergebnis: p ungefähr 3 mal 10 hoch minus 6. Bei den übersehenen Fakes 89 gegen 77, p gleich 0,39, kein belegter Unterschied.
+Grenze offen nennen: Wir haben je Prompt nur einen Lauf. Wie stark ein Lauf mit demselben Prompt von selbst schwankt, haben wir nicht gemessen. Das 298-neu-falsch deutet an, dass dieses Rauschen nicht klein ist.
+-->

@@ -40,7 +40,7 @@
     <rect class="cell" x="270" y="152" width="140" height="62" rx="6" />
     <text class="count" x="340" y="178" text-anchor="middle">2.785</text>
     <text class="cell-label" x="340" y="199" text-anchor="middle">TP · 94,8 %</text>
-    <text class="accuracy" x="120" y="245">Accuracy 87,4 %</text>
+    <text class="accuracy" x="120" y="245">F1 (Fake) 82,5 %</text>
   </g>
 
   <g transform="translate(480 0)">
@@ -64,6 +64,6 @@
     <rect class="cell" x="270" y="152" width="140" height="62" rx="6" />
     <text class="count" x="340" y="178" text-anchor="middle">2.797</text>
     <text class="cell-label" x="340" y="199" text-anchor="middle">TP · 95,2 %</text>
-    <text class="accuracy" x="120" y="245">Accuracy 88,8 %</text>
+    <text class="accuracy" x="120" y="245">F1 (Fake) 84,3 %</text>
   </g>
 </svg>
